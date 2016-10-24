@@ -1,17 +1,17 @@
 How to Compile and run PIT after modify PIT's code:
 
-1- go to pitest/pitest where  maven-build.xml resides
-2- run mvn install
-3- go target and copy the created snapshot.jar into pit_study/pit_example/lib/
-4- run pit.sh
+1- go to pitest/pitest where  maven-build.xml resides <br>
+2- run mvn install <br>
+3- go target and copy the created snapshot.jar into pit_study/pit_example/lib/  <br>
+4- run pit.sh <br>
 
 Output: 
-1- trace from ASPECTJ
-2- reports in target/pit-report
+1- trace from ASPECTJ <br>
+2- reports in target/pit-report <br>
 
-pitest-command-line-1.1.10.jar is downloaded from https://github.com/hcoles/pitest/releases
-Link to it and to the snapshot in /lib in pit.sh
-
+pitest-command-line-1.1.10.jar is downloaded from https://github.com/hcoles/pitest/releases <br>
+Link to it and to the snapshot.jar in /lib in pit.sh
+<hr>
 
 PIT Example
 ===========
