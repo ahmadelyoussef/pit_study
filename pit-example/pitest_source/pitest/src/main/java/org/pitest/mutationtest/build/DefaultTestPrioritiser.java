@@ -39,13 +39,16 @@ public class DefaultTestPrioritiser implements TestPrioritiser {
     return prioritizeTests(mutation.getClassName(), pickTests(mutation));
   }
 
+  //Ali: this function based on the lines of the class that are reachable from the 
+  //test. If the mutants if reachable by the test case, it returns it.
+  //we can apply a filter on the return collection to reduce number of the test cases.
   private Collection<TestInfo> pickTests(MutationDetails mutation) {
-    if (!mutation.isInStaticInitializer()) {
-      return this.coverage.getTestsForClassLine(mutation.getClassLine());
-    } else {
-      LOG.warning("Using untargetted tests");
-      return this.coverage.getTestsForClass(mutation.getClassName());
-    }
+	  if (!mutation.isInStaticInitializer()) {
+		  return this.coverage.getTestsForClassLine(mutation.getClassLine());
+	  } else {
+		  LOG.warning("Using untargetted tests");
+		  return this.coverage.getTestsForClass(mutation.getClassName());
+	  }
   }
 
   private List<TestInfo> prioritizeTests(ClassName clazz,

@@ -129,6 +129,9 @@ public class MutationCoverage {
 
     history().initialize();
 
+    //Initial prioritization
+    //Ali: we are going to add a loop here which will check a threshold whether we are done or not.
+    //Every iteration we basically re-schedule the <test, mutant>s here ane re-run the process.
     this.timings.registerStart(Timings.Stage.BUILD_MUTATION_TESTS);
     final List<MutationAnalysisUnit> tus = buildMutationTests(coverageData,
         engine);
@@ -144,6 +147,7 @@ public class MutationCoverage {
     LOG.fine("Free Memory before analysis start " + (runtime.freeMemory() / MB)
         + " mb");
 
+    //Run <test, mutants>
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(
         numberOfThreads(), config);
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
