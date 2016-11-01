@@ -45,11 +45,10 @@ public class MutationSource {
     this.source = source;
   }
 
-  public Collection<MutationDetails> createMutations(final ClassName clazz) {
-	  
-	//Ali: here we create and find all the available mutations. Using the filter we can reduce number
-	//of running mutants.
-	//we can implement a prioritizer for the mutants also to prioritize the test begin run.
+  public Collection<MutationDetails> createMutations(final ClassName clazz) {  
+/*Ali: here we create and find all the available mutations. Using the filter we can reduce number
+of running mutants.
+we can implement a prioritizer for the mutants also to prioritize the test begin run.*/
     final Mutater m = this.mutationConfig.createMutator(this.source);
     final Collection<MutationDetails> availableMutations = this.filter.filter(m
         .findMutations(clazz));
