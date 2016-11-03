@@ -41,16 +41,23 @@ public class MutationCoverageReport {
       System.out.println(">>>> " + pr.getErrorMessage().value());
     } else {
       final ReportOptions data = pr.getOptions();
-
-      final CombinedStatistics stats = runReport(data, plugins);
-
-      throwErrorIfScoreBelowCoverageThreshold(stats.getCoverageSummary(),
-          data.getCoverageThreshold());
-      throwErrorIfScoreBelowMutationThreshold(stats.getMutationStatistics(),
-          data.getMutationThreshold());
-      throwErrorIfMoreThanMaxSuvivingMutants(stats.getMutationStatistics(), data.getMaximumAllowedSurvivors());
+      
+      int count = 0;
+      while(true){	
+    	  if(count >= 3)
+    		  break;
+    	  System.out.println("count = " + count);
+	      final CombinedStatistics stats = runReport(data, plugins);
+	
+	      throwErrorIfScoreBelowCoverageThreshold(stats.getCoverageSummary(),
+	          data.getCoverageThreshold());
+	      throwErrorIfScoreBelowMutationThreshold(stats.getMutationStatistics(),
+	          data.getMutationThreshold());
+	      throwErrorIfMoreThanMaxSuvivingMutants(stats.getMutationStatistics(), data.getMaximumAllowedSurvivors());
+      
+	      count++;
+      }
     }
-
   }
 
   private static void throwErrorIfScoreBelowCoverageThreshold(

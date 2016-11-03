@@ -139,7 +139,7 @@ public class MutationCoverage {
 
     LOG.info("Created  " + tus.size() + " mutation test units");
     checkMutationsFound(tus);
-
+    //
     recordClassPath(coverageData);
 
     LOG.fine("Used memory before analysis start "
