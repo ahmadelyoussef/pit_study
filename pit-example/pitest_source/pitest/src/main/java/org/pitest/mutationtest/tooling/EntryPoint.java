@@ -100,6 +100,8 @@ public class EntryPoint {
         code, data, settings, timings);
 
     try {
+      //Ali: from the command-line file, the runReport(...,...) function reaches this point.
+      //then it calls the runReport() which we are willing to change.
       return AnalysisResult.success(report.runReport());
     } catch (final IOException e) {
       return AnalysisResult.fail(e);

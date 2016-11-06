@@ -110,7 +110,7 @@ public class MutationCoverage {
     checkExcludedRunners();
     
     final CoverageDatabase coverageData = coverage().calculateCoverage();
-
+    
     LOG.fine("Used memory after coverage calculation "
         + ((runtime.totalMemory() - runtime.freeMemory()) / MB) + " mb");
     LOG.fine("Free Memory after coverage calculation "
@@ -118,6 +118,7 @@ public class MutationCoverage {
 
     final MutationStatisticsListener stats = new MutationStatisticsListener();
 
+    //Ali: here we first create the mutation engine. The type is Gregor.
     final MutationEngine engine = this.strategies.factory().createEngine(
         this.data.isMutateStaticInitializers(),
         Prelude.or(this.data.getExcludedMethods()),
@@ -132,13 +133,19 @@ public class MutationCoverage {
     //Initial prioritization
     //Ali: we are going to add a loop here which will check a threshold whether we are done or not.
     //Every iteration we basically re-schedule the <test, mutant>s here ane re-run the process.
+    
+    //Ali: inorder to get access to engine: "builder -> source -> config -> engine"
     this.timings.registerStart(Timings.Stage.BUILD_MUTATION_TESTS);
-    final List<MutationAnalysisUnit> tus = buildMutationTests(coverageData,
-        engine);
+    final List<MutationAnalysisUnit> tus = buildMutationTests(coverageData, engine);
     this.timings.registerEnd(Timings.Stage.BUILD_MUTATION_TESTS);
 
     LOG.info("Created  " + tus.size() + " mutation test units");
     checkMutationsFound(tus);
+    
+    System.out.println( "\n*************************************************ALI***************************************************" );
+    System.out.println( "mutation engine status: " + engine );
+    System.out.println( "*************************************************ALI***************************************************\n" );
+    
     //
     recordClassPath(coverageData);
 
@@ -154,6 +161,10 @@ public class MutationCoverage {
     mae.run(tus);
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
 
+    System.out.println( "\n*************************************************ALI***************************************************" );
+    System.out.println( "mutation engine status: " + engine );
+    System.out.println( "*************************************************ALI***************************************************\n" );
+    
     LOG.info("Completed in " + timeSpan(t0));
 
     printStats(stats);

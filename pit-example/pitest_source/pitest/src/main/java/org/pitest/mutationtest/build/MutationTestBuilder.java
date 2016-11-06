@@ -53,20 +53,24 @@ public class MutationTestBuilder {
       final Collection<ClassName> codeClasses) {
     final List<MutationAnalysisUnit> tus = new ArrayList<MutationAnalysisUnit>();
 
-    final List<MutationDetails> mutations = FCollection.flatMap(codeClasses,
-        classToMutations());
+    //Ali: create mutations here! 
+    //classToMutations() -> createMutations() -> assignTestsToMutations() -> Prioritizer -> PickTests()
+    final List<MutationDetails> mutations = FCollection.flatMap(codeClasses, classToMutations());
 
     Collections.sort(mutations, comparator());
 
-    final Collection<MutationResult> analysedMutations = this.analyser
-        .analyse(mutations);
+    //Ali: in analysis it creates a <mutation, test> mappping.
+    final Collection<MutationResult> analysedMutations = this.analyser.analyse(mutations);
+    final Collection<MutationDetails> needAnalysis = FCollection.filter(analysedMutations, statusNotKnown()).map(resultToDetails());
+    
+    System.out.println( "\n*************************************************ALI***************************************************" );
+    System.out.println( "Analysed Mutations: " + analysedMutations );
+    System.out.println( "NeedAnalysis Mutations: " + needAnalysis );
+    System.out.println( "\n*************************************************ALI***************************************************" );
 
-    final Collection<MutationDetails> needAnalysis = FCollection.filter(
-        analysedMutations, statusNotKnown()).map(resultToDetails());
+    final List<MutationResult> analysed = FCollection.filter(analysedMutations, Prelude.not(statusNotKnown()));
 
-    final List<MutationResult> analysed = FCollection.filter(analysedMutations,
-        Prelude.not(statusNotKnown()));
-
+    //tus contains analyzed units which can access to the <mutation, test>
     if (!analysed.isEmpty()) {
       tus.add(makePreAnalysedUnit(analysed));
     }

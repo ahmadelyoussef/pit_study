@@ -65,8 +65,7 @@ we can implement a prioritizer for the mutants also to prioritize the test begin
   private void assignTestsToMutations(
       final Collection<MutationDetails> availableMutations) {
     for (final MutationDetails mutation : availableMutations) {
-      final List<TestInfo> testDetails = this.testPrioritiser
-          .assignTests(mutation);
+      final List<TestInfo> testDetails = this.testPrioritiser.assignTests(mutation);
       if (testDetails.isEmpty()) {
         LOG.fine("According to coverage no tests hit the mutation " + mutation);
       }
