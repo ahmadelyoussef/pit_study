@@ -62,15 +62,22 @@ we can implement a prioritizer for the mutants also to prioritize the test begin
 
   }
 
-  private void assignTestsToMutations(
-      final Collection<MutationDetails> availableMutations) {
-    for (final MutationDetails mutation : availableMutations) {
-      final List<TestInfo> testDetails = this.testPrioritiser.assignTests(mutation);
-      if (testDetails.isEmpty()) {
-        LOG.fine("According to coverage no tests hit the mutation " + mutation);
-      }
-      mutation.addTestsInOrder(testDetails);
-    }
+  private void assignTestsToMutations(final Collection<MutationDetails> availableMutations) {
+	  System.out.println( "\n*************************************************ALI***************************************************" );
+	  System.out.println( "number of mutations: " + availableMutations.size() );
+	  System.out.println( "*************************************************ALI***************************************************\n" );
+	  
+	  for (final MutationDetails mutation : availableMutations) {
+		  final List<TestInfo> testDetails = this.testPrioritiser.assignTests(mutation);
+		  
+		  //Ali
+		  System.out.println( "number of tests assigned: " + testDetails.size() );
+		  
+		  if (testDetails.isEmpty()) {
+			  LOG.fine("According to coverage no tests hit the mutation " + mutation);
+		  }
+		  mutation.addTestsInOrder(testDetails);
+	  }
   }
 
 }

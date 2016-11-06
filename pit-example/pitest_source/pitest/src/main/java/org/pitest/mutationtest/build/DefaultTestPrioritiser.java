@@ -42,8 +42,16 @@ public class DefaultTestPrioritiser implements TestPrioritiser {
   //Ali This function looks at the coverage information and finds the
   //reachability and returns the possible list of the tests.
   private Collection<TestInfo> pickTests(MutationDetails mutation) {
-    if (!mutation.isInStaticInitializer()) {
-    	return this.coverage.getTestsForClassLine(mutation.getClassLine());
+    if (!mutation.isInStaticInitializer()) 
+    {
+    	final Collection<TestInfo> temp = this.coverage.getTestsForClassLine(mutation.getClassLine());
+    	//Ali: just a modification, if you wanna test.
+    	//for (TestInfo t : temp){
+    	//	if(t.getName().equals("pitexample.MyClassTest.testMe2(pitexample.MyClassTest)")) {
+    	//		temp.remove( t );
+    	//	}
+    	//}
+      return temp;
     } else {
       LOG.warning("Using untargetted tests");
       return this.coverage.getTestsForClass(mutation.getClassName());
