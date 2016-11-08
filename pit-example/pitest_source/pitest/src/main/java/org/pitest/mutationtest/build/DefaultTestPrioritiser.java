@@ -51,13 +51,14 @@ public class DefaultTestPrioritiser implements TestPrioritiser {
       LOG.warning("Using untargetted tests");
       AllTests = this.coverage.getTestsForClass(mutation.getClassName());
     }
+    double percentage = 80;
 
-    int Size = AllTests.size();
+    int subsetSize = (int) (AllTests.size()*(percentage/100));
     int counter = 0;
     for (TestInfo item : AllTests) {
       testSubset.add(item);
       counter++;
-      if(counter >= 2) break;	 
+      if(counter >= subsetSize) break;	 
     }
     
     System.out.println("\nAll tests size = "+AllTests.size()+"\n");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="wireless-10-145-191-76.public.utexas.edu" id="0" name="MyClassTest" package="pitexample" skipped="0" tests="4" time="0.069" timestamp="2016-11-06T23:19:05">
+  <testsuite errors="0" failures="0" hostname="wireless-10-146-30-195.public.utexas.edu" id="0" name="MyClassTest" package="pitexample" skipped="0" tests="4" time="0.273" timestamp="2016-11-08T23:43:24">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -18,7 +18,7 @@
 
           <property name="test-classes" value="/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/target/test-classes" />
 
-          <property name="TODAY" value="November 6 2016" />
+          <property name="TODAY" value="November 8 2016" />
 
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
 
@@ -40,7 +40,7 @@
 
           <property name="ant.project.name" value="PITExample" />
 
-          <property name="DSTAMP" value="20161106" />
+          <property name="DSTAMP" value="20161108" />
 
           <property name="java.version" value="1.8.0_45" />
 
@@ -116,13 +116,13 @@
 
           <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pitexample.MyClassTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=true formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/reports/raw/TEST-pitexample.MyClassTest.xml crashfile=/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/junitvmwatcher2212913112686253196.properties propsfile=/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/junit339501777176802586.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pitexample.MyClassTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=true formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/reports/raw/TEST-pitexample.MyClassTest.xml crashfile=/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/junitvmwatcher3549886486101768060.properties propsfile=/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/junit5155009254686776507.properties" />
 
           <property name="java.class.path" value="/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/target/classes:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/target/test-classes:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/lib/junit-4.10.jar:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/lib/pitest-1.1.10.jar:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/lib/pitest-1.1.11-SNAPSHOT.jar:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/lib/pitest-command-line-1.1.10.jar:/Users/Zakotm/Documents/JavaPractice/Mutation/pit_work/pit-example/lib/pitest-command-line-1.1.11-SNAPSHOT.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-launcher.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit4.jar" />
 
           <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
 
-          <property name="TSTAMP" value="1719" />
+          <property name="TSTAMP" value="1743" />
 
           <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
 
@@ -168,13 +168,13 @@
 
       </properties>
 
-      <testcase classname="pitexample.MyClassTest" name="testMe1" time="0.004" />
-
-      <testcase classname="pitexample.MyClassTest" name="testMe" time="0.0" />
+      <testcase classname="pitexample.MyClassTest" name="testMe1" time="0.003" />
 
       <testcase classname="pitexample.MyClassTest" name="testMe2" time="0.0" />
 
-      <testcase classname="pitexample.MyClassTest" name="testMe3" time="0.0" />
+      <testcase classname="pitexample.MyClassTest" name="testMe3" time="0.001" />
+
+      <testcase classname="pitexample.MyClassTest" name="testMe" time="0.0" />
 
       <system-out><![CDATA[]]></system-out>
 
