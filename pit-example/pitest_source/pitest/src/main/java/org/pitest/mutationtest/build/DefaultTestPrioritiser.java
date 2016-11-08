@@ -1,5 +1,6 @@
 package org.pitest.mutationtest.build;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -40,12 +41,29 @@ public class DefaultTestPrioritiser implements TestPrioritiser {
   }
 
   private Collection<TestInfo> pickTests(MutationDetails mutation) {
+	  
+    Collection<TestInfo> AllTests;
+	Collection<TestInfo> testSubset = new ArrayList<TestInfo>();
+	
     if (!mutation.isInStaticInitializer()) {
-      return this.coverage.getTestsForClassLine(mutation.getClassLine());
+      AllTests = this.coverage.getTestsForClassLine(mutation.getClassLine());
     } else {
       LOG.warning("Using untargetted tests");
-      return this.coverage.getTestsForClass(mutation.getClassName());
+      AllTests = this.coverage.getTestsForClass(mutation.getClassName());
     }
+
+    int Size = AllTests.size();
+    int counter = 0;
+    for (TestInfo item : AllTests) {
+      testSubset.add(item);
+      counter++;
+      if(counter >= 2) break;	 
+    }
+    
+    System.out.println("\nAll tests size = "+AllTests.size()+"\n");
+	System.out.println("\nSubset test size = "+testSubset.size()+"\n");
+	
+    return testSubset;
   }
 
   private List<TestInfo> prioritizeTests(ClassName clazz,
