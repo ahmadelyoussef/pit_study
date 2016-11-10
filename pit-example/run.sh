@@ -1,6 +1,6 @@
-RUNTIME_LIB="/Users/ahmad/aspectj1.8/lib/aspectjrt.jar"
+RUNTIME_LIB="/Users/alifakhrzadegan/aspectj1.8/lib/aspectjrt.jar"
 TARGET_FOLDER=""
-JAVA_AGENT="/Users/ahmad/aspectj1.8/lib/aspectjweaver.jar"
+JAVA_AGENT="/Users/alifakhrzadegan/aspectj1.8/lib/aspectjweaver.jar"
 ASPECTS_JAR=""
 MAIN_CLASS=""
 

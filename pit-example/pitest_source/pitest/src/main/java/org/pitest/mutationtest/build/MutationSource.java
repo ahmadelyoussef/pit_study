@@ -14,6 +14,7 @@
  */
 package org.pitest.mutationtest.build;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
@@ -45,21 +46,30 @@ public class MutationSource {
     this.source = source;
   }
 
-  public Collection<MutationDetails> createMutations(final ClassName clazz) {  
-/*Ali: here we create and find all the available mutations. Using the filter we can reduce number
-of running mutants.
-we can implement a prioritizer for the mutants also to prioritize the test begin run.*/
-    final Mutater m = this.mutationConfig.createMutator(this.source);
-    final Collection<MutationDetails> availableMutations = this.filter.filter(m
-        .findMutations(clazz));
+  public Collection<MutationDetails> myFilter(final Collection<MutationDetails> mutations )
+  {
+	final Collection<MutationDetails> temp = new ArrayList<MutationDetails>();
+	for( MutationDetails m : mutations )
+	{
+		if(!m.getMutator().equals("org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator"))
+			temp.add( m );
+	}
+	return temp;
+  }
+  
+  public Collection<MutationDetails> createMutations(final ClassName clazz) {
+	  //Ali: here we create and find all the available mutations. Using the filter we can reduce number
+	  //of running mutants.
+	  //we can implement a prioritizer for the mutants also to prioritize the test begin run.*/
+	  final Mutater m = this.mutationConfig.createMutator(this.source);
+	  final Collection<MutationDetails> availableMutations = this.filter.filter(m.findMutations(clazz));
 
-    //Ali: this function internally calls the assigment of test to mutations.
-    //Inside this function, in the main loop, we want to implement our analysis unit.
-    //Our unit implements a prioritizer and a filter for the mutants.
-    assignTestsToMutations(availableMutations);
+	  //Ali: this function internally calls the assigment of test to mutations.
+	  //Inside this function, in the main loop, we want to implement our analysis unit.
+	  //Our unit implements a prioritizer and a filter for the mutants.
 
-    return availableMutations;
-
+	  assignTestsToMutations(availableMutations);
+	  return availableMutations;
   }
 
   private void assignTestsToMutations(final Collection<MutationDetails> availableMutations) {

@@ -58,13 +58,11 @@ public class DefaultTestPrioritiser implements TestPrioritiser {
     }
   }
 
-  private List<TestInfo> prioritizeTests(ClassName clazz,
-      Collection<TestInfo> testsForMutant) {
-    final List<TestInfo> sortedTis = FCollection.map(testsForMutant,
-        Prelude.id(TestInfo.class));
-    Collections.sort(sortedTis, new TestInfoPriorisationComparator(clazz,
-        TIME_WEIGHTING_FOR_DIRECT_UNIT_TESTS));
+  private List<TestInfo> prioritizeTests(ClassName clazz, Collection<TestInfo> testsForMutant) {
+    final List<TestInfo> sortedTis = FCollection.map(testsForMutant, Prelude.id(TestInfo.class));
+    Collections.sort(sortedTis, new TestInfoPriorisationComparator(clazz,TIME_WEIGHTING_FOR_DIRECT_UNIT_TESTS));
     return sortedTis;
   }
-
+  
+  
 }

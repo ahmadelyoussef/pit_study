@@ -142,10 +142,6 @@ public class MutationCoverage {
     LOG.info("Created  " + tus.size() + " mutation test units");
     checkMutationsFound(tus);
     
-    System.out.println( "\n*************************************************ALI***************************************************" );
-    System.out.println( "mutation engine status: " + engine );
-    System.out.println( "*************************************************ALI***************************************************\n" );
-    
     //
     recordClassPath(coverageData);
 
@@ -160,10 +156,6 @@ public class MutationCoverage {
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     mae.run(tus);
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
-
-    System.out.println( "\n*************************************************ALI***************************************************" );
-    System.out.println( "mutation engine status: " + engine );
-    System.out.println( "*************************************************ALI***************************************************\n" );
     
     LOG.info("Completed in " + timeSpan(t0));
 
