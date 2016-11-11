@@ -51,6 +51,7 @@ import org.pitest.mutationtest.build.TestPrioritiser;
 import org.pitest.mutationtest.build.WorkerFactory;
 import org.pitest.mutationtest.config.ReportOptions;
 import org.pitest.mutationtest.config.SettingsFactory;
+import org.pitest.mutationtest.engine.MutationDetails;
 import org.pitest.mutationtest.engine.MutationEngine;
 import org.pitest.mutationtest.execute.MutationAnalysisExecutor;
 import org.pitest.mutationtest.filter.MutationFilterFactory;
@@ -62,6 +63,7 @@ import org.pitest.mutationtest.statistics.Score;
 import org.pitest.util.Log;
 import org.pitest.util.StringUtil;
 import org.pitest.util.Timings;
+import org.pitest.mutationtest.filter.*;
 
 public class MutationCoverage {
 
@@ -75,7 +77,8 @@ public class MutationCoverage {
   private final CodeSource         code;
   private final File               baseDir;
   private final SettingsFactory    settings;
-
+  PriorityCategory    wrapper; // declare priority class
+  
   public MutationCoverage(final MutationStrategies strategies,
       final File baseDir, final CodeSource code, final ReportOptions data,
       final SettingsFactory settings, final Timings timings) {
@@ -87,6 +90,20 @@ public class MutationCoverage {
     this.baseDir = baseDir;
   }
 
+  public Collection<MutationDetails> initialize(){
+	  // get a mutant per each category to start with 
+     //	  Collection<MutationDetails> mutant_per_category = getOnePerCategory();
+	  
+	  Collection<MutationDetails> mutant_per_category = null;
+	  
+	  //initialize all priorities to zero
+	  wrapper = new PriorityCategory();
+	  wrapper.initialize();
+	  
+	  // return set of mutants: each from a category
+	  return mutant_per_category;
+  }
+  
   public CombinedStatistics runReport() throws IOException {
 
     Log.setVerbose(this.data.isVerbose());
@@ -136,13 +153,18 @@ public class MutationCoverage {
     
     //Ali: inorder to get access to engine: "builder -> source -> config -> engine"
     this.timings.registerStart(Timings.Stage.BUILD_MUTATION_TESTS);
+    
+    // inside buildMutationTests: 
+    // execute our filter based on priorities 
+    // tests are being executed to our set of mutants
+    
     final List<MutationAnalysisUnit> tus = buildMutationTests(coverageData, engine);
     this.timings.registerEnd(Timings.Stage.BUILD_MUTATION_TESTS);
 
     LOG.info("Created  " + tus.size() + " mutation test units");
     checkMutationsFound(tus);
     
-    //
+    
     recordClassPath(coverageData);
 
     LOG.fine("Used memory before analysis start "
@@ -157,6 +179,11 @@ public class MutationCoverage {
     mae.run(tus);
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     
+    /**************************/
+    Set<String> categories_alive = null; // need to do read stats to find this out
+    wrapper.update(categories_alive); // increment proper priorities of categories
+    /**************************/
+
     LOG.info("Completed in " + timeSpan(t0));
 
     printStats(stats);
@@ -262,6 +289,7 @@ private int numberOfThreads() {
         .makeTestPrioritiser(this.data.getFreeFormProperties(), this.code,
             coverageData);
 
+    // here our filter will be declaed after updating the META-INF file
     final MutationSource source = new MutationSource(mutationConfig,
         makeFilter().createFilter(this.data.getFreeFormProperties(), this.code,
             this.data.getMaxMutationsPerClass()), testPrioritiser, bas);
@@ -281,6 +309,12 @@ private int numberOfThreads() {
     final MutationTestBuilder builder = new MutationTestBuilder(wf, analyser,
         source, grouper);
 
+    /* 
+     * createMutationTestUnits -> classToMutations() -> 
+       this.mutationSource.createMutations(Class) ->
+	   createMutator -> filter (our filter) -> availableMutations (our chosen set)
+  		assignTestsToMutations(availableMutations) 
+     */
     return builder.createMutationTestUnits(this.code.getCodeUnderTestNames());
   }
 

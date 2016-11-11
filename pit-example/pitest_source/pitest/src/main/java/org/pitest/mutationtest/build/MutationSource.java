@@ -64,7 +64,7 @@ public class MutationSource {
 	  final Mutater m = this.mutationConfig.createMutator(this.source);
 	  final Collection<MutationDetails> availableMutations = this.filter.filter(m.findMutations(clazz));
 
-	  //Ali: this function internally calls the assigment of test to mutations.
+	  //Ali: this function internally calls the assignment of test to mutations.
 	  //Inside this function, in the main loop, we want to implement our analysis unit.
 	  //Our unit implements a prioritizer and a filter for the mutants.
 
