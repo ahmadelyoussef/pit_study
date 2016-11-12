@@ -90,19 +90,19 @@ public class MutationCoverage {
     this.baseDir = baseDir;
   }
 
-  public Collection<MutationDetails> initialize(){
-	  // get a mutant per each category to start with 
-     //	  Collection<MutationDetails> mutant_per_category = getOnePerCategory();
-	  
-	  Collection<MutationDetails> mutant_per_category = null;
-	  
-	  //initialize all priorities to zero
-	  wrapper = new PriorityCategory();
-	  wrapper.initialize();
-	  
-	  // return set of mutants: each from a category
-	  return mutant_per_category;
-  }
+//  public Collection<MutationDetails> initialize(){
+//	  // get a mutant per each category to start with 
+//     //	 Collection<MutationDetails> mutant_per_category = getOnePerCategory();
+//	  
+//	  Collection<MutationDetails> mutant_per_category = null;
+//	  
+//	  //initialize all priorities to zero
+//	  wrapper = new PriorityCategory();
+//	  wrapper.initialize();
+//	  
+//	  // return set of mutants: each from a category
+//	  return mutant_per_category;
+//  }
   
   public CombinedStatistics runReport() throws IOException {
 
@@ -159,6 +159,7 @@ public class MutationCoverage {
     // tests are being executed to our set of mutants
     
     final List<MutationAnalysisUnit> tus = buildMutationTests(coverageData, engine);
+   
     this.timings.registerEnd(Timings.Stage.BUILD_MUTATION_TESTS);
 
     LOG.info("Created  " + tus.size() + " mutation test units");
@@ -312,8 +313,8 @@ private int numberOfThreads() {
     /* 
      * createMutationTestUnits -> classToMutations() -> 
        this.mutationSource.createMutations(Class) ->
-	   createMutator -> filter (our filter) -> availableMutations (our chosen set)
-  		assignTestsToMutations(availableMutations) 
+	   createMutator -> filter (our filter) and returns availableMutations (our chosen set)
+  	   assignTestsToMutations(availableMutations) 
      */
     return builder.createMutationTestUnits(this.code.getCodeUnderTestNames());
   }
