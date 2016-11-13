@@ -208,7 +208,7 @@ public class MutationCoverage {
 	     	System.out.println("Alive: "+ (scr.getTotalMutations() - scr.getTotalDetectedMutations()));
 	     	System.out.println("Total: "+ scr.getTotalMutations());
 	     	if (scr.getTotalMutations() - scr.getTotalDetectedMutations() > 0) {
-	     		mutants_alive_stats.add(scr.getMutatorName());
+	     		mutants_alive_name.add(scr.getMutatorName());
     	     	}
     	     }
 
