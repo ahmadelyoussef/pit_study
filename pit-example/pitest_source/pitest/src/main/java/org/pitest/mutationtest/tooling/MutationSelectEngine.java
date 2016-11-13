@@ -22,24 +22,30 @@ import java.util.List;
   private final Collection<ClassName>       testClasses;
 
  */
-public class MutationTestAnalysis {
+public class MutationSelectEngine {
 
 	Map<String,Integer> prior_categ;
-	List<MutationAnalysisUnit> mutants_all;
+	List<MutationAnalysisUnit> mutants_all; //obtained from first iteration outside the loop
 	List<MutationAnalysisUnit> mutants_killed;
 	List<MutationAnalysisUnit> mutants_alive;
 
 	
-	public MutationTestAnalysis(List<MutationAnalysisUnit> tus){
+	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		mutants_all = new ArrayList<MutationAnalysisUnit>(tus);
 		prior_categ = new HashMap<String,Integer>();	
 	}
 	
-	// input: is mutants_alive_stats in from stats of mutationCoverage
+	
+	// based on string, constuct mutants_alive object of the class field.
+	public void construct_alive(List<String> mutants_name_alive){
+		return;
+	}
+	
+	// input: is mutants_alive field from the class constructed after calling construct_alive
 	// save and update list of mutants_alive
 	// return categories
 	
-	public List<String> categorize(List<MutationAnalysisUnit> mutants_alive_stats){
+	public List<String> categorize(){
 		return null;
 	}
 
@@ -52,7 +58,7 @@ public class MutationTestAnalysis {
 	// use: update prior_categ to read priority and choose randomly
 	// for example: 70% from highest prioriy and 30% for lowest
 	// return tus
-	// tus is argument for run in mutation
+	// mutants_alive is argument for run in mutation
 	public List<MutationAnalysisUnit> MutantSelection(){
 		return null;
 		
