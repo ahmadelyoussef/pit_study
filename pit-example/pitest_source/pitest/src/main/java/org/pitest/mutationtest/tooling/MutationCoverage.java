@@ -182,9 +182,9 @@ public class MutationCoverage {
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
     MutationSelectEngine select_engine = new MutationSelectEngine(tus); //create engine
-    mutants_alive_stats =  tus;
+    mutants_alive = tus;
+    select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed
     
-    select_engine.construct_alive(mutants_alive_name);
     List<String> categories = select_engine.categorize(); // categorize alive mutants
     select_engine.update(categories); // update priority of category
     List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
