@@ -36,7 +36,7 @@ public class MutationSelectEngine {
 	}
 	
 	
-	// based on string, constuct mutants_alive object of the class field.
+	// based on string, construct mutants_alive object of the class field.
 	public void construct_alive(List<String> mutants_name_alive){
 		return;
 	}
