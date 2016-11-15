@@ -33,11 +33,11 @@ public class MutationSelectEngine {
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		mutants_all = new ArrayList<MutationAnalysisUnit>(tus);
 		prior_categ = new HashMap<String,Integer>();	
-	}
-	
+	}	
 	
 	// based on string, construct mutants_alive object of the class field.
 	public void construct_alive(List<String> mutants_name_alive){
+		
 		return;
 	}
 	
