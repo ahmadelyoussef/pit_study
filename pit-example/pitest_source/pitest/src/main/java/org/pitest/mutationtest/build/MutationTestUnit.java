@@ -35,14 +35,23 @@ public class MutationTestUnit implements MutationAnalysisUnit {
   private final WorkerFactory               workerFactory;
 
   private final Collection<ClassName>       testClasses;
+  
+  //Ali
+  public MutationMetaData AllMutationState; 
 
   public MutationTestUnit(final Collection<MutationDetails> availableMutations,
       final Collection<ClassName> testClasses, final WorkerFactory workerFactor) {
     this.availableMutations = availableMutations;
     this.testClasses = testClasses;
     this.workerFactory = workerFactor;
+    
+    //Ali{
+    final MutationStatusMap mutations = new MutationStatusMap();
+    mutations.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_STARTED);
+    AllMutationState = reportResults(mutations);
+    //}
   }
-
+  
   @Override
   public MutationMetaData call() throws Exception {
     final MutationStatusMap mutations = new MutationStatusMap();
@@ -54,7 +63,11 @@ public class MutationTestUnit implements MutationAnalysisUnit {
 
     runTestsInSeperateProcess(mutations);
 
-    return reportResults(mutations);
+    //Ali{
+    AllMutationState = reportResults(mutations);
+    //return reportResults(mutations);
+    return AllMutationState;
+    //}
   }
   
   @Override
