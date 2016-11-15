@@ -1,20 +1,8 @@
 package org.pitest.mutationtest.tooling;
 
-import java.util.Map;
-import java.util.Set;
-
-import org.pitest.classinfo.ClassName;
 import org.pitest.mutationtest.MutationMetaData;
 import org.pitest.mutationtest.build.MutationAnalysisUnit;
-import org.pitest.mutationtest.build.MutationTestUnit;
-import org.pitest.mutationtest.build.MutationTestUnitTest;
-import org.pitest.mutationtest.build.WorkerFactory;
-import org.pitest.mutationtest.engine.MutationDetails;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class MutationSelectEngine {
@@ -33,8 +21,7 @@ public class MutationSelectEngine {
 
 	//update priority of proper categories
 	//input: categorize output  
-	public void update(MutationMetaData MMD){
-		
+	public MutationAnalysisUnit update(MutationMetaData MMD){
 	}
 	
 	// use: update prior_categ to read priority and choose randomly
@@ -43,10 +30,9 @@ public class MutationSelectEngine {
 	// mutants_alive is argument for run in mutation
 	public List<MutationAnalysisUnit> selectMutants() {
 		List<MutationAnalysisUnit> filteredList = new ArrayList<MutationAnalysisUnit>();
-		
 		for( MutationAnalysisUnit mau : allMAU ) {
-			MutationAnalysisUnit tempMAU = mau;
-			filteredList.add(tempMAU);
+			
+			filteredList.add( update(mau) );
 		}
 		
 		return filteredList;

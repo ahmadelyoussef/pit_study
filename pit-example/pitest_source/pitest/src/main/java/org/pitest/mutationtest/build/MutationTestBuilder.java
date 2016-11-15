@@ -31,6 +31,7 @@ import org.pitest.mutationtest.DetectionStatus;
 import org.pitest.mutationtest.MutationAnalyser;
 import org.pitest.mutationtest.MutationResult;
 import org.pitest.mutationtest.engine.MutationDetails;
+import org.pitest.mutationtest.tooling.MutationSelectEngine;
 
 public class MutationTestBuilder {
 

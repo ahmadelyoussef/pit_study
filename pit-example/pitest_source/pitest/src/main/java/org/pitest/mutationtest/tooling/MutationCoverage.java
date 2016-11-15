@@ -66,6 +66,7 @@ import org.pitest.mutationtest.statistics.Score;
 import org.pitest.util.Log;
 import org.pitest.util.StringUtil;
 import org.pitest.util.Timings;
+//Ali
 import org.pitest.mutationtest.tooling.MutationSelectEngine;
 
 public class MutationCoverage {
@@ -178,34 +179,32 @@ public class MutationCoverage {
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
-    List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
-    
-    //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
-    //List<String> categories = select_engine.categorize(); // categorize alive mutants
-    //select_engine.update(categories); // update priority of category
-    //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
-    /*************************************************************************************/
-    
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
     
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
-    System.out.println( "************************* size of the tus: " + tus.size() );
-    
-    //mae.run(tus);
-    mae.run( filtered_tus );
-    
-    for( MutationAnalysisUnit mau : filtered_tus ) {
-    	System.out.println( "****************************************" );
-    	ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) mau).AllMutationState.getMutations() );
-    	for( MutationResult mr : MR )
-    		System.out.println( mr.getStatusDescription() );
-    	System.out.println( "****************************************" );
-    }
     
     //We got the killed category and mutant types.
     //We decided to changing the MAU class to filter the AvailableMutants.
     //We want to look at the id of the mutant and based on the "mutator, index" filter them.
+    int iteration = 1;
+    while( true ) {
+    	List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
 
+    	mae.run( filtered_tus );
+
+    	for( MutationAnalysisUnit mau : filtered_tus ) {
+    		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
+    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) mau).AllMutationState.getMutations() );
+    		for( MutationResult mr : MR )
+    			System.out.println( mr.getStatusDescription() );
+    		System.out.println( "****************************************" );
+    	}
+    	
+    	if( true )
+    		break;
+    }
+    
+	//mae.run(tus);
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));
 
