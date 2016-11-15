@@ -24,6 +24,7 @@ import org.pitest.mutationtest.MutationMetaData;
 import org.pitest.mutationtest.MutationStatusMap;
 import org.pitest.mutationtest.engine.MutationDetails;
 import org.pitest.mutationtest.execute.MutationTestProcess;
+import org.pitest.mutationtest.tooling.MutationSelectEngine;
 import org.pitest.util.ExitCode;
 import org.pitest.util.Log;
 

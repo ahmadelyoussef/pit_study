@@ -202,19 +202,11 @@ public class MutationCoverage {
     	System.out.println( "****************************************" );
     }
     
+    //We got the killed category and mutant types.
+    //We decided to changing the MAU class to filter the AvailableMutants.
+    //We want to look at the id of the mutant and based on the "mutator, index" filter them.
 
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
-
-//    for(Score scr : stats.getStatistics().getScores()) {
-//    	 System.out.println("Name of mutator: "+ scr.getMutatorName());
-//	     	System.out.println("Killed: "+ scr.getTotalDetectedMutations());
-//	     	System.out.println("Alive: "+ (scr.getTotalMutations() - scr.getTotalDetectedMutations()));
-//	     	System.out.println("Total: "+ scr.getTotalMutations());
-//	     	if (scr.getTotalMutations() - scr.getTotalDetectedMutations() > 0) {
-//	     		mutants_alive_name.add(scr.getMutatorName());
-//    	     	}
-//    	     }
-
     LOG.info("Completed in " + timeSpan(t0));
 
     printStats(stats);
