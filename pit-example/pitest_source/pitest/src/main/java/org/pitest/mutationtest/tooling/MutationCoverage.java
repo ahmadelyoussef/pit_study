@@ -181,12 +181,11 @@ public class MutationCoverage {
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
     
-    this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
-    
     //We got the killed category and mutant types.
     //We decided to changing the MAU class to filter the AvailableMutants.
     //We want to look at the id of the mutant and based on the "mutator, index" filter them.
     int iteration = 1;
+    this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
     	List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
 

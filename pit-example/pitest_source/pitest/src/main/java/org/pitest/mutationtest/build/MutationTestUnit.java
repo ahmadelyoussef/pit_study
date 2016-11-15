@@ -32,7 +32,10 @@ public class MutationTestUnit implements MutationAnalysisUnit {
 
   private static final Logger               LOG = Log.getLogger();
 
-  private final Collection<MutationDetails> availableMutations;
+  // final token removed
+  private  Collection<MutationDetails> availableMutations;
+  
+ 
   private final WorkerFactory               workerFactory;
 
   private final Collection<ClassName>       testClasses;
@@ -53,6 +56,10 @@ public class MutationTestUnit implements MutationAnalysisUnit {
     //}
   }
   
+    public void setMutation(Collection<MutationDetails> in) {
+	  	  this.availableMutations = in;
+	    }
+
   @Override
   public MutationMetaData call() throws Exception {
     final MutationStatusMap mutations = new MutationStatusMap();
