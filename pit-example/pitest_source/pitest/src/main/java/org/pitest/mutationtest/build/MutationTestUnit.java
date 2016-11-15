@@ -56,8 +56,7 @@ public class MutationTestUnit implements MutationAnalysisUnit {
   public MutationMetaData call() throws Exception {
     final MutationStatusMap mutations = new MutationStatusMap();
 
-    mutations.setStatusForMutations(this.availableMutations,
-        DetectionStatus.NOT_STARTED);
+    mutations.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_STARTED);
 
     mutations.markUncoveredMutations();
 

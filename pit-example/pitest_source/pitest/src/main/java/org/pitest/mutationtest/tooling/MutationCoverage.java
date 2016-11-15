@@ -171,18 +171,15 @@ public class MutationCoverage {
     
     recordClassPath(coverageData);
 
-    LOG.fine("Used memory before analysis start "
-        + ((runtime.totalMemory() - runtime.freeMemory()) / MB) + " mb");
-    LOG.fine("Free Memory before analysis start " + (runtime.freeMemory() / MB)
-        + " mb");
+    LOG.fine("Used memory before analysis start " + ((runtime.totalMemory() - runtime.freeMemory()) / MB) + " mb");
+    LOG.fine("Free Memory before analysis start " + (runtime.freeMemory() / MB) + " mb");
 
     /**************************************OUR CODE***************************************/
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
-    //MutationSelectEngine select_engine = new MutationSelectEngine(tus); //create engine
-    //select_engine.mutants_alive = tus;
+    MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
+    List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
     
-    /**************************************Loop***************************************/
     //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
     //List<String> categories = select_engine.categorize(); // categorize alive mutants
     //select_engine.update(categories); // update priority of category
@@ -193,19 +190,20 @@ public class MutationCoverage {
     
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     System.out.println( "************************* size of the tus: " + tus.size() );
-    mae.run(tus);
     
-    for( MutationAnalysisUnit mau : tus ) {
+    //mae.run(tus);
+    mae.run( filtered_tus );
+    
+    for( MutationAnalysisUnit mau : filtered_tus ) {
     	System.out.println( "****************************************" );
-    	ArrayList<MutationResult> MR = new ArrayList( ((MutationTestUnit) mau).AllMutationState.getMutations() );
+    	ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) mau).AllMutationState.getMutations() );
     	for( MutationResult mr : MR )
     		System.out.println( mr.getStatusDescription() );
     	System.out.println( "****************************************" );
     }
     
-    //mae.run(filter_tus);
+
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
-    
 
 //    for(Score scr : stats.getStatistics().getScores()) {
 //    	 System.out.println("Name of mutator: "+ scr.getMutatorName());
