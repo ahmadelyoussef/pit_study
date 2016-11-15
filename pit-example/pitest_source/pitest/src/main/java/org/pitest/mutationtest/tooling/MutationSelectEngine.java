@@ -1,25 +1,21 @@
 package org.pitest.mutationtest.tooling;
 
-import java.util.Map;
-import java.util.Set;
-
-import org.pitest.classinfo.ClassName;
-import org.pitest.mutationtest.MutationMetaData;
-import org.pitest.mutationtest.build.MutationAnalysisUnit;
-import org.pitest.mutationtest.build.MutationTestUnit;
-import org.pitest.mutationtest.build.MutationTestUnitTest;
-import org.pitest.mutationtest.build.WorkerFactory;
-import org.pitest.mutationtest.engine.MutationDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+
+import org.pitest.mutationtest.MutationMetaData;
+import org.pitest.mutationtest.MutationResult;
+import org.pitest.mutationtest.build.MutationAnalysisUnit;
+import org.pitest.mutationtest.build.MutationTestUnit;
+import org.pitest.mutationtest.engine.MutationDetails;
 
 public class MutationSelectEngine {
 	
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop
+	private List<MutationAnalysisUnit> mut_per_categ;
 	
 	//Map<String,Integer> prior_categ;
 	//private List<MutationAnalysisUnit> mutants_killed;
@@ -32,7 +28,43 @@ public class MutationSelectEngine {
 	}	
 
 	//update priority of proper categories
-	//input: categorize output  
+	//input: categorize output 
+	
+	public ArrayList<MutationResult> get_MR(MutationAnalysisUnit MAU){
+		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) MAU).AllMutationState.getMutations());
+		return MR;
+	}
+
+	//one mutation per category (mutator)
+	public List<MutationAnalysisUnit> initialize(){
+        //UPDATE STRUCTURE FOR double array MR
+		ArrayList<MutationResult> MR = get_MR(allMAU.get(0));
+		
+ 		Map<String,MutationDetails> categ_mut = new HashMap<String,MutationDetails>();
+ 		
+ 		for (MutationResult mr: MR){
+ 			categ_mut.put(mr.getDetails().getMutator(), mr.getDetails());
+			}
+ 		
+ 		ArrayList<MutationDetails> mutations_chosen = new ArrayList<MutationDetails>();
+ 		for (String key: categ_mut.keySet()) {
+ 			mutations_chosen.add(categ_mut.get(key));
+ 		}
+
+		
+
+ 		MutationTestUnit MTU = (MutationTestUnit) (allMAU.get(0));
+ 		MTU.setMutation(mutations_chosen);
+ 		
+ 		MutationAnalysisUnit MAU = (MutationAnalysisUnit) MTU;
+
+ 		mut_per_categ.add(MAU);
+ 		return mut_per_categ;
+	}
+
+	
+	
+	
 	public void update(MutationMetaData MMD){
 		
 	}
