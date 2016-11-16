@@ -181,24 +181,14 @@ public class MutationCoverage {
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
     List<MutationAnalysisUnit> filtered_tus = mse.initialize();
 
-    //List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
-    
-    
-    //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
-    //List<String> categories = select_engine.categorize(); // categorize alive mutants
-    //select_engine.update(categories); // update priority of category
-    //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
-
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
-    
-    //We got the killed category and mutant types.
-    //We decided to changing the MAU class to filter the AvailableMutants.
-    //We want to look at the id of the mutant and based on the "mutator, index" filter them.
+
     int iteration = 1;
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	mae.run( filtered_tus );
 
+    	mae.run( filtered_tus );
+    	
     	for( MutationAnalysisUnit mau : filtered_tus ) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) mau).AllMutationState.getMutations() );
@@ -206,15 +196,20 @@ public class MutationCoverage {
     			System.out.println( mr.getStatusDescription() );
     		System.out.println( "********************************************************************************" );
     	}
+
+        //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
+        //List<String> categories = select_engine.categorize(); // categorize alive mutants
+        //select_engine.update(categories); // update priority of category
+        //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
+    	
+    	filtered_tus = mse.selectMutants();
     	
     	if( true )
     		break;
     }
-    /**************************************OUR CODE***************************************/
-    
-	//mae.run(tus);
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));
+    /**************************************OUR CODE***************************************/
 
     printStats(stats);
 
