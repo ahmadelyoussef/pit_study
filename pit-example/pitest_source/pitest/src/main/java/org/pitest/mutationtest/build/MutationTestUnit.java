@@ -24,6 +24,7 @@ import org.pitest.mutationtest.MutationMetaData;
 import org.pitest.mutationtest.MutationStatusMap;
 import org.pitest.mutationtest.engine.MutationDetails;
 import org.pitest.mutationtest.execute.MutationTestProcess;
+import org.pitest.mutationtest.tooling.MutationSelectEngine;
 import org.pitest.util.ExitCode;
 import org.pitest.util.Log;
 
@@ -54,14 +55,14 @@ public class MutationTestUnit implements MutationAnalysisUnit {
     AllMutationState = reportResults(mutations);
     //}
   }
-  
-  	public Collection<MutationDetails> getMutations() {
-  		return this.availableMutations;
-    }
 
-    public void setMutation(Collection<MutationDetails> in) {
-	  	  this.availableMutations = in;
-	    }
+  public Collection<MutationDetails> getMutations() {
+	  return this.availableMutations;
+  }
+
+  public void setMutation(Collection<MutationDetails> in) {
+	  this.availableMutations = in;
+  }
 
   @Override
   public MutationMetaData call() throws Exception {
@@ -146,7 +147,4 @@ public class MutationTestUnit implements MutationAnalysisUnit {
   private static MutationMetaData reportResults(final MutationStatusMap mutationsMap) {
     return new MutationMetaData(mutationsMap.createMutationResults());
   }
-
-
-
 }

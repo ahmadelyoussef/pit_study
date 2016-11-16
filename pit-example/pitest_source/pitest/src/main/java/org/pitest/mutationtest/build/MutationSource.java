@@ -73,10 +73,6 @@ public class MutationSource {
   }
 
   private void assignTestsToMutations(final Collection<MutationDetails> availableMutations) {
-	  System.out.println( "\n*************************************************ALI***************************************************" );
-	  System.out.println( "number of mutations: " + availableMutations.size() );
-	  System.out.println( "*************************************************ALI***************************************************\n" );
-	  
 	  for (final MutationDetails mutation : availableMutations) {
 		  final List<TestInfo> testDetails = this.testPrioritiser.assignTests(mutation);
 		  

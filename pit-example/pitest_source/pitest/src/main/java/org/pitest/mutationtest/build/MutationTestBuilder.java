@@ -62,12 +62,6 @@ public class MutationTestBuilder {
     //Ali: in analysis it creates a <mutation, test> mappping.
     final Collection<MutationResult> analysedMutations = this.analyser.analyse(mutations);
     final Collection<MutationDetails> needAnalysis = FCollection.filter(analysedMutations, statusNotKnown()).map(resultToDetails());
-    
-    System.out.println( "\n*************************************************ALI***************************************************" );
-    System.out.println( "Total Mutations: " + mutations );
-    System.out.println( "Analysed Mutations: " + analysedMutations );
-    System.out.println( "NeedAnalysis Mutations: " + needAnalysis );
-    System.out.println( "\n*************************************************ALI***************************************************" );
 
     final List<MutationResult> analysed = FCollection.filter(analysedMutations, Prelude.not(statusNotKnown()));
 
