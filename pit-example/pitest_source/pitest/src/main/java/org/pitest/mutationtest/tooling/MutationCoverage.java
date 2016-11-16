@@ -179,6 +179,16 @@ public class MutationCoverage {
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
+    List<MutationAnalysisUnit> filtered_tus = mse.initialize();
+
+    //List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
+    
+    
+    //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
+    //List<String> categories = select_engine.categorize(); // categorize alive mutants
+    //select_engine.update(categories); // update priority of category
+    //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
+
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
     
     //We got the killed category and mutant types.
@@ -187,8 +197,6 @@ public class MutationCoverage {
     int iteration = 1;
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
-
     	mae.run( filtered_tus );
 
     	for( MutationAnalysisUnit mau : filtered_tus ) {

@@ -56,6 +56,10 @@ public class MutationTestUnit implements MutationAnalysisUnit {
     //}
   }
 
+  public Collection<MutationDetails> getMutations() {
+	  return this.availableMutations;
+  }
+
   public void setMutation(Collection<MutationDetails> in) {
 	  this.availableMutations = in;
   }
