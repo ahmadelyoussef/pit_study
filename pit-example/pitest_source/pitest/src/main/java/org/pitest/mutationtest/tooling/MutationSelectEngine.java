@@ -14,8 +14,8 @@ import org.pitest.mutationtest.engine.MutationDetails;
 
 public class MutationSelectEngine {
 	
-	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop
-	private List<MutationAnalysisUnit> mut_per_categ;
+	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
+	private List<MutationAnalysisUnit> mut_per_categ; // My first Sample
 	
 	//Map<String,Integer> prior_categ;
 	//private List<MutationAnalysisUnit> mutants_killed;
@@ -24,7 +24,7 @@ public class MutationSelectEngine {
 	
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = new ArrayList<MutationAnalysisUnit>(tus);
-		//prior_categ = new HashMap<String,Integer>();	
+		mut_per_categ = new ArrayList<MutationAnalysisUnit>();
 	}	
 
 	//update priority of proper categories
@@ -53,12 +53,22 @@ public class MutationSelectEngine {
 
 		
 
- 		MutationTestUnit MTU = (MutationTestUnit) (allMAU.get(0));
+ 		MutationTestUnit MTU = (MutationTestUnit) allMAU.get(0);
  		MTU.setMutation(mutations_chosen);
  		
- 		MutationAnalysisUnit MAU = (MutationAnalysisUnit) MTU;
+// 		MutationAnalysisUnit MAU = (MutationAnalysisUnit) MTU;
 
- 		mut_per_categ.add(MAU);
+ 		mut_per_categ.add(MTU);
+ 		
+ 		for(MutationAnalysisUnit mau: mut_per_categ ){
+ 	 		MutationTestUnit mtu = (MutationTestUnit) mau;
+ 	 		
+ 	 		ArrayList<MutationDetails> mutations = (ArrayList<MutationDetails>) mtu.getMutations();
+ 	 		for (int i = 0; i < mtu.getMutations().size();i++)
+ 	 			System.out.println("MUTATION CHOSEN: " + mutations.get(i).getDescription() );
+ 			
+ 		}
+ 		
  		return mut_per_categ;
 	}
 

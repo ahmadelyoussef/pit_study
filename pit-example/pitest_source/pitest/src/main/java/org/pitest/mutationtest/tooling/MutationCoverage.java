@@ -178,7 +178,9 @@ public class MutationCoverage {
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
-    List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
+    List<MutationAnalysisUnit> filtered_tus = mse.initialize();
+
+    //List<MutationAnalysisUnit> filtered_tus = mse.selectMutants();
     
     
     //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
