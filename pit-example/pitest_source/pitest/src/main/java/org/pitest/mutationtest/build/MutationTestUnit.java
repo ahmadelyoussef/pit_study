@@ -55,10 +55,10 @@ public class MutationTestUnit implements MutationAnalysisUnit {
     AllMutationState = reportResults(mutations);
     //}
   }
-  
-    public void setMutation(Collection<MutationDetails> in) {
-	  	  this.availableMutations = in;
-	    }
+
+  public void setMutation(Collection<MutationDetails> in) {
+	  this.availableMutations = in;
+  }
 
   @Override
   public MutationMetaData call() throws Exception {
@@ -143,7 +143,4 @@ public class MutationTestUnit implements MutationAnalysisUnit {
   private static MutationMetaData reportResults(final MutationStatusMap mutationsMap) {
     return new MutationMetaData(mutationsMap.createMutationResults());
   }
-
-
-
 }
