@@ -179,7 +179,8 @@ public class MutationCoverage {
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
-    List<MutationAnalysisUnit> filtered_tus = mse.initialize();
+    mse.initialize();
+    //List<MutationAnalysisUnit> filtered_tus = mse.initialize();
 
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
 
@@ -187,11 +188,15 @@ public class MutationCoverage {
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
 
-    	mae.run( filtered_tus );
+    	//mae.run( filtered_tus );
+    	System.out.println( "**************************************1.REACHED HERE!!!!!!!" );
+    	mae.run(tus);
     	
-    	for( MutationAnalysisUnit mau : filtered_tus ) {
+    	System.out.println( "**************************************2.REACHED HERE!!!!!!!" );
+    	
+    	for( MutationAnalysisUnit mau : tus/*filtered_tus*/ ) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
-    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) mau).AllMutationState.getMutations() );
+    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
     		for( MutationResult mr : MR )
     			System.out.println( mr.getStatusDescription() );
     		System.out.println( "********************************************************************************" );
@@ -202,7 +207,7 @@ public class MutationCoverage {
         //select_engine.update(categories); // update priority of category
         //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
     	
-    	filtered_tus = mse.selectMutants();
+    	//filtered_tus = mse.selectMutants();
     	
     	if( true )
     		break;
@@ -369,3 +374,4 @@ private int numberOfThreads() {
   }
 
 }
+;

@@ -41,7 +41,7 @@ public class MutationTestUnit implements MutationAnalysisUnit {
   private final Collection<ClassName>       testClasses;
   
   //Ali
-  public MutationMetaData AllMutationState; 
+  public MutationStatusMap AllMutationState; 
 
   public MutationTestUnit(final Collection<MutationDetails> availableMutations,
       final Collection<ClassName> testClasses, final WorkerFactory workerFactor) {
@@ -50,9 +50,8 @@ public class MutationTestUnit implements MutationAnalysisUnit {
     this.workerFactory = workerFactor;
     
     //Ali{
-    final MutationStatusMap mutations = new MutationStatusMap();
-    mutations.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_STARTED);
-    AllMutationState = reportResults(mutations);
+    AllMutationState = new MutationStatusMap();
+    AllMutationState.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_SCHEDULED);
     //}
   }
 
@@ -66,19 +65,17 @@ public class MutationTestUnit implements MutationAnalysisUnit {
 
   @Override
   public MutationMetaData call() throws Exception {
-    final MutationStatusMap mutations = new MutationStatusMap();
-
-    mutations.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_STARTED);
-
-    mutations.markUncoveredMutations();
-
-    runTestsInSeperateProcess(mutations);
-
-    //Ali{
-    AllMutationState = reportResults(mutations);
-    //return reportResults(mutations);
-    return AllMutationState;
-    //}
+	  //Ali{
+	  //    final MutationStatusMap mutations = new MutationStatusMap();
+	  //    mutations.setStatusForMutations(this.availableMutations, DetectionStatus.NOT_STARTED);
+	  //    mutations.markUncoveredMutations();
+	  //    runTestsInSeperateProcess(mutations);
+	  //    return reportResults(mutations);
+	  
+	  AllMutationState.markUncoveredMutations();
+	  runTestsInSeperateProcess(AllMutationState);
+	  return reportResults(AllMutationState);
+	  //}
   }
   
   @Override
@@ -97,14 +94,11 @@ public class MutationTestUnit implements MutationAnalysisUnit {
       final MutationStatusMap mutations) throws IOException,
       InterruptedException {
 
-    final Collection<MutationDetails> remainingMutations = mutations
-        .getUnrunMutations();
-    final MutationTestProcess worker = this.workerFactory.createWorker(
-        remainingMutations, this.testClasses);
+    final Collection<MutationDetails> remainingMutations = mutations.getUnrunMutations();
+    final MutationTestProcess worker = this.workerFactory.createWorker(remainingMutations, this.testClasses);
     worker.start();
 
-    setFirstMutationToStatusOfStartedInCaseMinionFailsAtBoot(mutations,
-        remainingMutations);
+    setFirstMutationToStatusOfStartedInCaseMinionFailsAtBoot(mutations,remainingMutations);
 
     final ExitCode exitCode = waitForMinionToDie(worker);
     worker.results(mutations);
@@ -144,7 +138,8 @@ public class MutationTestUnit implements MutationAnalysisUnit {
 
   }
 
-  private static MutationMetaData reportResults(final MutationStatusMap mutationsMap) {
+  //Ali, it was private
+  public static MutationMetaData reportResults(final MutationStatusMap mutationsMap) {
     return new MutationMetaData(mutationsMap.createMutationResults());
   }
 }

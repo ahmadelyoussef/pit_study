@@ -31,7 +31,8 @@ import org.pitest.mutationtest.engine.MutationDetails;
 
 public class MutationStatusMap {
 
-  private final Map<MutationDetails, MutationStatusTestPair> mutationMap = new HashMap<MutationDetails, MutationStatusTestPair>();
+	//Ali: it was private.
+  public final Map<MutationDetails, MutationStatusTestPair> mutationMap = new HashMap<MutationDetails, MutationStatusTestPair>();
 
   public void setStatusForMutation(final MutationDetails mutation,
       final DetectionStatus status) {

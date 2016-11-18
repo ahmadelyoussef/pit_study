@@ -65,7 +65,16 @@ public enum DetectionStatus {
   /**
    * Mutation is not covered by any test.
    */
-  NO_COVERAGE(false);
+  NO_COVERAGE(false),
+  
+  
+  //Ali{
+  
+  /**
+   * Mutations is not yet scheduled from us. 
+   */
+  NOT_SCHEDULED(false);
+  //}
 
   private final boolean detected;
 

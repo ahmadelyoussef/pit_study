@@ -9,6 +9,7 @@ import static org.pitest.mutationtest.DetectionStatus.RUN_ERROR;
 import static org.pitest.mutationtest.DetectionStatus.STARTED;
 import static org.pitest.mutationtest.DetectionStatus.SURVIVED;
 import static org.pitest.mutationtest.DetectionStatus.TIMED_OUT;
+import static org.pitest.mutationtest.DetectionStatus.NOT_SCHEDULED;
 
 import java.io.Serializable;
 import java.util.Comparator;
@@ -33,6 +34,9 @@ class ResultComparator implements Comparator<MutationResult>, Serializable {
     RANK.put(STARTED, 1);
     RANK.put(RUN_ERROR, 0);
     RANK.put(NO_COVERAGE, 0);
+    //Ali{
+    RANK.put(NOT_SCHEDULED, 0);
+    //}
   }
 
   @Override
@@ -42,7 +46,7 @@ class ResultComparator implements Comparator<MutationResult>, Serializable {
   }
 
   private int getRanking(DetectionStatus status) {
+	  System.out.println( "*****************************6. Status is: " + status );
     return RANK.get(status);
   }
-
 }
