@@ -86,7 +86,7 @@ public class MutationSelectEngine {
 	
 	// Update priority
 	public void update(List<MutationMetaData> runResult){
-		List<String> categories = constructAlive(runResult);
+		Set<String> categories = constructAlive();
 		
 		for(int i = 0; i < categories.size(); i++){
 			String key = categories.get(i);
