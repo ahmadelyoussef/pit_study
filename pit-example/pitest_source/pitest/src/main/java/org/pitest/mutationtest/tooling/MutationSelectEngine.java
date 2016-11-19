@@ -20,30 +20,13 @@ import org.pitest.mutationtest.engine.MutationDetails;
 public class MutationSelectEngine {
 	
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
-	private List<MutationAnalysisUnit> mutation_per_categ; // My first Sample
-	
 	private List<Map<String,Integer>> categPriorityPerMAU;
-	
-	//TODO remove this later
-	//List<List<MutationDetails>> mutations_available; //list of all available mutations at the beginning, from each MAU.
-	
-	//private List<MutationAnalysisUnit> mutants_killed;
-	//private List<MutationAnalysisUnit> mutants_alive;
 
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = tus;
-		mutation_per_categ = new ArrayList<MutationAnalysisUnit>();
 		categPriorityPerMAU = new ArrayList<Map<String,Integer>>();
-		for(int i = 0; i < tus.size(); ++i) categPriorityPerMAU.add(new HashMap<String, Integer>());
-		
-		//TODO remove this later
-		//mutations_available = new ArrayList<List<MutationDetails>>(tus.size());
+		for(int i = 0; i < tus.size(); ++i) { categPriorityPerMAU.add(new HashMap<String, Integer>()); }
 	}
-	
-//	public ArrayList<MutationResult> get_MR(MutationAnalysisUnit MAU){
-//		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( ((MutationTestUnit) MAU).AllMutationState.getMutations());
-//		return MR;
-//	}
 
 	//one mutation per category (mutator)
 	public void initialize() {
@@ -56,7 +39,7 @@ public class MutationSelectEngine {
         		categ_mut.add(md.getMutator());
         	}
 		
-        	//Schedule one type from each mutator type at the begnning.
+        	//Schedule one type from each mutator type at the beginning.
         	for( String mutator_type : categ_mut ) {
         		for (MutationDetails md : ((MutationTestUnit) mau).AllMutationState.mutationMap.keySet()) {
         			if(md.getMutator().equals(mutator_type)) {
@@ -68,10 +51,7 @@ public class MutationSelectEngine {
         }
 	}
 
-	// FIXME:  Try to do something like mutationStatusMap.java( getUnrunMutations()) to get
-	//  alive mutant "FCollection.filter(this.mutationMap.entrySet(),
-    // !hasStatus(DetectionStatus.KILLED)).map(toMutationDetails());"
-	// return alive categories
+	//TODO: make sure about the KILLED status.
 	public List<Set<String>> constructAlive() {
 		List<Set<String>> mauAliveSet = new ArrayList<Set<String>>();
 		for(MutationAnalysisUnit mau : allMAU ) 
@@ -89,7 +69,8 @@ public class MutationSelectEngine {
 		return mauAliveSet;
 	}
 	
-	// Update priority
+	//Update priority
+	//TODO: anyway to have path information included in the results?
 	public void update() {
 		List<Set<String>> categoriesPerMAU = new ArrayList<Set<String>>(constructAlive());
 		for(int i = 0; i < categoriesPerMAU.size(); ++i) {
@@ -129,7 +110,11 @@ public class MutationSelectEngine {
 				sorted_categ.add(key);
 			}
 			
-//			Pick based on the median.{	
+			//TODO: try to do the normalization method here.
+			//then pick the correct type.
+
+			//OLD STUFF{
+//**		Pick based on the median.{	
 //			for (int count = 0; count < sorted_categ.size(); count++ )
 //			{
 //				if(count > (3* sorted_categ.size())/4)
@@ -139,12 +124,13 @@ public class MutationSelectEngine {
 //					chosen_categ.add(sorted_categ.get(count));
 //			}
 //}
-			
-//			Pick one from the begin and from the end. {
-			chosen_categ.add(sorted_categ.get(0));
-			chosen_categ.add(sorted_categ.get(sorted_categ.size() - 1));
+//			
+//**		Pick one from the begin and from the end. {
+//			chosen_categ.add(sorted_categ.get(0));
+//			chosen_categ.add(sorted_categ.get(sorted_categ.size() - 1));
 //}
-
+			//}
+			
 			for( String mutator_type : chosen_categ ) {
 				for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
 					if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {

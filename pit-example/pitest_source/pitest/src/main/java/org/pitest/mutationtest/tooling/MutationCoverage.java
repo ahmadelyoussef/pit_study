@@ -176,21 +176,19 @@ public class MutationCoverage {
     LOG.fine("Free Memory before analysis start " + (runtime.freeMemory() / MB) + " mb");
 
     /**************************************OUR CODE***************************************/
-    //Run <test, mutants>
-    //Instantiate queue of tests and mutants
+    //create selection engine
+    MutationSelectEngine mse = new MutationSelectEngine(tus); 
     
-    MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
-    
-    //construct_alive(mutants_alive_name).
     //Initially pick one type per each mutator type.
+    //TODO: we may need to run the initializations for more number of iterations.
     mse.initialize();
 
+    //create execute engine
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
     int iteration = 1; boolean firstRun = true; boolean lastRun = false;
-    
+
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	//mae.run(tus);
     	mae.myRun( tus, firstRun, lastRun);
     	
     	for(MutationAnalysisUnit mau : tus) {
@@ -210,7 +208,7 @@ public class MutationCoverage {
         //select_engine.selectMutants;//finally, select new set of mutants
         mse.selectMutants();
         
-        //FIXME: when should we finish the execution?
+        //TODO: when should we finish the execution?
     	if(lastRun)
     		break;
     	
@@ -227,9 +225,8 @@ public class MutationCoverage {
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));
     /**************************************OUR CODE***************************************/
-
+    
     //printStats(stats);
-
     return new CombinedStatistics(stats.getStatistics(),coverageData.createSummary());
   }
 
