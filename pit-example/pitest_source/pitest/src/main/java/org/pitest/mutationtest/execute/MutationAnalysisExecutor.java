@@ -24,7 +24,7 @@ public class MutationAnalysisExecutor {
   private static final Logger                LOG = Log.getLogger();
 
   private final List<MutationResultListener> listeners;
-  private final ThreadPoolExecutor           executor;
+  public final ThreadPoolExecutor           executor;
 
   public MutationAnalysisExecutor(int numberOfThreads,
       List<MutationResultListener> listeners) {
@@ -48,7 +48,7 @@ public class MutationAnalysisExecutor {
       results.add(this.executor.submit(unit));
     }
 
-    this.executor.shutdown();
+//    this.executor.shutdown();
 
     try {
       processResult(results);
@@ -58,7 +58,7 @@ public class MutationAnalysisExecutor {
       throw Unchecked.translateCheckedException(e);
     }
 
-    signalRunEndToAllListeners();
+//    signalRunEndToAllListeners();
 
   }
 
@@ -85,7 +85,7 @@ public class MutationAnalysisExecutor {
         });
   }
 
-  private void signalRunEndToAllListeners() {
+  public void signalRunEndToAllListeners() {
     FCollection.forEach(this.listeners,
         new SideEffect1<MutationResultListener>() {
           @Override

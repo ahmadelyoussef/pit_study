@@ -66,11 +66,15 @@ public class MutationSelectEngine {
 	}
 
 	// return alive categories
+	
 	public Set<String> constructAlive() {
+		//FIXME: Set<Set<String>> categ;
+
 		Set<String> categ = new HashSet<String>();
 		
 		for(MutationAnalysisUnit mau : allMAU ) {
 			Set<String> temp = new HashSet<String>();
+			// metadata from statusmap
 			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
 			for(MutationResult mr : mau_mmd.getMutations()) {
 				//Alive
@@ -85,14 +89,14 @@ public class MutationSelectEngine {
 	}
 	
 	// Update priority
-	public void update(List<MutationMetaData> runResult){
-		Set<String> categories = constructAlive();
+	public void update(){
+		Set<String> categories = new HashSet<String>();
+		categories = constructAlive();
 		
-		for(int i = 0; i < categories.size(); i++){
-			String key = categories.get(i);
-			Integer value = categ_prior.get(key);
-			value++;	
-			categ_prior.put(key,value);
+		for (String categ: categories){
+			if(categ_prior.get(categ) == null)
+				categ_prior.put(categ,0);
+			categ_prior.put(categ,categ_prior.get(categ) + 1);
 		}
 	}
 	
@@ -105,17 +109,20 @@ public class MutationSelectEngine {
 	// for example: 70% from highest prioriy and 30% for lowest
 	// return tus
 	// mutants_alive is argument for run in mutation
-	public List<MutationAnalysisUnit> selectMutants(List<MutationMetaData> runResult) {
+	public void selectMutants() {
 		//Update the list of priorities first.
-		update(runResult);
+        for( MutationAnalysisUnit mau : allMAU ) {
+
+		update();
 		
 		//arrange the list of favorite categories.
 		List<String> sorted_categ = new ArrayList<String>();
+		List<String> chosen_categ = new ArrayList<String>();
+
 
 		//FIXME: NEED TO SORT FIRST
 		//choose categories: certain percentage
 	    //picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
-		
 		
 		TreeMap<String, Integer> sortedMap = sortMapByValue(categ_prior);  
 
@@ -123,23 +130,25 @@ public class MutationSelectEngine {
  			sorted_categ.add(key);
  		}
 	
- 		
- 		// from each mutator, pick one type.
-// 		Map<String,MutationDetails> categ_mut = new HashMap<String,MutationDetails>();
-//		for (MutationResult mr: MR){
-//			categ_mut.put(mr.getDetails().getMutator(), mr.getDetails());
-//		}
-		
- 		for(MutationAnalysisUnit mau : mutation_per_categ) {
+ 		for (int count = 0; count < sorted_categ.size(); count++ ){
  			
+ 			if(count > 3* sorted_categ.size()/4)
+ 				chosen_categ.add(sorted_categ.get(count));
+ 			
+ 			if(count < sorted_categ.size()/4)
+ 				chosen_categ.add(sorted_categ.get(count));
  		}
  		
-		List<MutationAnalysisUnit> filteredList = new ArrayList<MutationAnalysisUnit>();
-		for( MutationAnalysisUnit mau : allMAU ) {
-			filteredList.add(mau);
-		}
-		return filteredList;
-	}	
+	    	for( String mutator_type : chosen_categ ) {
+	    		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {
+	    			if(mr.getDetails().getMutator().equals(mutator_type) && mr.getStatus() == DetectionStatus.NOT_SCHEDULED  ) {
+	    				((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NOT_STARTED);
+	    				break;
+	    			}
+	    		}
+	    	}
+        }
+   	}	
 
 	public TreeMap<String, Integer> sortMapByValue(Map<String, Integer> map){
 		Comparator<String> comparator = new ValueComparator(map);
@@ -151,7 +160,6 @@ public class MutationSelectEngine {
 	}
 	
 	class ValueComparator implements Comparator<String>{
-		 
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 	 
 		public ValueComparator(Map<String, Integer> map){
@@ -160,7 +168,7 @@ public class MutationSelectEngine {
 	 
 		@Override
 		public int compare(String s1, String s2) {
-			if(map.get(s1) >= map.get(s2)){
+			if(map.get(s1) <= map.get(s2)){
 				return -1;
 			}else{
 				return 1;
