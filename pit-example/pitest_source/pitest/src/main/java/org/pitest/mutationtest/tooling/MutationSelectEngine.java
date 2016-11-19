@@ -10,11 +10,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.pitest.functional.FCollection;
 import org.pitest.mutationtest.DetectionStatus;
 import org.pitest.mutationtest.MutationMetaData;
 import org.pitest.mutationtest.MutationResult;
-import org.pitest.mutationtest.MutationStatusTestPair;
 import org.pitest.mutationtest.build.MutationAnalysisUnit;
 import org.pitest.mutationtest.build.MutationTestUnit;
 import org.pitest.mutationtest.engine.MutationDetails;
@@ -26,7 +24,8 @@ public class MutationSelectEngine {
 	
 	private List<Map<String,Integer>> categPriorityPerMAU;
 	
-	List<List<MutationDetails>> mutations_available; //list of all available mutations at the beginning, from each MAU.
+	//TODO remove this later
+	//List<List<MutationDetails>> mutations_available; //list of all available mutations at the beginning, from each MAU.
 	
 	//private List<MutationAnalysisUnit> mutants_killed;
 	//private List<MutationAnalysisUnit> mutants_alive;
@@ -35,7 +34,10 @@ public class MutationSelectEngine {
 		allMAU = tus;
 		mutation_per_categ = new ArrayList<MutationAnalysisUnit>();
 		categPriorityPerMAU = new ArrayList<Map<String,Integer>>();
-		mutations_available = new ArrayList<List<MutationDetails>>( tus.size() );
+		for(int i = 0; i < tus.size(); ++i) categPriorityPerMAU.add(new HashMap<String, Integer>());
+		
+		//TODO remove this later
+		//mutations_available = new ArrayList<List<MutationDetails>>(tus.size());
 	}
 	
 //	public ArrayList<MutationResult> get_MR(MutationAnalysisUnit MAU){
@@ -72,7 +74,6 @@ public class MutationSelectEngine {
 	// return alive categories
 	public List<Set<String>> constructAlive() {
 		List<Set<String>> mauAliveSet = new ArrayList<Set<String>>();
-		
 		for(MutationAnalysisUnit mau : allMAU ) 
 		{
 			Set<String> categ = new HashSet<String>();
@@ -93,8 +94,8 @@ public class MutationSelectEngine {
 		List<Set<String>> categoriesPerMAU = new ArrayList<Set<String>>(constructAlive());
 		for(int i = 0; i < categoriesPerMAU.size(); ++i) {
 			for (String categ: categoriesPerMAU.get(i)) {
-				if(categPriorityPerMAU.get( i ).get(categ) == null)
-					categPriorityPerMAU.get( i ).put(categ,0);
+				if(categPriorityPerMAU.get(i).get(categ) == null)
+					categPriorityPerMAU.get(i).put(categ,0);
 				categPriorityPerMAU.get(i).put(categ, categPriorityPerMAU.get(i).get(categ) + 1);
 			}
 		}
@@ -113,7 +114,7 @@ public class MutationSelectEngine {
 		//Update the list of priorities first.
 		update();
 		
-		for(int i = 0; i < allMAU.size(); ++i) 
+		for(int i = 0; i < allMAU.size(); ++i)
 		{
 			//arrange the list of favorite categories.
 			List<String> sorted_categ = new ArrayList<String>();
@@ -128,7 +129,7 @@ public class MutationSelectEngine {
 				sorted_categ.add(key);
 			}
 			
-//			Pick based on the median.	
+//			Pick based on the median.{	
 //			for (int count = 0; count < sorted_categ.size(); count++ )
 //			{
 //				if(count > (3* sorted_categ.size())/4)
@@ -137,10 +138,12 @@ public class MutationSelectEngine {
 //				if(count <= sorted_categ.size()/4)
 //					chosen_categ.add(sorted_categ.get(count));
 //			}
+//}
 			
-//			Pick one from the begin and from the end.
+//			Pick one from the begin and from the end. {
 			chosen_categ.add(sorted_categ.get(0));
 			chosen_categ.add(sorted_categ.get(sorted_categ.size() - 1));
+//}
 
 			for( String mutator_type : chosen_categ ) {
 				for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
