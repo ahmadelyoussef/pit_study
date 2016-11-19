@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.pitest.functional.FCollection;
 import org.pitest.mutationtest.DetectionStatus;
 import org.pitest.mutationtest.MutationMetaData;
 import org.pitest.mutationtest.MutationResult;
@@ -65,6 +66,9 @@ public class MutationSelectEngine {
         }
 	}
 
+	// FIXME:  Try to do something like mutationStatusMap.java( getUnrunMutations()) to get
+	//  alive mutant "FCollection.filter(this.mutationMap.entrySet(),
+    // !hasStatus(DetectionStatus.KILLED)).map(toMutationDetails());"
 	// return alive categories
 	
 	public Set<String> constructAlive() {
