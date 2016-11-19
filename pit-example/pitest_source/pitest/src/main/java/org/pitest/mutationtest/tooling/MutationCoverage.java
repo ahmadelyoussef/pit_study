@@ -189,35 +189,35 @@ public class MutationCoverage {
     int iteration = 1;
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	mae.run(tus);    	    	  	
-    	for( MutationAnalysisUnit mau : tus/*filtered_tus*/ ) {
+    	//mae.run(tus);
+    	mae.myRun( tus, iteration == 1 ? true : false, iteration == 3 ? true : false );
+    	
+    	for(MutationAnalysisUnit mau : tus) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
     		for( MutationResult mr : MR )
     			System.out.println( mr.getStatusDescription() );
     		System.out.println( "********************************************************************************" );
     	}
-
-    	mse.selectMutants();
     	
+    	//FIXME: we need to change the print result function such that we can get the result exclusively.
+        printStats(stats);
+
         //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
         //List<String> categories = select_engine.categorize(); // categorize alive mutants
         //select_engine.update(categories); // update priority of category
         //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
-
-    	if(iteration == 2 )
+        mse.selectMutants();
+        
+    	if(iteration == 3 )
     		break;
     	iteration++;
     }
-   
-    mae.executor.shutdown();
-    mae.signalRunEndToAllListeners();
-
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));
     /**************************************OUR CODE***************************************/
 
-    printStats(stats);
+    //printStats(stats);
 
     return new CombinedStatistics(stats.getStatistics(),
         coverageData.createSummary());

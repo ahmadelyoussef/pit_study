@@ -132,17 +132,17 @@ public class MutationSelectEngine {
 	
  		for (int count = 0; count < sorted_categ.size(); count++ ){
  			
- 			if(count > 3* sorted_categ.size()/4)
+ 			if(count > (3* sorted_categ.size())/4)
  				chosen_categ.add(sorted_categ.get(count));
  			
- 			if(count < sorted_categ.size()/4)
+ 			if(count <= sorted_categ.size()/4)
  				chosen_categ.add(sorted_categ.get(count));
  		}
  		
 	    	for( String mutator_type : chosen_categ ) {
 	    		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {
-	    			if(mr.getDetails().getMutator().equals(mutator_type) && mr.getStatus() == DetectionStatus.NOT_SCHEDULED  ) {
-	    				((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NOT_STARTED);
+	    			if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
+	    				((MutationTestUnit) mau).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
 	    				break;
 	    			}
 	    		}

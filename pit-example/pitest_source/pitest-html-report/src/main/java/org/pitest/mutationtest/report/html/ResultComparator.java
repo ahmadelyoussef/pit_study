@@ -41,13 +41,11 @@ class ResultComparator implements Comparator<MutationResult>, Serializable {
 
   @Override
   public int compare(MutationResult o1, MutationResult o2) {
-	  System.out.println( "*****************************7.REACHED HERE" );
     return getRanking(o1.getStatus()) - getRanking(o2.getStatus());
 
   }
 
   private int getRanking(DetectionStatus status) {
-	  System.out.println( "*****************************6. Status is: " + status );
     return RANK.get(status);
   }
 }

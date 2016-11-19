@@ -48,7 +48,7 @@ public class MutationAnalysisExecutor {
       results.add(this.executor.submit(unit));
     }
 
-//    this.executor.shutdown();
+    this.executor.shutdown();
 
     try {
       processResult(results);
@@ -58,9 +58,61 @@ public class MutationAnalysisExecutor {
       throw Unchecked.translateCheckedException(e);
     }
 
-//    signalRunEndToAllListeners();
-
+    signalRunEndToAllListeners();
   }
+  
+  //Ali{
+  public void myRun(final List<MutationAnalysisUnit> testUnits, boolean firstRun, boolean finalRun) 
+  {
+	  LOG.fine("Running " + testUnits.size() + " units");
+
+	  //Only tell if it's the first run.
+	  if( firstRun )
+		  signalRunStartToAllListeners();
+
+	  //gather the results.
+	  List<Future<MutationMetaData>> results = new ArrayList<Future<MutationMetaData>>(testUnits.size());
+	  for (final MutationAnalysisUnit unit : testUnits) 
+	  {
+		  results.add(this.executor.submit(unit));
+	  }
+
+	  if(finalRun) 
+	  {
+		  this.executor.shutdown();
+
+		  try 
+		  {
+			  processResult(results);
+		  }
+		  catch (InterruptedException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  } 
+		  catch (ExecutionException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  }
+
+		  signalRunEndToAllListeners(); 
+	  }
+	  else 
+	  {
+		  try 
+		  {
+			  processResult(results);
+		  }
+		  catch (InterruptedException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  } 
+		  catch (ExecutionException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  }		  
+	  }
+  }
+  //}
 
   private void processResult(List<Future<MutationMetaData>> results)
       throws InterruptedException, ExecutionException {
@@ -68,7 +120,6 @@ public class MutationAnalysisExecutor {
       MutationMetaData r = f.get();
       for (MutationResultListener l : this.listeners) {
         for (final ClassMutationResults cr : r.toClassResults()) {
-        	System.out.println( "*****************************88. HERE: " + cr);
           l.handleMutationResult(cr);
         }
       }

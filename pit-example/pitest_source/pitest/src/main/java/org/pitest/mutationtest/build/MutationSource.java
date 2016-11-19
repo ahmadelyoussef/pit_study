@@ -76,9 +76,6 @@ public class MutationSource {
 	  for (final MutationDetails mutation : availableMutations) {
 		  final List<TestInfo> testDetails = this.testPrioritiser.assignTests(mutation);
 		  
-		  //Ali
-		  System.out.println( "number of tests assigned: " + testDetails.size() );
-		  
 		  if (testDetails.isEmpty()) {
 			  LOG.fine("According to coverage no tests hit the mutation " + mutation);
 		  }
