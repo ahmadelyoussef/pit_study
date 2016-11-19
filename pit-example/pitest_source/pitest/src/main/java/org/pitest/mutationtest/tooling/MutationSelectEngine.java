@@ -66,16 +66,21 @@ public class MutationSelectEngine {
 	}
 
 	// return alive categories
-	public List<String> constructAlive(List<MutationMetaData> runResult){
-		List<String> categ = new ArrayList<String>();
-		for(MutationMetaData mmd : runResult) {
-			for(MutationResult mr : mmd.getMutations()) {
+	public Set<String> constructAlive() {
+		Set<String> categ = new HashSet<String>();
+		
+		for(MutationAnalysisUnit mau : allMAU ) {
+			Set<String> temp = new HashSet<String>();
+			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
+			for(MutationResult mr : mau_mmd.getMutations()) {
 				//Alive
 				if(!mr.getStatusDescription().equals("KILLED")) {
-					categ.add(mr.getDetails().getMutator());
+					temp.add(mr.getDetails().getMutator());
 				}
 			}
+			categ.addAll(temp);
 		}
+		
 		return categ;
 	}
 	
