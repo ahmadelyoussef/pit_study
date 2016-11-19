@@ -185,11 +185,11 @@ public class MutationCoverage {
 
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
 
+    
     int iteration = 1;
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	mae.run(tus);
-    	
+    	mae.run(tus);    	    	  	
     	for( MutationAnalysisUnit mau : tus/*filtered_tus*/ ) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
@@ -198,20 +198,21 @@ public class MutationCoverage {
     		System.out.println( "********************************************************************************" );
     	}
 
+    	mse.selectMutants();
+    	
         //select_engine.construct_alive(mutants_alive_name);  // internally alive is constructed   
         //List<String> categories = select_engine.categorize(); // categorize alive mutants
         //select_engine.update(categories); // update priority of category
         //List<MutationAnalysisUnit> filter_tus = new ArrayList<MutationAnalysisUnit>(select_engine.MutantSelection()); //select new set of mutants
-    	
-    	//filtered_tus = mse.selectMutants();
-    	
-//    	List<MutationMetaData> results = new ArrayList<MutationMetaData>();
-//    	for(int mau = 0; mau < tus.size(); mau++)
-//    		results.add(((MutationTestUnit)tus.get(mau)).AllMutationState;
-//    	tus = mse.selectMutants((MutationMetaData)tus)
-    	if( true )
+
+    	if(iteration == 2 )
     		break;
+    	iteration++;
     }
+   
+    mae.executor.shutdown();
+    mae.signalRunEndToAllListeners();
+
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));
     /**************************************OUR CODE***************************************/
