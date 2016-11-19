@@ -51,9 +51,7 @@ public class MutationStatusMap {
   }
 
   public List<MutationResult> createMutationResults() {
-    return FCollection.map(this.mutationMap.entrySet(),
-        detailsToMutationResults());
-
+    return FCollection.map(this.mutationMap.entrySet(), detailsToMutationResults());
   }
 
   public boolean hasUnrunMutations() {

@@ -188,11 +188,7 @@ public class MutationCoverage {
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
 
-    	//mae.run( filtered_tus );
-    	System.out.println( "**************************************1.REACHED HERE!!!!!!!" );
     	mae.run(tus);
-    	
-    	System.out.println( "**************************************2.REACHED HERE!!!!!!!" );
     	
     	for( MutationAnalysisUnit mau : tus/*filtered_tus*/ ) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );

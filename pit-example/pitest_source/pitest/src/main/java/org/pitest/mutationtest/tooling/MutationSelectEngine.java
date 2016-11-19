@@ -31,17 +31,10 @@ public class MutationSelectEngine {
 	//private List<MutationAnalysisUnit> mutants_alive;
 
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
-		//allMAU = new ArrayList<MutationAnalysisUnit>(tus);
 		allMAU = tus;
 		mutation_per_categ = new ArrayList<MutationAnalysisUnit>();
 		categ_prior = new HashMap<String,Integer>();
 		mutations_available = new ArrayList<List<MutationDetails>>( tus.size() );
-		
-//		//SAVE MUTATIONS AVAILABLE	
-//		for(int i = 0; i < tus.size(); ++i ){		
-//			for(MutationDetails md : ((MutationTestUnit)tus.get(i)).getMutations())
-//				mutations_available.get( i ).add(md);
-//		}	
 	}
 	
 //	public ArrayList<MutationResult> get_MR(MutationAnalysisUnit MAU){
@@ -50,65 +43,30 @@ public class MutationSelectEngine {
 //	}
 
 	//one mutation per category (mutator)
-	//public List<MutationAnalysisUnit> initialize() {
 	public void initialize() {
-        //UPDATE STRUCTURE FOR double array MR
-		Collection<MutationDetails> MD = ((MutationTestUnit) allMAU.get(0)).getMutations(); //FIXME
+        for( MutationAnalysisUnit mau : allMAU ) {
+        	Collection<MutationDetails> MD = ((MutationTestUnit) mau).getMutations();
 
-		//Find all the mutator types.
-		Set <String> categ_mut = new HashSet<String>();
-		for (MutationDetails md: MD){
-			categ_mut.add(md.getMutator());
-		}
+        	//Find all the mutator types.
+        	Set <String> categ_mut = new HashSet<String>();
+        	for (MutationDetails md: MD){
+        		categ_mut.add(md.getMutator());
+        	}
 		
-		//Schedule one type from each mutator type at the begnning.
-		for( String mutator_type : categ_mut ) {
-			for (MutationDetails md : ((MutationTestUnit) allMAU.get(0)).AllMutationState.mutationMap.keySet()) {
-				if(md.getMutator().equals(mutator_type)) {
-					((MutationTestUnit) allMAU.get(0)).AllMutationState.setStatusForMutation( md, DetectionStatus.NOT_STARTED);
-					break;
-				}
-			}
-		}
-		
-//		//takes the one type from each category.
-//		Map<String,MutationDetails> categ_mut = new HashMap<String,MutationDetails>();
-//		for (MutationDetails md: MR){
-//			categ_mut.put(md.getMutator(), md);
-//		}
-// 		
-//		//put taken mutations in the same set.
-// 		ArrayList<MutationDetails> mutations_chosen = new ArrayList<MutationDetails>();
-// 		for (String key: categ_mut.keySet()) {
-// 			mutations_chosen.add(categ_mut.get(key));
-// 		}
-//
-// 		//create the filtered MAU
-// 		//FIXME: we should do this for all the MAUs.
-// 		MutationTestUnit MTU = (MutationTestUnit) allMAU.get(0);
-// 		
-// 		//FIXME: we are overriding the information in the MAU, not good!
-// 		MTU.setMutation(mutations_chosen);
-//
-// 		//add it to the filtered tus.
-// 		mutation_per_categ.add(MTU);
-// 		
-// 		//DEBUG: just printing the information.
-// 		for(MutationAnalysisUnit mau: mutation_per_categ ) {
-// 			MutationTestUnit mtu = (MutationTestUnit) mau;
-// 			ArrayList<MutationDetails> mutations = (ArrayList<MutationDetails>) mtu.getMutations();
-//
-// 			for (int i = 0; i < mtu.getMutations().size();i++) {
-// 				System.out.println("MUTATION CHOSEN: " + mutations.get(i).getDescription() );
-// 			}
-// 		}
-// 		
-// 		return mutation_per_categ;
+        	//Schedule one type from each mutator type at the begnning.
+        	for( String mutator_type : categ_mut ) {
+        		for (MutationDetails md : ((MutationTestUnit) mau).AllMutationState.mutationMap.keySet()) {
+        			if(md.getMutator().equals(mutator_type)) {
+        				((MutationTestUnit) mau).AllMutationState.setStatusForMutation( md, DetectionStatus.NOT_STARTED);
+        				break;
+        			}
+        		}
+        	}
+        }
 	}
 
-		
 	// return alive categories
-	public List<String> constructAlive( List<MutationMetaData> runResult ){
+	public List<String> constructAlive(List<MutationMetaData> runResult){
 		List<String> categ = new ArrayList<String>();
 		for(MutationMetaData mmd : runResult) {
 			for(MutationResult mr : mmd.getMutations()) {

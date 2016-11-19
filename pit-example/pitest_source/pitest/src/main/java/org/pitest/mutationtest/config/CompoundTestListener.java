@@ -35,8 +35,8 @@ public class CompoundTestListener implements MutationResultListener {
 
   @Override
   public void handleMutationResult(final ClassMutationResults metaData) {
-    for (final MutationResultListener each : this.children) {
-      each.handleMutationResult(metaData);
+	  for (final MutationResultListener each : this.children) {
+		  each.handleMutationResult(metaData);
     }
   }
 

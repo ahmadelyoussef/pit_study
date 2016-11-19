@@ -51,7 +51,6 @@ public class MutationAnalysisExecutor {
     this.executor.shutdown();
 
     try {
-    	System.out.println( "**********************************5.REACHED HERE!!!!!" );
       processResult(results);
     } catch (InterruptedException e) {
       throw Unchecked.translateCheckedException(e);
@@ -69,6 +68,7 @@ public class MutationAnalysisExecutor {
       MutationMetaData r = f.get();
       for (MutationResultListener l : this.listeners) {
         for (final ClassMutationResults cr : r.toClassResults()) {
+        	System.out.println( "*****************************88. HERE: " + cr);
           l.handleMutationResult(cr);
         }
       }

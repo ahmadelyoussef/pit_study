@@ -242,7 +242,6 @@ public class MutationHtmlReportListener implements MutationResultListener {
   @Override
   public void handleMutationResult(final ClassMutationResults metaData) {
     final PackageSummaryData packageData = collectPackageSummaries(metaData);
-
     generateAnnotatedSourceFile(packageData.getForSourceFile(metaData
         .getFileName()));
 
