@@ -24,7 +24,7 @@ public class MutationSelectEngine {
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
 	private List<MutationAnalysisUnit> mutation_per_categ; // My first Sample
 	
-	private Map<String,Integer> categ_prior;
+	private List<Map<String,Integer>> categPriorityPerMAU;
 	
 	List<List<MutationDetails>> mutations_available; //list of all available mutations at the beginning, from each MAU.
 	
@@ -34,7 +34,7 @@ public class MutationSelectEngine {
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = tus;
 		mutation_per_categ = new ArrayList<MutationAnalysisUnit>();
-		categ_prior = new HashMap<String,Integer>();
+		categPriorityPerMAU = new ArrayList<Map<String,Integer>>();
 		mutations_available = new ArrayList<List<MutationDetails>>( tus.size() );
 	}
 	
@@ -70,37 +70,33 @@ public class MutationSelectEngine {
 	//  alive mutant "FCollection.filter(this.mutationMap.entrySet(),
     // !hasStatus(DetectionStatus.KILLED)).map(toMutationDetails());"
 	// return alive categories
-	
-	public Set<String> constructAlive() {
-		//FIXME: Set<Set<String>> categ;
-
-		Set<String> categ = new HashSet<String>();
+	public List<Set<String>> constructAlive() {
+		List<Set<String>> mauAliveSet = new ArrayList<Set<String>>();
 		
-		for(MutationAnalysisUnit mau : allMAU ) {
-			Set<String> temp = new HashSet<String>();
-			// metadata from statusmap
+		for(MutationAnalysisUnit mau : allMAU ) 
+		{
+			Set<String> categ = new HashSet<String>();
 			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
 			for(MutationResult mr : mau_mmd.getMutations()) {
-				//Alive
 				if(!mr.getStatusDescription().equals("KILLED")) {
-					temp.add(mr.getDetails().getMutator());
+					categ.add(mr.getDetails().getMutator());
 				}
 			}
-			categ.addAll(temp);
+			mauAliveSet.add(categ);
 		}
 		
-		return categ;
+		return mauAliveSet;
 	}
 	
 	// Update priority
-	public void update(){
-		Set<String> categories = new HashSet<String>();
-		categories = constructAlive();
-		
-		for (String categ: categories){
-			if(categ_prior.get(categ) == null)
-				categ_prior.put(categ,0);
-			categ_prior.put(categ,categ_prior.get(categ) + 1);
+	public void update() {
+		List<Set<String>> categoriesPerMAU = new ArrayList<Set<String>>(constructAlive());
+		for(int i = 0; i < categoriesPerMAU.size(); ++i) {
+			for (String categ: categoriesPerMAU.get(i)) {
+				if(categPriorityPerMAU.get( i ).get(categ) == null)
+					categPriorityPerMAU.get( i ).put(categ,0);
+				categPriorityPerMAU.get(i).put(categ, categPriorityPerMAU.get(i).get(categ) + 1);
+			}
 		}
 	}
 	
@@ -115,44 +111,47 @@ public class MutationSelectEngine {
 	// mutants_alive is argument for run in mutation
 	public void selectMutants() {
 		//Update the list of priorities first.
-        for( MutationAnalysisUnit mau : allMAU ) {
-
 		update();
 		
-		//arrange the list of favorite categories.
-		List<String> sorted_categ = new ArrayList<String>();
-		List<String> chosen_categ = new ArrayList<String>();
+		for(int i = 0; i < allMAU.size(); ++i) 
+		{
+			//arrange the list of favorite categories.
+			List<String> sorted_categ = new ArrayList<String>();
+			List<String> chosen_categ = new ArrayList<String>();
 
 
-		//FIXME: NEED TO SORT FIRST
-		//choose categories: certain percentage
-	    //picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
-		
-		TreeMap<String, Integer> sortedMap = sortMapByValue(categ_prior);  
+			//choose categories: certain percentage
+			//picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
+			TreeMap<String, Integer> sortedMap = sortMapByValue(categPriorityPerMAU.get(i));  
 
- 		for (String key: sortedMap.keySet()) {	
- 			sorted_categ.add(key);
- 		}
-	
- 		for (int count = 0; count < sorted_categ.size(); count++ ){
- 			
- 			if(count > (3* sorted_categ.size())/4)
- 				chosen_categ.add(sorted_categ.get(count));
- 			
- 			if(count <= sorted_categ.size()/4)
- 				chosen_categ.add(sorted_categ.get(count));
- 		}
- 		
-	    	for( String mutator_type : chosen_categ ) {
-	    		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {
-	    			if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
-	    				((MutationTestUnit) mau).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
-	    				break;
-	    			}
-	    		}
-	    	}
-        }
-   	}	
+			for (String key: sortedMap.keySet()) {
+				sorted_categ.add(key);
+			}
+			
+//			Pick based on the median.	
+//			for (int count = 0; count < sorted_categ.size(); count++ )
+//			{
+//				if(count > (3* sorted_categ.size())/4)
+//					chosen_categ.add(sorted_categ.get(count));
+//
+//				if(count <= sorted_categ.size()/4)
+//					chosen_categ.add(sorted_categ.get(count));
+//			}
+			
+//			Pick one from the begin and from the end.
+			chosen_categ.add(sorted_categ.get(0));
+			chosen_categ.add(sorted_categ.get(sorted_categ.size() - 1));
+
+			for( String mutator_type : chosen_categ ) {
+				for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
+					if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
+						((MutationTestUnit) allMAU.get(i)).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
+						break;
+					}
+				}
+			}
+		}
+	}	
 
 	public TreeMap<String, Integer> sortMapByValue(Map<String, Integer> map){
 		Comparator<String> comparator = new ValueComparator(map);
