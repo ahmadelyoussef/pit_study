@@ -190,7 +190,7 @@ public class MutationCoverage {
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
     	//mae.run(tus);
-    	mae.myRun( tus, iteration == 1 ? true : false, iteration == 3 ? true : false );
+    	mae.myRun( tus, iteration == 1, iteration == 3);
     	
     	for(MutationAnalysisUnit mau : tus) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
