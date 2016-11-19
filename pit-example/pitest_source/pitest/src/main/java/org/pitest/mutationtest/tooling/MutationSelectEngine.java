@@ -105,18 +105,20 @@ public class MutationSelectEngine {
 		update(runResult);
 		
 		//arrange the list of favorite categories.
-		List<String> favorite_categ = new ArrayList<String>();
+		List<String> sorted_categ = new ArrayList<String>();
 
 		//FIXME: NEED TO SORT FIRST
 		//choose categories: certain percentage
 	    //picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
-		int count = 0;
- 		for (String key: categ_prior.keySet()) {
- 			if(count % 2 == 0)
- 				favorite_categ.add(key);
- 			count++;
- 		}
 		
+		
+		TreeMap<String, Integer> sortedMap = sortMapByValue(categ_prior);  
+
+ 		for (String key: sortedMap.keySet()) {	
+ 			sorted_categ.add(key);
+ 		}
+	
+ 		
  		// from each mutator, pick one type.
 // 		Map<String,MutationDetails> categ_mut = new HashMap<String,MutationDetails>();
 //		for (MutationResult mr: MR){
@@ -133,5 +135,32 @@ public class MutationSelectEngine {
 		}
 		return filteredList;
 	}	
+
+	public TreeMap<String, Integer> sortMapByValue(Map<String, Integer> map){
+		Comparator<String> comparator = new ValueComparator(map);
+		//TreeMap is a map sorted by its keys. 
+		//The comparator is used to sort the TreeMap by keys. 
+		TreeMap<String, Integer> result = new TreeMap<String, Integer>(comparator);
+		result.putAll(map);
+		return result;
+	}
+	
+	class ValueComparator implements Comparator<String>{
+		 
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+	 
+		public ValueComparator(Map<String, Integer> map){
+			this.map.putAll(map);
+		}
+	 
+		@Override
+		public int compare(String s1, String s2) {
+			if(map.get(s1) >= map.get(s2)){
+				return -1;
+			}else{
+				return 1;
+			}	
+		}
+	}
 
 }

@@ -178,6 +178,7 @@ public class MutationCoverage {
     /**************************************OUR CODE***************************************/
     //Run <test, mutants>
     //Instantiate queue of tests and mutants
+    
     MutationSelectEngine mse = new MutationSelectEngine(tus); //create engine
     mse.initialize();
     //List<MutationAnalysisUnit> filtered_tus = mse.initialize();
@@ -205,6 +206,10 @@ public class MutationCoverage {
     	
     	//filtered_tus = mse.selectMutants();
     	
+//    	List<MutationMetaData> results = new ArrayList<MutationMetaData>();
+//    	for(int mau = 0; mau < tus.size(); mau++)
+//    		results.add(((MutationTestUnit)tus.get(mau)).AllMutationState;
+//    	tus = mse.selectMutants((MutationMetaData)tus)
     	if( true )
     		break;
     }
