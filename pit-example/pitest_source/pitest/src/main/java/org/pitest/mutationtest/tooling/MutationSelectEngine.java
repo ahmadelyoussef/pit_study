@@ -129,6 +129,8 @@ public class MutationSelectEngine {
 				nextBudget.put(categ, categPriorityPerMAU.get(i).get(categ));
 				System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
 				sum += categPriorityPerMAU.get(i).get(categ); 
+				System.out.println("SUM: " + sum );
+
 			}
 			
 			// got number of mutations per category 
