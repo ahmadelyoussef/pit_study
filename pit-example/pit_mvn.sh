@@ -1,2 +1,2 @@
-mvn org.pitest:pitest-maven:mutationCoverage &> out.txt
+mvn org.pitest:pitest-maven:mutationCoverage 
 

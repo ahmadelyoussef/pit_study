@@ -189,22 +189,35 @@ public class MutationCoverage {
 
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
-    	
+    	int count = 1;
     	for(MutationAnalysisUnit mau : tus) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
-    		for( MutationResult mr : MR )
-    			System.out.println( mr.getStatusDescription() );
+    		for( MutationResult mr : MR ){
+    			System.out.println( "MAU: " + count );
+    			System.out.println( "--Category:" + mr.getDetails().getMutator());
+    			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
+    			System.out.println( "--Status: " + mr.getStatusDescription());
+
+//    			System.out.println( mr.getStatusDescription() );
+//    			System.out.println("MUTATION: " +  mr.getDetails().getDescription() );
+    			count++;
+    		}
     		System.out.println( "********************************************************************************" );
     	}
+    	count = 0;
 
     	mae.myRun( tus, firstRun, lastRun);
     	
     	for(MutationAnalysisUnit mau : tus) {
     		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
-    		for( MutationResult mr : MR )
-    			System.out.println( mr.getStatusDescription() );
+    		for( MutationResult mr : MR ){
+    			System.out.println( "--Category:" + mr.getDetails().getMutator());
+    			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
+    			System.out.println( "--Status: " + mr.getStatusDescription());
+    			count++;
+    		}
     		System.out.println( "********************************************************************************" );
     	}
     	
