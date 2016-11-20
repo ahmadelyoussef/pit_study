@@ -1,19 +1,57 @@
-7:09:53 PM PIT >> INFO : Verbose logging is disabled. If you encounter an problem please enable it before reporting an issue.
-7:09:53 PM PIT >> INFO : MINION : objc[9742]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a4334c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a4fb4e
-7:09:53 PM PIT >> INFO : MINION : 0). One of the two will be used. Which one is undefined.
+7:20:13 PM PIT >> INFO : Verbose logging is disabled. If you encounter an problem please enable it before reporting an issue.
+7:20:14 PM PIT >> INFO : MINION : objc[9821]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106ed34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x106f9b4e
+7:20:14 PM PIT >> INFO : MINION : 0). One of the two will be used. Which one is undefined.
 
-7:09:53 PM PIT >> INFO : Sending 1 test classes to minion
-7:09:53 PM PIT >> INFO : Sent tests to minion
-7:09:53 PM PIT >> INFO : MINION : 7:09:53 PM PIT >> INFO : Checking environment
+7:20:14 PM PIT >> INFO : Sending 20 test classes to minion
+7:20:14 PM PIT >> INFO : Sent tests to minion
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> INFO : Checking environment
 
-7:09:53 PM PIT >> INFO : MINION : 7:09:53 PM PIT >> INFO : Found  2 tests
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.AnnotatedTypeNameTest (NoClassDefFoundError: pitexample/AnnotatedTypeNameTest (wrong name: com/squareup/javapoet/AnnotatedTypeNameTest))
 
-7:09:53 PM PIT >> INFO : MINION : 7:09:53 PM PIT >> INFO : Dependency analysis reduced number of potential tests by 0
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.AnnotationSpecTest (NoClassDefFoundError: pitexample/AnnotationSpecTest (wrong name: com/squareup/javapoet/AnnotationSpecTest))
 
-7:09:53 PM PIT >> INFO : MINION : 7:09:53 PM PIT >> INFO : 2 tests received
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.ClassNameTest (NoClassDefFoundError: pitexample/ClassNameTest (wrong name: com/squareup/javapoet/ClassNameTest))
 
-/-7:09:53 PM PIT >> INFO : Calculated coverage in 0 seconds.
-7:09:54 PM PIT >> INFO : Created  30 mutation test units
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.CodeBlockTest (NoClassDefFoundError: pitexample/CodeBlockTest (wrong name: com/squareup/javapoet/CodeBlockTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.FieldSpecTest (NoClassDefFoundError: pitexample/FieldSpecTest (wrong name: com/squareup/javapoet/FieldSpecTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.FileReadingTest (NoClassDefFoundError: pitexample/FileReadingTest (wrong name: com/squareup/javapoet/FileReadingTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.FileWritingTest (NoClassDefFoundError: pitexample/FileWritingTest (wrong name: com/squareup/javapoet/FileWritingTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.JavaFileTest (NoClassDefFoundError: pitexample/JavaFileTest (wrong name: com/squareup/javapoet/JavaFileTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.LineWrapperTest (NoClassDefFoundError: pitexample/LineWrapperTest (wrong name: com/squareup/javapoet/LineWrapperTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.MethodSpecTest (NoClassDefFoundError: pitexample/MethodSpecTest (wrong name: com/squareup/javapoet/MethodSpecTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.NameAllocatorTest (NoClassDefFoundError: pitexample/NameAllocatorTest (wrong name: com/squareup/javapoet/NameAllocatorTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.ParameterSpecTest (NoClassDefFoundError: pitexample/ParameterSpecTest (wrong name: com/squareup/javapoet/ParameterSpecTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypeNameTest (NoClassDefFoundError: pitexample/TypeNameTest (wrong name: com/squareup/javapoet/TypeNameTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypeSpecTest (NoClassDefFoundError: pitexample/TypeSpecTest (wrong name: com/squareup/javapoet/TypeSpecTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypeSpecTest$1 (NoClassDefFoundError: pitexample/TypeSpecTest$1 (wrong name: com/squareup/javapoet/TypeSpecTest$1))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypeSpecTest$2 (NoClassDefFoundError: pitexample/TypeSpecTest$2 (wrong name: com/squareup/javapoet/TypeSpecTest$2))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypesEclipseTest (NoClassDefFoundError: pitexample/TypesEclipseTest (wrong name: com/squareup/javapoet/TypesEclipseTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.TypesTest (NoClassDefFoundError: pitexample/TypesTest (wrong name: com/squareup/javapoet/TypesTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> WARNING : Could not load pitexample.UtilTest (NoClassDefFoundError: pitexample/UtilTest (wrong name: com/squareup/javapoet/UtilTest))
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> INFO : Found  2 tests
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> INFO : Dependency analysis reduced number of potential tests by 0
+
+7:20:14 PM PIT >> INFO : MINION : 7:20:14 PM PIT >> INFO : 2 tests received
+
+/-7:20:14 PM PIT >> INFO : Calculated coverage in 0 seconds.
+7:20:14 PM PIT >> INFO : Created  30 mutation test units
 **************************************** iteration 1****************************************
 NOT_STARTED
 NOT_STARTED
@@ -1223,7 +1261,7 @@ NOT_SCHEDULED
 **************************************** iteration 1****************************************
 NOT_STARTED
 ********************************************************************************
-stderr  : objc[9743]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e61c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e6e44estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[9822]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107b7b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109bd74estderr  : 0). One of the two will be used. Which one is undefined.
 /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-**************************************** iteration 1****************************************
 NO_COVERAGE
 NO_COVERAGE
@@ -2439,9 +2477,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -3834,8 +3872,8 @@ NO_COVERAGE
 **************************************** iteration 2****************************************
 NO_COVERAGE
 ********************************************************************************
-\stderr  : objc[9744]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10599c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105a644estderr  : 0). One of the two will be used. Which one is undefined.
-|/-\|/-\|/-\|/-\|/-\|/-\|/-\|**************************************** iteration 2****************************************
+stderr  : objc[9823]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10b58d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c65c4estderr  : 0). One of the two will be used. Which one is undefined.
+\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|**************************************** iteration 2****************************************
 NO_COVERAGE
 NO_COVERAGE
 NO_COVERAGE
@@ -5050,9 +5088,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -7660,9 +7698,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -10270,9 +10308,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -12880,9 +12918,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -15490,9 +15528,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -18100,9 +18138,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -20710,9 +20748,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -23320,9 +23358,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -25930,9 +25968,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -28540,9 +28578,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -31150,9 +31188,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -33760,9 +33798,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -36370,9 +36408,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -38980,9 +39018,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -41590,9 +41628,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -44200,9 +44238,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -46810,9 +46848,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -49420,9 +49458,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -52030,9 +52068,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -54640,9 +54678,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -57250,9 +57288,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -59860,9 +59898,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -62470,9 +62508,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -65080,9 +65118,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -67690,9 +67728,9 @@ NO_COVERAGE
 > scan classpath : < 1 second
 > coverage and dependency analysis : < 1 second
 > build mutation tests : < 1 second
-> run mutation analysis : -1 hours, -9 minutes and -54 seconds
+> run mutation analysis : -1 hours, -20 minutes and -14 seconds
 --------------------------------------------------------------------------------
-> Total  : -1 hours, -9 minutes and -53 seconds
+> Total  : -1 hours, -20 minutes and -13 seconds
 --------------------------------------------------------------------------------
 ================================================================================
 - Statistics
@@ -67876,4 +67914,4 @@ SORTED CATEGORY: {org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutat
 org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator: 1
 SORTED CATEGORY: {org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator=1}
 org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator: 1
-7:11:42 PM PIT >> INFO : Completed in 108 seconds
+7:22:16 PM PIT >> INFO : Completed in 122 seconds
