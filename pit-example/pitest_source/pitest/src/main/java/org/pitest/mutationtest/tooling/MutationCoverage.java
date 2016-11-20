@@ -225,7 +225,7 @@ public class MutationCoverage {
     		firstRun = false;
     	else
     	{
-    		if(iteration == 9)
+    		if(iteration == 25)
     			lastRun = true;
     	}
     	
