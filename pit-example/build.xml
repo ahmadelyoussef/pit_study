@@ -10,7 +10,14 @@
   <property name="classes" location="${target}/classes"/>
   <property name="test-classes" location="${target}/test-classes"/>
   <property name="reports" location="reports"/>
-  <property name="pit-reports" location="${target}/pit-reports"/>
+	<property name="pit-reports" location="${target}/pit-reports"/>
+
+	<target name="install-ivy" description="Install ivy" unless="ivy.installed">
+	<mkdir dir="${user.home}/.ant/lib"/>
+	<get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.3.0/ivy-2.3.0.jar"/>
+	<fail message="Ivy has been installed. Run the build again"/>
+	</target>
+
   <target name="compile" depends="init" description="compile the source code">
     <javac debug="true" includeantruntime="false" srcdir="${src-main}" destdir="${classes}">
       <classpath>

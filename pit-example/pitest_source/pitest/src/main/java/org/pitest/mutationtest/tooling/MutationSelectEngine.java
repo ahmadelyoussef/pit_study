@@ -59,19 +59,20 @@ public class MutationSelectEngine {
 	}
 
 	//TODO: make sure about the KILLED status.
-	public List<Set<String>> constructAlive() {
-		List<Set<String>> mauAliveSet = new ArrayList<Set<String>>();
+	public List<Map<String, Integer>> constructAlive() {
+		List<Map<String, Integer>> mauAliveSet = new ArrayList<Map<String, Integer>>();
 		for(MutationAnalysisUnit mau : allMAU ) 
 		{
-			Set<String> categ = new HashSet<String>();
+			Map<String, Integer> categ = new HashMap<String, Integer>();
 			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
 			for(MutationResult mr : mau_mmd.getMutations()) {
 				//FIXME: need to check how this state works
-				if(mr.getStatus() == DetectionStatus.SURVIVED) {					
-					categ.add(mr.getDetails().getMutator());
+				if(mr.getStatus() == DetectionStatus.SURVIVED) {
+					if(categ.get(mr.getDetails().getMutator()) == null )
+						categ.put(mr.getDetails().getMutator(), 0);
+					categ.put(mr.getDetails().getMutator(), categ.get(mr.getDetails().getMutator()) + 1);
 				}
 			}
-											
 			mauAliveSet.add(categ);
 		}
 		
@@ -81,12 +82,10 @@ public class MutationSelectEngine {
 	//Update priority
 	//TODO: anyway to have path information included in the results?
 	public void update() {
-		List<Set<String>> categoriesPerMAU = new ArrayList<Set<String>>(constructAlive());
+		List<Map<String, Integer>> categoriesPerMAU = new ArrayList<Map<String, Integer>>(constructAlive());
 		for(int i = 0; i < categoriesPerMAU.size(); ++i) {
-			for (String categ: categoriesPerMAU.get(i)) {
-//				if(categPriorityPerMAU.get(i).get(categ) == null)
-//					categPriorityPerMAU.get(i).put(categ,1);
-				categPriorityPerMAU.get(i).put(categ, categPriorityPerMAU.get(i).get(categ) + 1);
+			for (String categ: categoriesPerMAU.get(i).keySet()) {
+				categPriorityPerMAU.get(i).put(categ, categoriesPerMAU.get(i).get(categ));
 			}
 		}
 	}
