@@ -189,6 +189,15 @@ public class MutationCoverage {
 
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
     while( true ) {
+    	
+    	for(MutationAnalysisUnit mau : tus) {
+    		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
+    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
+    		for( MutationResult mr : MR )
+    			System.out.println( mr.getStatusDescription() );
+    		System.out.println( "********************************************************************************" );
+    	}
+
     	mae.myRun( tus, firstRun, lastRun);
     	
     	for(MutationAnalysisUnit mau : tus) {

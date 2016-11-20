@@ -21,13 +21,20 @@ public class MutationSelectEngine {
 	
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
 	private List<Map<String,Integer>> categPriorityPerMAU;
-
+	private final int nb_mutations = 6;
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = tus;
 		categPriorityPerMAU = new ArrayList<Map<String,Integer>>();
-		for(int i = 0; i < tus.size(); ++i) { categPriorityPerMAU.add(new HashMap<String, Integer>()); }
+		
+		for(int i = 0; i < tus.size(); ++i) { 
+			categPriorityPerMAU.add(new HashMap<String, Integer>()); 
+			for (MutationDetails md: ((MutationTestUnit)allMAU.get(i)).AllMutationState.allMutations()) {
+				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
+					categPriorityPerMAU.get(i).put(md.getMutator(),1);		
+			}
+		}
 	}
-
+	
 	//one mutation per category (mutator)
 	public void initialize() {
         for( MutationAnalysisUnit mau : allMAU ) {
@@ -59,10 +66,12 @@ public class MutationSelectEngine {
 			Set<String> categ = new HashSet<String>();
 			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
 			for(MutationResult mr : mau_mmd.getMutations()) {
-				if(!mr.getStatusDescription().equals("KILLED")) {
+				//FIXME: need to check how this state works
+				if(mr.getStatus() == DetectionStatus.SURVIVED) {					
 					categ.add(mr.getDetails().getMutator());
 				}
 			}
+											
 			mauAliveSet.add(categ);
 		}
 		
@@ -75,8 +84,8 @@ public class MutationSelectEngine {
 		List<Set<String>> categoriesPerMAU = new ArrayList<Set<String>>(constructAlive());
 		for(int i = 0; i < categoriesPerMAU.size(); ++i) {
 			for (String categ: categoriesPerMAU.get(i)) {
-				if(categPriorityPerMAU.get(i).get(categ) == null)
-					categPriorityPerMAU.get(i).put(categ,0);
+//				if(categPriorityPerMAU.get(i).get(categ) == null)
+//					categPriorityPerMAU.get(i).put(categ,1);
 				categPriorityPerMAU.get(i).put(categ, categPriorityPerMAU.get(i).get(categ) + 1);
 			}
 		}
@@ -98,21 +107,35 @@ public class MutationSelectEngine {
 		for(int i = 0; i < allMAU.size(); ++i)
 		{
 			//arrange the list of favorite categories.
-			List<String> sorted_categ = new ArrayList<String>();
-			List<String> chosen_categ = new ArrayList<String>();
-
+			List<String> sortedCateg = new ArrayList<String>();
 
 			//choose categories: certain percentage
 			//picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
-			TreeMap<String, Integer> sortedMap = sortMapByValue(categPriorityPerMAU.get(i));  
-
-			for (String key: sortedMap.keySet()) {
-				sorted_categ.add(key);
-			}
+//			TreeMap<String, Integer> sortedMap = sortMapByValue(categPriorityPerMAU.get(i));  		
 			
+			//sorted_category per MAU
+//			for (String key: categPriorityPerMAU.get(i).keySet()) {
+//				System.out.println(key + ": " + categPriorityPerMAU.get(i).get(key));
+//
+//				sortedCateg.add(key);
+//			}
+
+			System.out.println("SORTED CATEGORY: " + categPriorityPerMAU.get(i) );
+
 			//TODO: try to do the normalization method here.
 			//then pick the correct type.
-
+			Map<String, Integer> nextBudget = new HashMap<String, Integer>();
+			int sum = 0;
+			for(String categ : categPriorityPerMAU.get(i).keySet()) {
+				nextBudget.put(categ, categPriorityPerMAU.get(i).get(categ));
+				System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
+				sum += categPriorityPerMAU.get(i).get(categ); 
+			}
+			
+			// got number of mutations per category 
+			for(String categ : nextBudget.keySet())
+				nextBudget.put(categ, (nextBudget.get(categ) * nb_mutations)/sum);
+			
 			//OLD STUFF{
 //**		Pick based on the median.{	
 //			for (int count = 0; count < sorted_categ.size(); count++ )
@@ -131,11 +154,16 @@ public class MutationSelectEngine {
 //}
 			//}
 			
-			for( String mutator_type : chosen_categ ) {
+			for( String mutator_type : nextBudget.keySet() ) {
+				if(nextBudget.get(mutator_type).equals( 0 ))
+					continue;
 				for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
 					if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
 						((MutationTestUnit) allMAU.get(i)).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
-						break;
+						if( nextBudget.get(mutator_type).equals( 0 ))
+							break;
+						else
+							nextBudget.put(mutator_type, nextBudget.get(mutator_type) - 1);
 					}
 				}
 			}
