@@ -30,7 +30,7 @@ public class MutationSelectEngine {
 			categPriorityPerMAU.add(new HashMap<String, Integer>()); 
 			for (MutationDetails md: ((MutationTestUnit)allMAU.get(i)).AllMutationState.allMutations()) {
 				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
-					categPriorityPerMAU.get(i).put(md.getMutator(),1);		
+					categPriorityPerMAU.get(i).put(md.getMutator(), 1);		
 			}
 		}
 	}
@@ -61,8 +61,7 @@ public class MutationSelectEngine {
 	//TODO: make sure about the KILLED status.
 	public List<Map<String, Integer>> constructAlive() {
 		List<Map<String, Integer>> mauAliveSet = new ArrayList<Map<String, Integer>>();
-		for(MutationAnalysisUnit mau : allMAU ) 
-		{
+		for(MutationAnalysisUnit mau : allMAU ) {
 			Map<String, Integer> categ = new HashMap<String, Integer>();
 			MutationMetaData mau_mmd = MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState);
 			for(MutationResult mr : mau_mmd.getMutations()) {
@@ -75,7 +74,6 @@ public class MutationSelectEngine {
 			}
 			mauAliveSet.add(categ);
 		}
-		
 		return mauAliveSet;
 	}
 	
@@ -129,7 +127,7 @@ public class MutationSelectEngine {
 				nextBudget.put(categ, categPriorityPerMAU.get(i).get(categ));
 				System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
 				sum += categPriorityPerMAU.get(i).get(categ); 
-				System.out.println("SUM: " + sum );
+				System.out.println("SUM: " + sum);
 
 			}
 			
