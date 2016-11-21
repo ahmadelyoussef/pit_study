@@ -191,33 +191,33 @@ public class MutationCoverage {
     while( true ) {
     	int count = 1;
     	for(MutationAnalysisUnit mau : tus) {
-    		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
+    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
+			System.out.println( "MAU: " + count );
     		for( MutationResult mr : MR ){
-    			System.out.println( "MAU: " + count );
     			System.out.println( "--Category:" + mr.getDetails().getMutator());
-    			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
+    			System.out.println( "--Mutation: " + mr.getDetails().getDescription());
     			System.out.println( "--Status: " + mr.getStatusDescription());
-
-//    			System.out.println( mr.getStatusDescription() );
-//    			System.out.println("MUTATION: " +  mr.getDetails().getDescription() );
-    			count++;
     		}
     		System.out.println( "********************************************************************************" );
+			count++;
+
     	}
-    	count = 0;
+    	count = 1;
 
     	mae.myRun( tus, firstRun, lastRun);
     	
     	for(MutationAnalysisUnit mau : tus) {
-    		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
+    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
     		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
+			System.out.println( "MAU: " + count );
     		for( MutationResult mr : MR ){
     			System.out.println( "--Category:" + mr.getDetails().getMutator());
     			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
     			System.out.println( "--Status: " + mr.getStatusDescription());
-    			count++;
     		}
+			count++;
+
     		System.out.println( "********************************************************************************" );
     	}
     	
