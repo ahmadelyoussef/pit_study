@@ -22,6 +22,8 @@ public class MutationSelectEngine {
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
 	private List<Map<String,Integer>> categPriorityPerMAU;
 	private final int nb_mutations = 6;
+	public Set<String> mutatorNames = new HashSet<String>();
+
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = tus;
 		categPriorityPerMAU = new ArrayList<Map<String,Integer>>();
@@ -29,6 +31,7 @@ public class MutationSelectEngine {
 		for(int i = 0; i < tus.size(); ++i) { 
 			categPriorityPerMAU.add(new HashMap<String, Integer>()); 
 			for (MutationDetails md: ((MutationTestUnit)allMAU.get(i)).AllMutationState.allMutations()) {
+				mutatorNames.add(md.getMutator());
 				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
 					categPriorityPerMAU.get(i).put(md.getMutator(),1);		
 			}
@@ -119,19 +122,23 @@ public class MutationSelectEngine {
 //				sortedCateg.add(key);
 //			}
 
-			System.out.println("SORTED CATEGORY: " + categPriorityPerMAU.get(i) );
+			// System.out.println("SORTED CATEGORY: " + categPriorityPerMAU.get(i) );
 
 			//TODO: try to do the normalization method here.
 			//then pick the correct type.
 			Map<String, Integer> nextBudget = new HashMap<String, Integer>();
 			int sum = 0;
+    		System.out.println( "*************************************class"+i+"*******************************************" );
+
 			for(String categ : categPriorityPerMAU.get(i).keySet()) {
 				nextBudget.put(categ, categPriorityPerMAU.get(i).get(categ));
 				System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
 				sum += categPriorityPerMAU.get(i).get(categ); 
-				System.out.println("SUM: " + sum );
+				// System.out.println("SUM: " + sum );
 
 			}
+    		System.out.println( "*************************************class*******************************************" );
+
 			
 			// got number of mutations per category 
 			for(String categ : nextBudget.keySet())
@@ -155,6 +162,8 @@ public class MutationSelectEngine {
 //}
 			//}
 			
+			// FIXME: Keep choosing the same mutator eventually we will run out of mutations that have the same mutator.
+			//        We will have budget for mutator, but no mutation available that have same mutation.
 			for( String mutator_type : nextBudget.keySet() ) {
 				if(nextBudget.get(mutator_type).equals( 0 ))
 					continue;
