@@ -198,11 +198,8 @@ public class MutationCoverage {
     			System.out.println( "--Category:" + mr.getDetails().getMutator());
     			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
     			System.out.println( "--Status: " + mr.getStatusDescription());
-
-//    			System.out.println( mr.getStatusDescription() );
-//    			System.out.println("MUTATION: " +  mr.getDetails().getDescription() );
-    			count++;
     		}
+    		count++;
     		System.out.println( "********************************************************************************" );
     	}
     	count = 0;
