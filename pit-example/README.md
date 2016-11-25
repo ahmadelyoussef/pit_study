@@ -1,3 +1,23 @@
+How to run PIT tests
+====================
+if you changed the source code do:
+
+1- do "./modify-compile"
+2- do "./pit.sh <name_of_test>"
+
+For "<name_of_test>" look under the "tests" directory. These tests are taken from:
+
+1- https://github.com/square/javapoet
+2- http://www.joda.org/joda-time/
+3- https://commons.apache.org/
+4- http://santuario.apache.org/index.html
+
+Note: Some of the unit tests are removed from the original test suite. PIT requires 
+green suites. 
+
+Old pit.sh
+==========
+
 How to Compile and run PIT after modify PIT's code:
 
 1- go to pitest/pitest where  maven-build.xml resides <br>
