@@ -17,6 +17,7 @@ package org.pitest.mutationtest.tooling;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -190,68 +191,76 @@ public class MutationCoverage {
     //create execute engine
     final MutationAnalysisExecutor mae = new MutationAnalysisExecutor(numberOfThreads(), config);
     int iteration = 1; boolean firstRun = true; boolean lastRun = false;
-
+    PrintWriter writer = null;
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
-
+	try{
+	    writer = new PrintWriter("Per_MS_report.txt", "UTF-8");
+	} catch (IOException e) {
+	   // do something
+	}
     while( true ) {
-    	int count = 1;
-    	for(MutationAnalysisUnit mau : tus) {
-    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
-    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
-			System.out.println( "MAU: " + count );
-    		for( MutationResult mr : MR ){
-    			System.out.println( "--Category:" + mr.getDetails().getMutator());
-    			System.out.println( "--Mutation: " + mr.getDetails().getDescription());
-    			System.out.println( "--Status: " + mr.getStatusDescription());
-    		}
-    		System.out.println( "********************************************************************************" );
-			count++;
-
-    	}
-    	count = 1;
-
+//    	int count = 1;
+//    	for(MutationAnalysisUnit mau : tus) {
+//    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
+//    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
+//			System.out.println( "MAU: " + count );
+//    		for( MutationResult mr : MR ){
+//    			System.out.println( "--Category:" + mr.getDetails().getMutator());
+//    			System.out.println( "--Mutation: " + mr.getDetails().getDescription());
+//    			System.out.println( "--Status: " + mr.getStatusDescription());
+//    		}
+//    		System.out.println( "********************************************************************************" );
+//			count++;
+//
+//    	}
+//    	count = 1;
     	mae.myRun( tus, firstRun, lastRun);
     	
-		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
-    	for(MutationAnalysisUnit mau : tus) {
-    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
-    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
-			System.out.println( "MAU: " + count );
-    		for( MutationResult mr : MR ){
-    			System.out.println( "--Category:" + mr.getDetails().getMutator());
-    			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
-    			System.out.println( "--Status: " + mr.getStatusDescription());
-    		}
-			count++;
-
-    		System.out.println( "********************************************************************************" );
-    	}
-		System.out.println( "********************************************************************************" );
+//		System.out.println( "**************************************** iteration " + iteration + "****************************************" );
+//    	for(MutationAnalysisUnit mau : tus) {
+//    		System.out.println( "**************************************** iteration " + iteration + " Before Exectuino  ****************************************" );
+//    		ArrayList<MutationResult> MR = new ArrayList<MutationResult>( MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations() );
+//			System.out.println( "MAU: " + count );
+//    		for( MutationResult mr : MR ){
+//    			System.out.println( "--Category:" + mr.getDetails().getMutator());
+//    			System.out.println( "--Mutation: " +  mr.getDetails().getDescription());
+//    			System.out.println( "--Status: " + mr.getStatusDescription());
+//    		}
+//			count++;
+//
+//    		System.out.println( "********************************************************************************" );
+//    	}
+//		System.out.println( "********************************************************************************" );
 
     	//FIXME: we need to change the print result function such that we can get the results exclusively per run.
         printStats(stats);
 
-           
+
         //List<String> categories = select_engine.categorize(); //categorize alive mutants
         //select_engine.update(categories); //update priority of category
         //select_engine.selectMutants;//finally, select new set of mutants
         mse.selectMutants();
-        
+
         //TODO: when should we finish the execution?
-    	if(lastRun)
-    		break;
-    	
+//    	if(lastRun)
+//    		break;
+//    	
     	if(firstRun)
     		firstRun = false;
-    	else
-    	{
-    		if(iteration == 25)
-    			lastRun = true;
-    	}
+//    	else {
+//    		lastRun = true;
+//    	}
     	
+        writer.println(mse.per_ran+ ","+  mse.ms);
+    	if(mse.per_ran == 1.00) {
+    		mae.myRun(tus, false, true);
+    		break;
+    	}
+		// System.out.println("###per: " + mse.per_ran + " ms: " + mse.ms);
+    	// writer.println("iter:"+iteration);
     	iteration++;
     }
-    
+    writer.close();
     Map<String, List<Integer>> infoPerMutator = proccesResults(tus, mse.mutatorNames);
 	
 	System.out.println( "\n\n***************************************Test*****************************************" );

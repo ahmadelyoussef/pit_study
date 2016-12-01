@@ -1,6 +1,7 @@
 package org.pitest.mutationtest.tooling;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -23,6 +24,11 @@ public class MutationSelectEngine {
 	private List<Map<String,Integer>> categPriorityPerMAU;
 	private final int nb_mutations = 6;
 	public Set<String> mutatorNames = new HashSet<String>();
+	public int total_mutations = 0;
+	public boolean done = false;
+	public double per_ran = 0;
+	public double ms = 0;
+	public double percen = 20.0;
 
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
 		allMAU = tus;
@@ -32,6 +38,7 @@ public class MutationSelectEngine {
 			categPriorityPerMAU.add(new HashMap<String, Integer>()); 
 			for (MutationDetails md: ((MutationTestUnit)allMAU.get(i)).AllMutationState.allMutations()) {
 				mutatorNames.add(md.getMutator());
+				total_mutations++;
 				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
 					categPriorityPerMAU.get(i).put(md.getMutator(),1);		
 			}
@@ -105,11 +112,54 @@ public class MutationSelectEngine {
 	public void selectMutants() {
 		//Update the list of priorities first.
 		update();
-		
+		done = true; 
+		int total_ran = 0;
+		int total_killed = 0;
 		for(int i = 0; i < allMAU.size(); ++i)
 		{
 			//arrange the list of favorite categories.
-			List<String> sortedCateg = new ArrayList<String>();
+			
+			Map<String, List<Integer>> PercentageRan = new HashMap<String, List<Integer>>();
+    	    System.out.println( "*************************************class"+i+"*******************************************" );
+			for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
+				List<Integer> RanMutants = new ArrayList<Integer>();
+				if(PercentageRan.get(mr.getDetails().getMutator()) == null) {
+					RanMutants = Arrays.asList(0,0);
+				} else {
+					RanMutants = PercentageRan.get(mr.getDetails().getMutator());
+				}
+				if(mr.getStatus() == DetectionStatus.NOT_SCHEDULED) {
+					RanMutants.set(0, RanMutants.get(0)+1);
+				} else {
+					total_ran++;
+					RanMutants.set(0, RanMutants.get(0)+1);
+					RanMutants.set(1, RanMutants.get(1)+1);
+				}
+			    System.out.println(mr.getDetails().getMutator() + ": " + mr.getStatusDescription());
+
+				PercentageRan.put(mr.getDetails().getMutator(), RanMutants);
+				if(mr.getStatus() == DetectionStatus.KILLED || mr.getStatus() == DetectionStatus.TIMED_OUT) 
+					total_killed++;
+			}
+			// System.out.println("ran: " + total_ran + " killed: " + total_killed + "all: "+ total_mutations);
+			if(total_ran == total_mutations) break;
+    	    System.out.println( "*************************************class*******************************************" );
+//			Map<String, Integer> maxBudget = new HashMap<String, Integer>();
+//    	    System.out.println("****************** MAU "+i+" ******************");
+			for(String mutator: PercentageRan.keySet()){
+				int ran = PercentageRan.get(mutator).get(1);
+				int total = PercentageRan.get(mutator).get(0);
+//				System.out.println("Mutator: "+ mutator + " ran : " + ran+ " total : " + total);
+//				System.out.println("Perc: "+ (ran*100.0)/total);
+				if ((ran/total) >= 1) {
+					categPriorityPerMAU.get(i).put(mutator, 0);
+				} 
+//					else {
+//					done = false;
+//				}
+//				maxBudget.put(mutator, (int)Math.ceil(total*(percen/100.0))-ran);
+			}
+//			System.out.println("************************************");
 
 			//choose categories: certain percentage
 			//picking the "keys", i.e. the mutator type, and putting them in the favorite_categ.
@@ -129,21 +179,26 @@ public class MutationSelectEngine {
 			Map<String, Integer> nextBudget = new HashMap<String, Integer>();
 			int sum = 0;
     		System.out.println( "*************************************class"+i+"*******************************************" );
-
 			for(String categ : categPriorityPerMAU.get(i).keySet()) {
 				nextBudget.put(categ, categPriorityPerMAU.get(i).get(categ));
-				System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
+			    System.out.println(categ + ": " + categPriorityPerMAU.get(i).get(categ));
 				sum += categPriorityPerMAU.get(i).get(categ); 
 				// System.out.println("SUM: " + sum );
 
 			}
-    		System.out.println( "*************************************class*******************************************" );
+    	    System.out.println( "*************************************class*******************************************" );
 
 			
 			// got number of mutations per category 
-			for(String categ : nextBudget.keySet())
-				nextBudget.put(categ, (nextBudget.get(categ) * nb_mutations)/sum);
-			
+    		if(sum != 0) {
+    			for(String categ : nextBudget.keySet()) {
+//    				int budget = Math.min(maxBudget.get(categ), (nextBudget.get(categ) * nb_mutations)/sum);
+//    			    System.out.println(categ + ": " + budget + "max = " + maxBudget.get(categ));
+//    				nextBudget.put(categ, budget);
+    				nextBudget.put(categ, (nextBudget.get(categ) * nb_mutations)/sum);
+    			}
+			}
+
 			//OLD STUFF{
 //**		Pick based on the median.{	
 //			for (int count = 0; count < sorted_categ.size(); count++ )
@@ -170,7 +225,7 @@ public class MutationSelectEngine {
 				for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
 					if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
 						((MutationTestUnit) allMAU.get(i)).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
-						if( nextBudget.get(mutator_type).equals( 0 ))
+						if( nextBudget.get(mutator_type).equals( 1 ))
 							break;
 						else
 							nextBudget.put(mutator_type, nextBudget.get(mutator_type) - 1);
@@ -178,6 +233,10 @@ public class MutationSelectEngine {
 				}
 			}
 		}
+		// System.out.println("ran: " + total_ran + " killed: " + total_killed);
+		per_ran = (double) total_ran / total_mutations;
+		ms = (double) total_killed / total_ran;
+		// System.out.println("per: " + per_ran + " ms: " + ms);
 	}	
 
 	public TreeMap<String, Integer> sortMapByValue(Map<String, Integer> map){
