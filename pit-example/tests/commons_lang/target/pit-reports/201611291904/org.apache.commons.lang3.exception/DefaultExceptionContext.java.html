@@ -1,0 +1,2790 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>DefaultExceptionContext.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Licensed to the Apache Software Foundation (ASF) under one or more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * contributor license agreements.  See the NOTICE file distributed with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * this work for additional information regarding copyright ownership.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The ASF licenses this file to You under the Apache License, Version 2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * (the &#34;License&#34;); you may not use this file except in compliance with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *      http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * See the License for the specific language governing permissions and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * limitations under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.apache.commons.lang3.exception;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.Serializable;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.HashSet;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Iterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Set;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.StringUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.tuple.ImmutablePair;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.tuple.Pair;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Default implementation of the context storing the label-value pairs for contexted exceptions.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This implementation is serializable, however this is dependent on the values that</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * are added also being serializable.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @see ContextedException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @see ContextedRuntimeException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @since 3.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_41'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class DefaultExceptionContext implements ExceptionContext, Serializable {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The serialization version. */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static final long serialVersionUID = 20110706L;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The list storing the label-data pairs. */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_47'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private final List&#60;Pair&#60;String, Object&#62;&#62; contextValues = new ArrayList&#60;Pair&#60;String,Object&#62;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public DefaultExceptionContext addContextValue(final String label, final Object value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_54'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        contextValues.add(new ImmutablePair&#60;String, Object&#62;(label, value));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_55'/>
+55
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_55'>6</a>
+<span>
+1. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. addContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return this;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public DefaultExceptionContext setContextValue(final String label, final Object value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_63'/>
+63
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_63'>6</a>
+<span>
+1. setContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. setContextValue : negated conditional &rarr; KILLED<br/>
+3. setContextValue : negated conditional &rarr; KILLED<br/>
+4. setContextValue : negated conditional &rarr; KILLED<br/>
+5. setContextValue : negated conditional &rarr; KILLED<br/>
+6. setContextValue : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (final Iterator&#60;Pair&#60;String, Object&#62;&#62; iter = contextValues.iterator(); iter.hasNext();) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_64'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            final Pair&#60;String, Object&#62; p = iter.next();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_65'/>
+65
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_65'>6</a>
+<span>
+1. setContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. setContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. setContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. setContextValue : negated conditional &rarr; KILLED<br/>
+5. setContextValue : negated conditional &rarr; KILLED<br/>
+6. setContextValue : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (StringUtils.equals(label, p.getKey())) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_66'/>
+66
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_66'>6</a>
+<span>
+1. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+2. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+3. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+4. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+5. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+6. setContextValue : removed call to java/util/Iterator::remove &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                iter.remove();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_68'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_69'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        addContextValue(label, value);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_70'/>
+70
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_70'>6</a>
+<span>
+1. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
+5. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
+6. setContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return this;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public List&#60;Object&#62; getContextValues(final String label) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_78'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final List&#60;Object&#62; values = new ArrayList&#60;Object&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_79'/>
+79
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_79'>6</a>
+<span>
+1. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getContextValues : negated conditional &rarr; KILLED<br/>
+4. getContextValues : negated conditional &rarr; KILLED<br/>
+5. getContextValues : negated conditional &rarr; KILLED<br/>
+6. getContextValues : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (final Pair&#60;String, Object&#62; pair : contextValues) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_80'/>
+80
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_80'>6</a>
+<span>
+1. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getContextValues : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getContextValues : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (StringUtils.equals(label, pair.getKey())) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_81'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                values.add(pair.getValue());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_83'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_84'/>
+84
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_84'>6</a>
+<span>
+1. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getContextValues : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return values;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getFirstContextValue(final String label) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_92'/>
+92
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_92'>6</a>
+<span>
+1. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getFirstContextValue : negated conditional &rarr; KILLED<br/>
+5. getFirstContextValue : negated conditional &rarr; KILLED<br/>
+6. getFirstContextValue : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (final Pair&#60;String, Object&#62; pair : contextValues) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_93'/>
+93
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_93'>6</a>
+<span>
+1. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getFirstContextValue : negated conditional &rarr; NOT_SCHEDULED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (StringUtils.equals(label, pair.getKey())) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_94'/>
+94
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_94'>6</a>
+<span>
+1. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+5. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                return pair.getValue();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_95'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_96'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_97'/>
+97
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_97'>6</a>
+<span>
+1. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+2. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getFirstContextValue : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_98'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_99'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_102'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_103'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Set&#60;String&#62; getContextLabels() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_105'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Set&#60;String&#62; labels = new HashSet&#60;String&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_106'/>
+106
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_106'>6</a>
+<span>
+1. getContextLabels : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getContextLabels : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getContextLabels : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getContextLabels : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getContextLabels : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getContextLabels : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (final Pair&#60;String, Object&#62; pair : contextValues) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_107'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            labels.add(pair.getKey());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_108'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_109'/>
+109
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_109'>6</a>
+<span>
+1. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getContextLabels : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return labels;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@inheritDoc}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_114'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_115'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public List&#60;Pair&#60;String, Object&#62;&#62; getContextEntries() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_117'/>
+117
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_117'>6</a>
+<span>
+1. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getContextEntries : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return contextValues;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_120'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_121'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Builds the message containing the contextual information.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_122'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param baseMessage  the base exception message &#60;b&#62;without&#60;/b&#62; context information appended</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the exception message &#60;b&#62;with&#60;/b&#62; context information appended, never null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_125'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_127'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String getFormattedExceptionMessage(final String baseMessage){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_128'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final StringBuilder buffer = new StringBuilder(256);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_129'/>
+129
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_129'>6</a>
+<span>
+1. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+3. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+4. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+5. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+6. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (baseMessage != null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_130'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            buffer.append(baseMessage);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_131'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_133'/>
+133
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_133'>12</a>
+<span>
+1. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+6. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+7. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+8. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+9. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+10. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+11. getFormattedExceptionMessage : changed conditional boundary &rarr; KILLED<br/>
+12. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (contextValues.size() &#62; 0) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_134'/>
+134
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_134'>12</a>
+<span>
+1. getFormattedExceptionMessage : changed conditional boundary &rarr; NOT_SCHEDULED<br/>
+2. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getFormattedExceptionMessage : changed conditional boundary &rarr; SURVIVED<br/>
+4. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getFormattedExceptionMessage : changed conditional boundary &rarr; SURVIVED<br/>
+6. getFormattedExceptionMessage : negated conditional &rarr; SURVIVED<br/>
+7. getFormattedExceptionMessage : changed conditional boundary &rarr; SURVIVED<br/>
+8. getFormattedExceptionMessage : negated conditional &rarr; SURVIVED<br/>
+9. getFormattedExceptionMessage : changed conditional boundary &rarr; SURVIVED<br/>
+10. getFormattedExceptionMessage : negated conditional &rarr; SURVIVED<br/>
+11. getFormattedExceptionMessage : changed conditional boundary &rarr; SURVIVED<br/>
+12. getFormattedExceptionMessage : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (buffer.length() &#62; 0) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_135'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(&#39;\n&#39;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_137'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            buffer.append(&#34;Exception Context:\n&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_138'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_139'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            int i = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_140'/>
+140
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_140'>6</a>
+<span>
+1. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getFormattedExceptionMessage : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+6. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            for (final Pair&#60;String, Object&#62; pair : contextValues) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_141'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(&#34;\t[&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_142'/>
+142
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_142'>6</a>
+<span>
+1. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+2. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+3. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+4. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+5. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+6. getFormattedExceptionMessage : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                buffer.append(++i);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_143'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(&#39;:&#39;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_144'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(pair.getKey());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_145'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(&#34;=&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_146'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                final Object value = pair.getValue();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_147'/>
+147
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_147'>6</a>
+<span>
+1. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+2. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+3. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+4. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+5. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+6. getFormattedExceptionMessage : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (value == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_148'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    buffer.append(&#34;null&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_149'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_150'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    String valueStr;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_152'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        valueStr = value.toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_153'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    } catch (final Exception e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_154'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        valueStr = &#34;Exception thrown on toString(): &#34; + ExceptionUtils.getStackTrace(e);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_155'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_156'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    buffer.append(valueStr);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_158'/>
+158
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_158'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                buffer.append(&#34;]\n&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_159'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_160'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            buffer.append(&#34;---------------------------------&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_162'/>
+162
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_162'>6</a>
+<span>
+1. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getFormattedExceptionMessage : mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return buffer.toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_163'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_164'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5724b9c0_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_55'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>addContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::addContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_63'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_65'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_66'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> removed call to java/util/Iterator::remove &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_70'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>setContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::setContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_79'>79</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_79'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_80'>80</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_80'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_84'>84</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_84'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextValues<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextValues to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_92'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_93'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_94'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_97'>97</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_97'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFirstContextValue<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFirstContextValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_106'>106</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_106'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_109'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextLabels<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextLabels to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_117'>117</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_117'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextEntries(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextEntries(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextEntries(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getContextEntries<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextEntries(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getContextEntries to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_129'>129</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_129'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_133'>133</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_133'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>11.<span><b>11</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>12.<span><b>12</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_134'>134</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_134'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>11.<span><b>11</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>12.<span><b>12</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_140'>140</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_140'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_142'>142</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_142'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_147'>147</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_147'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5724b9c0_162'>162</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5724b9c0_162'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getFormattedExceptionMessage<br/><b>Killed by : </b>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest)</span></span> mutated return of Object value for org/apache/commons/lang3/exception/DefaultExceptionContext::getFormattedExceptionMessage to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testGetFirstContextValue(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionThrowable(org.apache.commons.lang3.exception.ContextedExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetFirstContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testGetFirstContextValue(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testContextedExceptionStringThrowable(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testAddContextValue(org.apache.commons.lang3.exception.ContextedExceptionTest) (6 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testContextedException(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testContextedExceptionStringThrowableContext(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testContextedExceptionThrowable(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testJavaSerialization(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testSetContextValue(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testAddContextValue(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (2 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testGetContextEntries(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testContextedExceptionString(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testGetContextLabels(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testSetContextValue(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testNullExceptionPassing(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testRawMessage(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionStringThrowable(org.apache.commons.lang3.exception.ContextedExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextLabels(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testJavaSerialization(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (4 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextEntries(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testNullExceptionPassing(org.apache.commons.lang3.exception.ContextedExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testFormattedExceptionMessageNull(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testGetContextLabels(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testJavaSerialization(org.apache.commons.lang3.exception.ContextedExceptionTest) (6 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testRawMessage(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testGetContextValues(org.apache.commons.lang3.exception.ContextedExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedException(org.apache.commons.lang3.exception.ContextedExceptionTest) (1 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testAddContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testGetContextEntries(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testGetContextValues(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (0 ms)</li><li>org.apache.commons.lang3.exception.DefaultExceptionContextTest.testSetContextValue(org.apache.commons.lang3.exception.DefaultExceptionContextTest) (1 ms)</li><li>org.apache.commons.lang3.exception.ContextedExceptionTest.testContextedExceptionStringThrowableContext(org.apache.commons.lang3.exception.ContextedExceptionTest) (0 ms)</li><li>org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest.testGetContextValues(org.apache.commons.lang3.exception.ContextedRuntimeExceptionTest) (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.11-SNAPSHOT
+
+</body>
+</html>

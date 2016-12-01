@@ -192,7 +192,7 @@ public class MutationCoverage {
     int iteration = 1; boolean firstRun = true; boolean lastRun = false;
 
     this.timings.registerStart(Timings.Stage.RUN_MUTATION_TESTS);
-
+    
     while( true ) {
     	//Ahmad{
 //    	int count = 1;
@@ -245,23 +245,18 @@ public class MutationCoverage {
         mse.selectMutants();
         
         //TODO: when should we finish the execution?
-    	if(lastRun)
+    	if(mse.perRun == 1.00) {
+    		mae.myRun(tus, false, true);
     		break;
+    	}
     	
     	if(firstRun)
     		firstRun = false;
-    	else
-    	{
-    		if(iteration == 6)
-    			lastRun = true;
-    	}
-    	
-    	System.out.println( "********************************************************************************" );
-    	System.out.println( "Mutation Score: " + mse.MSC );
-    	System.out.println( "********************************************************************************" );
     	
     	iteration++;
     }
+    
+    mse.writer.close(); 
     
     this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
     LOG.info("Completed in " + timeSpan(t0));

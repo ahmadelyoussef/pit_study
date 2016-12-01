@@ -64,6 +64,13 @@ public class MutationAnalysisExecutor {
   //Ali{
   public void myRun(final List<MutationAnalysisUnit> testUnits, boolean firstRun, boolean finalRun) 
   {
+	  if(finalRun) 
+	  {
+		  this.executor.shutdown();
+		  signalRunEndToAllListeners(); 
+		  return;
+	  }
+	  
 	  LOG.fine("Running " + testUnits.size() + " units");
 
 	  //Only tell if it's the first run.
@@ -77,40 +84,18 @@ public class MutationAnalysisExecutor {
 		  results.add(this.executor.submit(unit));
 	  }
 
-	  if(finalRun) 
+	  try 
 	  {
-		  this.executor.shutdown();
-
-		  try 
-		  {
-			  processResult(results);
-		  }
-		  catch (InterruptedException e) 
-		  {
-			  throw Unchecked.translateCheckedException(e);
-		  } 
-		  catch (ExecutionException e) 
-		  {
-			  throw Unchecked.translateCheckedException(e);
-		  }
-
-		  signalRunEndToAllListeners(); 
+		  processResult(results);
 	  }
-	  else 
+	  catch (InterruptedException e) 
 	  {
-		  try 
-		  {
-			  processResult(results);
-		  }
-		  catch (InterruptedException e) 
-		  {
-			  throw Unchecked.translateCheckedException(e);
-		  } 
-		  catch (ExecutionException e) 
-		  {
-			  throw Unchecked.translateCheckedException(e);
-		  }		  
-	  }
+		  throw Unchecked.translateCheckedException(e);
+	  } 
+	  catch (ExecutionException e) 
+	  {
+		  throw Unchecked.translateCheckedException(e);
+	  }		  
   }
   //}
 

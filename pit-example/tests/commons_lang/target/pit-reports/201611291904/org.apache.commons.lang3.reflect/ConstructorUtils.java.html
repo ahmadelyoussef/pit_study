@@ -1,0 +1,4695 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>ConstructorUtils.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Licensed to the Apache Software Foundation (ASF) under one or more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * contributor license agreements.  See the NOTICE file distributed with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * this work for additional information regarding copyright ownership.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The ASF licenses this file to You under the Apache License, Version 2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * (the &#34;License&#34;); you may not use this file except in compliance with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *      http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * See the License for the specific language governing permissions and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * limitations under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.apache.commons.lang3.reflect;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.lang.reflect.Constructor;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.lang.reflect.InvocationTargetException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.lang.reflect.Modifier;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.ArrayUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.ClassUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.Validate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;p&#62; Utility reflection methods focused on constructors, modeled after</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * {@link MethodUtils}. &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;h3&#62;Known Limitations&#60;/h3&#62; &#60;h4&#62;Accessing Public Constructors In A Default</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Access Superclass&#60;/h4&#62; &#60;p&#62;There is an issue when invoking {@code public} constructors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * contained in a default access superclass. Reflection correctly locates these</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * constructors and assigns them as {@code public}. However, an</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * {@link IllegalAccessException} is thrown if the constructor is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * invoked.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;p&#62;{@link ConstructorUtils} contains a workaround for this situation: it</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * will attempt to call {@link java.lang.reflect.AccessibleObject#setAccessible(boolean)} on this constructor. If this</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * call succeeds, then the method can be invoked as normal. This call will only</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * succeed when the application has sufficient security privileges. If this call</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * fails then a warning will be logged and the method may fail.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @since 2.5</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class ConstructorUtils {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;ConstructorUtils instances should NOT be constructed in standard</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * programming. Instead, the class should be used as</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@code ConstructorUtils.invokeConstructor(cls, args)}.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This constructor is {@code public} to permit tools that require a JavaBean</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * instance to operate.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ConstructorUtils() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_57'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        super();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_58'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Returns a new instance of the specified class inferring the right constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * from the types of the arguments.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This locates and calls a constructor.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The constructor signature must match the argument types by assignment compatibility.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the type to be constructed</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls  the class to be constructed, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param args  the array of arguments, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return new instance of {@code cls}, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NoSuchMethodException if a matching constructor cannot be found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalAccessException if invocation is not permitted by security</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InvocationTargetException if an error occurs on invocation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InstantiationException if an error occurs on instantiation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #invokeConstructor(java.lang.Class, java.lang.Object[], java.lang.Class[])</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; T invokeConstructor(final Class&#60;T&#62; cls, Object... args)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            InstantiationException {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_82'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        args = ArrayUtils.nullToEmpty(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_83'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Class&#60;?&#62; parameterTypes[] = ClassUtils.toClass(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_84'/>
+84
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_84'>6</a>
+<span>
+1. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+2. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return invokeConstructor(cls, args, parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Returns a new instance of the specified class choosing the right constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * from the list of parameter types.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This locates and calls a constructor.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The constructor signature must match the parameter types by assignment compatibility.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the type to be constructed</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_95'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls  the class to be constructed, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_96'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param args  the array of arguments, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param parameterTypes  the array of parameter types, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_98'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return new instance of {@code cls}, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_99'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NoSuchMethodException if a matching constructor cannot be found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_102'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalAccessException if invocation is not permitted by security</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_103'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InvocationTargetException if an error occurs on invocation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InstantiationException if an error occurs on instantiation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see Constructor#newInstance</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; T invokeConstructor(final Class&#60;T&#62; cls, Object[] args, Class&#60;?&#62;[] parameterTypes)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_108'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_109'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            InstantiationException {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_110'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        args = ArrayUtils.nullToEmpty(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_111'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        parameterTypes = ArrayUtils.nullToEmpty(parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_112'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Constructor&#60;T&#62; ctor = getMatchingAccessibleConstructor(cls, parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_113'/>
+113
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_113'>6</a>
+<span>
+1. invokeConstructor : negated conditional &rarr; KILLED<br/>
+2. invokeConstructor : negated conditional &rarr; KILLED<br/>
+3. invokeConstructor : negated conditional &rarr; KILLED<br/>
+4. invokeConstructor : negated conditional &rarr; KILLED<br/>
+5. invokeConstructor : negated conditional &rarr; KILLED<br/>
+6. invokeConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (ctor == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_114'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>            throw new NoSuchMethodException(</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_115'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>                &#34;No such accessible constructor on object: &#34; + cls.getName());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_117'/>
+117
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_117'>6</a>
+<span>
+1. invokeConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. invokeConstructor : negated conditional &rarr; KILLED<br/>
+3. invokeConstructor : negated conditional &rarr; KILLED<br/>
+4. invokeConstructor : negated conditional &rarr; KILLED<br/>
+5. invokeConstructor : negated conditional &rarr; KILLED<br/>
+6. invokeConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (ctor.isVarArgs()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_118'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            Class&#60;?&#62;[] methodParameterTypes = ctor.getParameterTypes();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_119'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            args = MethodUtils.getVarArgs(args, methodParameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_120'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_121'/>
+121
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_121'>6</a>
+<span>
+1. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. invokeConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return ctor.newInstance(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_122'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_125'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Returns a new instance of the specified class inferring the right constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * from the types of the arguments.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_127'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_128'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This locates and calls a constructor.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_129'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The constructor signature must match the argument types exactly.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_130'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_131'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the type to be constructed</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls the class to be constructed, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_133'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param args the array of arguments, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_134'/>
+134
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_134'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return new instance of {@code cls}, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_135'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_137'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NoSuchMethodException if a matching constructor cannot be found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_138'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalAccessException if invocation is not permitted by security</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_139'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InvocationTargetException if an error occurs on invocation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_140'/>
+140
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_140'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InstantiationException if an error occurs on instantiation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_141'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #invokeExactConstructor(java.lang.Class, java.lang.Object[], java.lang.Class[])</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_142'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_143'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; T invokeExactConstructor(final Class&#60;T&#62; cls, Object... args)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_144'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_145'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            InstantiationException {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_146'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        args = ArrayUtils.nullToEmpty(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_147'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Class&#60;?&#62; parameterTypes[] = ClassUtils.toClass(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_148'/>
+148
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_148'>6</a>
+<span>
+1. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+5. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+6. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return invokeExactConstructor(cls, args, parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_149'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_150'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_152'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Returns a new instance of the specified class choosing the right constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_153'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * from the list of parameter types.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_154'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_155'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This locates and calls a constructor.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_156'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The constructor signature must match the parameter types exactly.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_158'/>
+158
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_158'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the type to be constructed</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_159'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls the class to be constructed, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_160'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param args the array of arguments, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param parameterTypes  the array of parameter types, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_162'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return new instance of &#60;code&#62;cls&#60;/code&#62;, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_163'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_164'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NoSuchMethodException if a matching constructor cannot be found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_166'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws IllegalAccessException if invocation is not permitted by security</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_167'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InvocationTargetException if an error occurs on invocation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_168'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws InstantiationException if an error occurs on instantiation</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_169'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see Constructor#newInstance</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_171'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; T invokeExactConstructor(final Class&#60;T&#62; cls, Object[] args,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_172'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            Class&#60;?&#62;[] parameterTypes) throws NoSuchMethodException, IllegalAccessException,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_173'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            InvocationTargetException, InstantiationException {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_174'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        args = ArrayUtils.nullToEmpty(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_175'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        parameterTypes = ArrayUtils.nullToEmpty(parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_176'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Constructor&#60;T&#62; ctor = getAccessibleConstructor(cls, parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_177'/>
+177
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_177'>6</a>
+<span>
+1. invokeExactConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. invokeExactConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. invokeExactConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. invokeExactConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. invokeExactConstructor : negated conditional &rarr; KILLED<br/>
+6. invokeExactConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (ctor == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_178'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw new NoSuchMethodException(</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_179'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                &#34;No such accessible constructor on object: &#34;+ cls.getName());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_180'/>
+180
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_180'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_181'/>
+181
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_181'>6</a>
+<span>
+1. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. invokeExactConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return ctor.newInstance(args);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_182'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_183'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_184'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //-----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_185'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_186'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Finds a constructor given a class and signature, checking accessibility.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_187'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_188'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This finds the constructor and ensures that it is accessible.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_189'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The constructor signature must match the parameter types exactly.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_190'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_191'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the constructor type</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_192'/>
+192
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_192'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls the class to find a constructor for, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_193'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param parameterTypes the array of parameter types, {@code null} treated as empty</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_194'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the constructor, {@code null} if no matching accessible constructor found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_195'/>
+195
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_195'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see Class#getConstructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_196'/>
+196
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_196'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see #getAccessibleConstructor(java.lang.reflect.Constructor)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_197'/>
+197
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_197'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_198'/>
+198
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_198'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_199'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; Constructor&#60;T&#62; getAccessibleConstructor(final Class&#60;T&#62; cls,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_200'/>
+200
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_200'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            final Class&#60;?&#62;... parameterTypes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_201'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Validate.notNull(cls, &#34;class cannot be null&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_202'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_203'/>
+203
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_203'>6</a>
+<span>
+1. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+5. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            return getAccessibleConstructor(cls.getConstructor(parameterTypes));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_204'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        } catch (final NoSuchMethodException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_205'/>
+205
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_205'>6</a>
+<span>
+1. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+5. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_206'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_207'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_208'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_209'/>
+209
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_209'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_210'/>
+210
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_210'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Checks if the specified constructor is accessible.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_211'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_212'/>
+212
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_212'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This simply ensures that the constructor is accessible.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_213'/>
+213
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_213'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_214'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the constructor type</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_215'/>
+215
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_215'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param ctor  the prototype constructor object, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_216'/>
+216
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_216'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the constructor, {@code null} if no matching accessible constructor found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_217'/>
+217
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_217'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see java.lang.SecurityManager</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_218'/>
+218
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_218'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code ctor} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_219'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_220'/>
+220
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_220'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; Constructor&#60;T&#62; getAccessibleConstructor(final Constructor&#60;T&#62; ctor) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_221'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Validate.notNull(ctor, &#34;constructor cannot be null&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_222'/>
+222
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_222'>6</a>
+<span>
+1. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+6. getAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return MemberUtils.isAccessible(ctor)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_223'/>
+223
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_223'>12</a>
+<span>
+1. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+5. getAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+7. getAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+8. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+9. getAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+10. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+11. getAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+12. getAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                &#38;&#38; isAccessible(ctor.getDeclaringClass()) ? ctor : null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_224'/>
+224
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_224'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_225'/>
+225
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_225'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_226'/>
+226
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_226'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_227'/>
+227
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_227'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;Finds an accessible constructor with compatible parameters.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_228'/>
+228
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_228'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_229'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;This checks all the constructor and finds one with compatible parameters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_230'/>
+230
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_230'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This requires that every parameter is assignable from the given parameter types.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_231'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This is a more flexible search than the normal exact matching algorithm.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_232'/>
+232
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_232'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_233'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;First it checks if there is a constructor matching the exact signature.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_234'/>
+234
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_234'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * If not then all the constructors of the class are checked to see if their</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_235'/>
+235
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_235'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * signatures are assignment-compatible with the parameter types.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_236'/>
+236
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_236'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * The first assignment-compatible matching constructor is returned.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_237'/>
+237
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_237'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_238'/>
+238
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_238'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param &#60;T&#62; the constructor type</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_239'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param cls  the class to find a constructor for, not {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_240'/>
+240
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_240'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param parameterTypes find method with compatible parameters</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_241'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the constructor, null if no matching accessible constructor found</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_242'/>
+242
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_242'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws NullPointerException if {@code cls} is {@code null}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_243'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_244'/>
+244
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_244'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T&#62; Constructor&#60;T&#62; getMatchingAccessibleConstructor(final Class&#60;T&#62; cls,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_245'/>
+245
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_245'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            final Class&#60;?&#62;... parameterTypes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_246'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Validate.notNull(cls, &#34;class cannot be null&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_247'/>
+247
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_247'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // see if we can find the constructor directly</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_248'/>
+248
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_248'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // most of the time this works and it&#39;s much faster</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_249'/>
+249
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_249'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_250'/>
+250
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_250'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            final Constructor&#60;T&#62; ctor = cls.getConstructor(parameterTypes);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_251'/>
+251
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_251'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            MemberUtils.setAccessibleWorkaround(ctor);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_252'/>
+252
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_252'>6</a>
+<span>
+1. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+3. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+4. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            return ctor;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_253'/>
+253
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_253'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        } catch (final NoSuchMethodException e) { // NOPMD - Swallow</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_254'/>
+254
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_254'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_255'/>
+255
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_255'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Constructor&#60;T&#62; result = null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_256'/>
+256
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_256'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        /*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_257'/>
+257
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_257'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>         * (1) Class.getConstructors() is documented to return Constructor&#60;T&#62; so as</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_258'/>
+258
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_258'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>         * long as the array is not subsequently modified, everything&#39;s fine.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_259'/>
+259
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_259'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>         */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_260'/>
+260
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_260'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Constructor&#60;?&#62;[] ctors = cls.getConstructors();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_261'/>
+261
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_261'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_262'/>
+262
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_262'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // return best match:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_263'/>
+263
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_263'>18</a>
+<span>
+1. getMatchingAccessibleConstructor : changed conditional boundary &rarr; NOT_SCHEDULED<br/>
+2. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+7. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+8. getMatchingAccessibleConstructor : changed conditional boundary &rarr; KILLED<br/>
+9. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+10. getMatchingAccessibleConstructor : changed conditional boundary &rarr; KILLED<br/>
+11. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+12. getMatchingAccessibleConstructor : changed conditional boundary &rarr; KILLED<br/>
+13. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+14. getMatchingAccessibleConstructor : changed conditional boundary &rarr; KILLED<br/>
+15. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+16. getMatchingAccessibleConstructor : changed conditional boundary &rarr; KILLED<br/>
+17. getMatchingAccessibleConstructor : Changed increment from 1 to -1 &rarr; KILLED<br/>
+18. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (Constructor&#60;?&#62; ctor : ctors) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_264'/>
+264
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_264'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // compare parameters</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_265'/>
+265
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_265'>6</a>
+<span>
+1. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+4. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+5. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+6. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (MemberUtils.isMatchingConstructor(ctor, parameterTypes)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_266'/>
+266
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_266'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                // get accessible version of constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_267'/>
+267
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_267'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                ctor = getAccessibleConstructor(ctor);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_268'/>
+268
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_268'>6</a>
+<span>
+1. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                if (ctor != null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_269'/>
+269
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_269'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    MemberUtils.setAccessibleWorkaround(ctor);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_270'/>
+270
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_270'>18</a>
+<span>
+1. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+2. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+5. getMatchingAccessibleConstructor : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+7. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+8. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+9. getMatchingAccessibleConstructor : changed conditional boundary &rarr; SURVIVED<br/>
+10. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+11. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+12. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+13. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+14. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+15. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+16. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+17. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+18. getMatchingAccessibleConstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    if (result == null || MemberUtils.compareConstructorFit(ctor, result, parameterTypes) &#60; 0) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_271'/>
+271
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_271'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                        // temporary variable for annotation, see comment above (1)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_272'/>
+272
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_272'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                        @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_273'/>
+273
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_273'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                        final</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_274'/>
+274
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_274'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        Constructor&#60;T&#62; constructor = (Constructor&#60;T&#62;)ctor;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_275'/>
+275
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_275'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        result = constructor;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_276'/>
+276
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_276'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_277'/>
+277
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_277'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_278'/>
+278
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_278'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_279'/>
+279
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_279'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_280'/>
+280
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_280'>6</a>
+<span>
+1. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED<br/>
+2. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+3. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+4. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+5. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+6. getMatchingAccessibleConstructor : mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return result;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_281'/>
+281
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_281'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_282'/>
+282
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_282'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_283'/>
+283
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_283'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_284'/>
+284
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_284'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Learn whether the specified class is generally accessible, i.e. is</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_285'/>
+285
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_285'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * declared in an entirely {@code public} manner.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_286'/>
+286
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_286'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param type to check</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_287'/>
+287
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_287'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return {@code true} if {@code type} and any enclosing classes are</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_288'/>
+288
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_288'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *         {@code public}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_289'/>
+289
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_289'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_290'/>
+290
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_290'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static boolean isAccessible(final Class&#60;?&#62; type) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_291'/>
+291
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_291'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Class&#60;?&#62; cls = type;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_292'/>
+292
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_292'>6</a>
+<span>
+1. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. isAccessible : negated conditional &rarr; KILLED<br/>
+5. isAccessible : negated conditional &rarr; KILLED<br/>
+6. isAccessible : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        while (cls != null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_293'/>
+293
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_293'>6</a>
+<span>
+1. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+2. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+3. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+4. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+5. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+6. isAccessible : negated conditional &rarr; NOT_SCHEDULED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (!Modifier.isPublic(cls.getModifiers())) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_294'/>
+294
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_294'>6</a>
+<span>
+1. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+2. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+3. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+4. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+5. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+6. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_295'/>
+295
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_295'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_296'/>
+296
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_296'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            cls = cls.getEnclosingClass();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_297'/>
+297
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_297'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_298'/>
+298
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_298'>6</a>
+<span>
+1. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+2. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+3. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED<br/>
+4. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+5. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+6. isAccessible : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_299'/>
+299
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_299'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_300'/>
+300
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_300'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@3af1865_301'/>
+301
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_301'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_84'>84</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_84'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_113'>113</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_113'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_117'>117</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_117'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_121'>121</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_121'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_148'>148</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_148'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_177'>177</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_177'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_181'>181</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_181'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>invokeExactConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::invokeExactConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_203'>203</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_203'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_205'>205</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_205'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_222'>222</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_222'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_223'>223</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_223'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>11.<span><b>11</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>12.<span><b>12</b><br/><b>Location : </b>getAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_252'>252</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_252'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_263'>263</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_263'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>11.<span><b>11</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>12.<span><b>12</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>13.<span><b>13</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>14.<span><b>14</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>15.<span><b>15</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>16.<span><b>16</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>17.<span><b>17</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>18.<span><b>18</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_265'>265</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_265'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_268'>268</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_268'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_270'>270</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_270'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='NOT_SCHEDULED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='SURVIVED'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>11.<span><b>11</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>12.<span><b>12</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>13.<span><b>13</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>14.<span><b>14</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>15.<span><b>15</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>16.<span><b>16</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>17.<span><b>17</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>18.<span><b>18</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_280'>280</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_280'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getMatchingAccessibleConstructor<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> mutated return of Object value for org/apache/commons/lang3/reflect/ConstructorUtils::getMatchingAccessibleConstructor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_292'>292</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_292'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_293'>293</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_293'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NOT_SCHEDULED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_294'>294</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_294'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@3af1865_298'>298</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@3af1865_298'/> 
+
+<p class='NOT_SCHEDULED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='NOT_SCHEDULED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NOT_SCHEDULED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>isAccessible<br/><b>Killed by : </b>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (3 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetMatchingAccessibleMethod(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (1 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testVarArgsUnboxing(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (0 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testGetAccessibleConstructorFromDescription(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (0 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (1 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testNullArgument(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (0 ms)</li><li>org.apache.commons.lang3.reflect.ConstructorUtilsTest.testInvokeExactConstructor(org.apache.commons.lang3.reflect.ConstructorUtilsTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.11-SNAPSHOT
+
+</body>
+</html>

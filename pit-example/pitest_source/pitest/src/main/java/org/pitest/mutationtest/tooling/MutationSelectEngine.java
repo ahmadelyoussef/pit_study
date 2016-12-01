@@ -1,15 +1,17 @@
 package org.pitest.mutationtest.tooling;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.RandomAccess;
 import java.util.Set;
-import java.util.TreeMap;
 
 import org.pitest.mutationtest.DetectionStatus;
 import org.pitest.mutationtest.MutationMetaData;
@@ -17,18 +19,20 @@ import org.pitest.mutationtest.MutationResult;
 import org.pitest.mutationtest.build.MutationAnalysisUnit;
 import org.pitest.mutationtest.build.MutationTestUnit;
 import org.pitest.mutationtest.engine.MutationDetails;
+import org.pitest.util.Timings;
 
 public class MutationSelectEngine {
 	
 	private List<MutationAnalysisUnit> allMAU; //obtained from first iteration outside the loop TUS
 	private List<Map<String,Integer>> categPriorityPerMAU;
-	private final int nb_mutations = 6;
+	private int nb_mutations;
 	public Set<String> mutatorNames = new HashSet<String>();
 	
 	//Zak{
 	public int totalMutations = 0;
 	public double perRun = 0;
 	public double MSC = 0;
+    RandomAccessFile writer = null;
 	//}
 
 	public MutationSelectEngine(List<MutationAnalysisUnit> tus){
@@ -48,6 +52,9 @@ public class MutationSelectEngine {
 					categPriorityPerMAU.get(i).put(md.getMutator(), 1);		
 			}
 		}
+		
+		nb_mutations = mutatorNames.size();
+		try{ writer = new RandomAccessFile("Per_MS_report.csv", "rw"); } catch (IOException e) {}
 	}
 	
 	//one mutation per category (mutator)
@@ -63,10 +70,18 @@ public class MutationSelectEngine {
 		
         	//Schedule one type from each mutator type at the beginning.
         	for( String mutator_type : categ_mut ) {
-        		for (MutationDetails md : ((MutationTestUnit) mau).AllMutationState.mutationMap.keySet()) {
-        			if(md.getMutator().equals(mutator_type)) {
-        				((MutationTestUnit) mau).AllMutationState.setStatusForMutation( md, DetectionStatus.NOT_STARTED);
-        				break;
+        		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {
+        			if(mr.getDetails().getMutator().equals(mutator_type)) 
+        			{
+        				if(!mr.getDetails().getTestsInOrder().isEmpty())
+        				{
+        					((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NOT_STARTED);
+        					break;
+        				}
+        				else
+        				{
+        					((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NO_COVERAGE);
+        				}
         			}
         		}
         	}
@@ -135,16 +150,26 @@ public class MutationSelectEngine {
 				if(mr.getStatus() == DetectionStatus.NOT_SCHEDULED) {
 					RanMutants.set(0, RanMutants.get(0)+1);
 				} else {
-					totalRan++;
-					RanMutants.set(0, RanMutants.get(0)+1);
-					RanMutants.set(1, RanMutants.get(1)+1);
+					totalRan++; //for all mutators
+					RanMutants.set(0, RanMutants.get(0)+1);  // total per mutator
+					RanMutants.set(1, RanMutants.get(1)+1);  // ran for each mutator
 				}
 				System.out.println(mr.getDetails().getMutator() + ": " + mr.getStatusDescription());
 
 				PercentageRan.put(mr.getDetails().getMutator(), RanMutants);
-				if(mr.getStatus() == DetectionStatus.KILLED || mr.getStatus() == DetectionStatus.TIMED_OUT) 
+				if(mr.getStatus() == DetectionStatus.KILLED || mr.getStatus() == DetectionStatus.TIMED_OUT ||
+						mr.getStatus() == DetectionStatus.NON_VIABLE) 
 					totalKilled++;
 			}
+			
+			perRun = (double) totalRan / totalMutations;
+			MSC = (double) totalKilled / totalRan;
+			
+	        try {
+				writer.write((String.valueOf(perRun) + "," +  String.valueOf(MSC) + "\n").getBytes());
+			} 
+	        catch (IOException e) { e.printStackTrace(); }
+	        
 			if(totalRan == totalMutations) break;
 			
 			for(String mutator: PercentageRan.keySet()){
@@ -186,8 +211,8 @@ public class MutationSelectEngine {
 		}
 		
 		//Zak{
-		perRun = (double) totalRan / totalMutations;
-		MSC = (double) totalKilled / totalRan;
+//		perRun = (double) totalRan / totalMutations;
+//		MSC = (double) totalKilled / totalRan;
 		//}
 	}
 }
