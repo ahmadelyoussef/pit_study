@@ -19,6 +19,7 @@ import org.pitest.mutationtest.MutationResult;
 import org.pitest.mutationtest.build.MutationAnalysisUnit;
 import org.pitest.mutationtest.build.MutationTestUnit;
 import org.pitest.mutationtest.engine.MutationDetails;
+import org.pitest.mutationtest.engine.MutationIdentifier;
 import org.pitest.util.Timings;
 
 public class MutationSelectEngine {
@@ -27,6 +28,9 @@ public class MutationSelectEngine {
 	private List<Map<String,Integer>> categPriorityPerMAU;
 	private int nb_mutations;
 	public Set<String> mutatorNames = new HashSet<String>();
+	public Set<MutationIdentifier> Mutations_ran = new HashSet<MutationIdentifier>();
+	public int totalRan = 0;
+	public int totalKilled = 0;
 	
 	//Zak{
 	public int totalMutations = 0;
@@ -46,6 +50,8 @@ public class MutationSelectEngine {
 				
 				//Zak{
 				totalMutations++;
+    			if(md.getTestsInOrder().isEmpty())
+					Mutations_ran.add(md.getId());
 				//}
 				
 				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
@@ -59,29 +65,18 @@ public class MutationSelectEngine {
 	
 	//one mutation per category (mutator)
 	public void initialize() {
-        for( MutationAnalysisUnit mau : allMAU ) {
-        	Collection<MutationDetails> MD = ((MutationTestUnit) mau).getMutations();
-
-        	//Find all the mutator types.
-        	Set <String> categ_mut = new HashSet<String>();
-        	for (MutationDetails md: MD){
-        		categ_mut.add(md.getMutator());
-        	}
-		
+		int  i = 0;
+        for( MutationAnalysisUnit mau : allMAU ) {        	
         	//Schedule one type from each mutator type at the beginning.
-        	for( String mutator_type : categ_mut ) {
-        		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {
-        			if(mr.getDetails().getMutator().equals(mutator_type)) 
-        			{
-        				if(!mr.getDetails().getTestsInOrder().isEmpty())
-        				{
-        					((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NOT_STARTED);
-        					break;
-        				}
-        				else
-        				{
-        					((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), DetectionStatus.NO_COVERAGE);
-        				}
+        	for( String mutator_type : mutatorNames ) {
+        		for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) mau).AllMutationState).getMutations()) {        			
+					if(mr.getDetails().getMutator().equals(mutator_type) && 
+							(!mr.getDetails().getTestsInOrder().isEmpty())) 
+					{
+						((MutationTestUnit) mau).AllMutationState.setStatusForMutation( mr.getDetails(), 
+								DetectionStatus.NOT_STARTED);
+						Mutations_ran.add(mr.getDetails().getId());
+						break;
         			}
         		}
         	}
@@ -89,6 +84,7 @@ public class MutationSelectEngine {
 	}
 
 	//TODO: make sure about the KILLED status.
+	//TODO: read again.
 	public List<Map<String, Integer>> constructAlive() {
 		List<Map<String, Integer>> mauAliveSet = new ArrayList<Map<String, Integer>>();
 		for(MutationAnalysisUnit mau : allMAU ) {
@@ -131,16 +127,14 @@ public class MutationSelectEngine {
 		//Update the list of priorities first.
 		update();
 		
-		//Zak{
-		int totalRan = 0;
-		int totalKilled = 0;
-		//} 
+		//Zak{//} 
 		
 		for(int i = 0; i < allMAU.size(); ++i)
 		{
 			//Zak{
 			Map<String, List<Integer>> PercentageRan = new HashMap<String, List<Integer>>();
-			for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
+			for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) 
+			{
 				List<Integer> RanMutants = new ArrayList<Integer>();
 				if(PercentageRan.get(mr.getDetails().getMutator()) == null) {
 					RanMutants = Arrays.asList(0,0);
@@ -150,16 +144,23 @@ public class MutationSelectEngine {
 				if(mr.getStatus() == DetectionStatus.NOT_SCHEDULED) {
 					RanMutants.set(0, RanMutants.get(0)+1);
 				} else {
-					totalRan++; //for all mutators
 					RanMutants.set(0, RanMutants.get(0)+1);  // total per mutator
 					RanMutants.set(1, RanMutants.get(1)+1);  // ran for each mutator
 				}
-				System.out.println(mr.getDetails().getMutator() + ": " + mr.getStatusDescription());
-
+				
+				// System.out.println(mr.getDetails().getMutator() + ": " + mr.getStatusDescription());
 				PercentageRan.put(mr.getDetails().getMutator(), RanMutants);
-				if(mr.getStatus() == DetectionStatus.KILLED || mr.getStatus() == DetectionStatus.TIMED_OUT ||
-						mr.getStatus() == DetectionStatus.NON_VIABLE) 
-					totalKilled++;
+				
+				//Look if the id is in the current scheduled list.
+				//if it is then consider it as the total run.
+				if (Mutations_ran.contains(mr.getDetails().getId())) 
+				{
+					totalRan++; //for all mutators
+					if(mr.getStatus() == DetectionStatus.KILLED || mr.getStatus() == DetectionStatus.TIMED_OUT ||
+							mr.getStatus() == DetectionStatus.NON_VIABLE) 
+						totalKilled++;
+					Mutations_ran.remove(mr.getDetails().getId());
+				}
 			}
 			
 			perRun = (double) totalRan / totalMutations;
@@ -200,6 +201,7 @@ public class MutationSelectEngine {
 					for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
 						if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
 							((MutationTestUnit) allMAU.get(i)).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
+        					Mutations_ran.add(mr.getDetails().getId());
 							if( nextBudget.get(mutator_type).equals( 1 ))
 								break;
 							else
@@ -209,10 +211,5 @@ public class MutationSelectEngine {
 				}
 			}
 		}
-		
-		//Zak{
-//		perRun = (double) totalRan / totalMutations;
-//		MSC = (double) totalKilled / totalRan;
-		//}
 	}
 }
