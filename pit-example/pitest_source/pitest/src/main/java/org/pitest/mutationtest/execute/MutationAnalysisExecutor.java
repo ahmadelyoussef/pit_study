@@ -23,8 +23,7 @@ public class MutationAnalysisExecutor {
 
   private static final Logger                LOG = Log.getLogger();
 
-  //final
-  private List<MutationResultListener> listeners;
+  private final List<MutationResultListener> listeners;
   public final ThreadPoolExecutor           executor;
 
   public MutationAnalysisExecutor(int numberOfThreads,
@@ -106,8 +105,6 @@ public class MutationAnalysisExecutor {
 		  catch (ExecutionException e) { throw Unchecked.translateCheckedException(e); }
 	  }
   }
-  
-  public void ResetListeners(List<MutationResultListener> nl) {this.listeners = nl;}
   //}
 
   private void processResult(List<Future<MutationMetaData>> results)

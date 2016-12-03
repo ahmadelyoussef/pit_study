@@ -195,9 +195,6 @@ public class MutationCoverage {
     while( true ) {
     	//RUN
     	mae.myRun(tus, firstRun, lastRun);
-    	
-    	//test
-    	mae.ResetListeners(createConfig(t0, coverageData, stats, engine));
 		
     	this.timings.registerEnd(Timings.Stage.RUN_MUTATION_TESTS);
         printStats(stats);
