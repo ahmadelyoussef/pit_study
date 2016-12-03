@@ -49,9 +49,10 @@ public class MutationSelectEngine {
 				mutatorNames.add(md.getMutator());
 				
 				//Zak{
-				totalMutations++;
-    			if(md.getTestsInOrder().isEmpty())
-					Mutations_ran.add(md.getId());
+				if(!md.getTestsInOrder().isEmpty())
+					totalMutations++;
+    			
+					//Mutations_ran.add(md.getId());
 				//}
 				
 				if(categPriorityPerMAU.get(i).get(md.getMutator()) == null)
@@ -199,7 +200,8 @@ public class MutationSelectEngine {
 					if(nextBudget.get(mutator_type).equals( 0 ))
 						continue;
 					for (MutationResult mr : MutationTestUnit.reportResults(((MutationTestUnit) allMAU.get(i)).AllMutationState).getMutations()) {
-						if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED)) {
+						if(mr.getDetails().getMutator().equals(mutator_type) && (mr.getStatus() == DetectionStatus.NOT_SCHEDULED) 
+								&& (!mr.getDetails().getTestsInOrder().isEmpty())) {
 							((MutationTestUnit) allMAU.get(i)).AllMutationState.setStatusForMutation(mr.getDetails(), DetectionStatus.NOT_STARTED);
         					Mutations_ran.add(mr.getDetails().getId());
 							if( nextBudget.get(mutator_type).equals( 1 ))
