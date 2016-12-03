@@ -71,7 +71,6 @@ public class MutationTestUnit implements MutationAnalysisUnit {
 	  //    mutations.markUncoveredMutations();
 	  //    runTestsInSeperateProcess(mutations);
 	  //    return reportResults(mutations);
-	 
 	  AllMutationState.markUncoveredMutations();
 	  runTestsInSeperateProcess(AllMutationState);
 	  return reportResults(AllMutationState);

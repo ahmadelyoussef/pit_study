@@ -2,17 +2,22 @@ package org.pitest.mutationtest.statistics;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.pitest.functional.F;
 import org.pitest.functional.F2;
 import org.pitest.functional.FCollection;
 import org.pitest.functional.SideEffect1;
+import org.pitest.mutationtest.DetectionStatus;
 import org.pitest.mutationtest.MutationResult;
+import org.pitest.mutationtest.engine.MutationIdentifier;
 
 class MutationStatisticsPrecursor {
   private final Map<String, ScorePrecursor> mutatorTotalMap  = new HashMap<String, ScorePrecursor>();
   private long                              numberOfTestsRun = 0;
+  private Set<MutationIdentifier> recorded = new HashSet<MutationIdentifier>();
 
   public void registerResults(final Collection<MutationResult> results) {
     FCollection.forEach(results, register());
@@ -22,19 +27,25 @@ class MutationStatisticsPrecursor {
     return new SideEffect1<MutationResult>() {
 
       @Override
-      public void apply(final MutationResult mr) {
-        MutationStatisticsPrecursor.this.numberOfTestsRun = MutationStatisticsPrecursor.this.numberOfTestsRun
-            + mr.getNumberOfTestsRun();
-        final String key = mr.getDetails().getId().getMutator();
-        ScorePrecursor total = MutationStatisticsPrecursor.this.mutatorTotalMap
-            .get(key);
-        if (total == null) {
-          total = new ScorePrecursor(key);
-          MutationStatisticsPrecursor.this.mutatorTotalMap.put(key, total);
-        }
-        total.registerResult(mr.getStatus());
+      public void apply(final MutationResult mr) 
+      {
+    	  if((mr.getStatus() != DetectionStatus.NOT_SCHEDULED) && (!recorded.contains(mr.getDetails().getId())) )
+    	  {
+    		  recorded.add(mr.getDetails().getId());
+    		  
+    		  MutationStatisticsPrecursor.this.numberOfTestsRun = MutationStatisticsPrecursor.this.numberOfTestsRun
+    				  + mr.getNumberOfTestsRun();
+    		  final String key = mr.getDetails().getId().getMutator();
+    		  ScorePrecursor total = MutationStatisticsPrecursor.this.mutatorTotalMap
+    				  .get(key);
+    		  if (total == null) 
+    		  {
+    			  total = new ScorePrecursor(key);
+    			  MutationStatisticsPrecursor.this.mutatorTotalMap.put(key, total);
+    		  }
+    		  total.registerResult(mr.getStatus());
+    	  }
       }
-
     };
   }
 

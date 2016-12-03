@@ -23,7 +23,8 @@ public class MutationAnalysisExecutor {
 
   private static final Logger                LOG = Log.getLogger();
 
-  private final List<MutationResultListener> listeners;
+  //final
+  private List<MutationResultListener> listeners;
   public final ThreadPoolExecutor           executor;
 
   public MutationAnalysisExecutor(int numberOfThreads,
@@ -64,13 +65,6 @@ public class MutationAnalysisExecutor {
   //Ali{
   public void myRun(final List<MutationAnalysisUnit> testUnits, boolean firstRun, boolean finalRun) 
   {
-	  if(finalRun) 
-	  {
-		  this.executor.shutdown();
-		  signalRunEndToAllListeners(); 
-		  return;
-	  }
-	  
 	  LOG.fine("Running " + testUnits.size() + " units");
 
 	  //Only tell if it's the first run.
@@ -84,19 +78,36 @@ public class MutationAnalysisExecutor {
 		  results.add(this.executor.submit(unit));
 	  }
 
-	  try 
+	  //for final run
+	  if( finalRun )
 	  {
-		  processResult(results);
+		  this.executor.shutdown();
+		  try 
+		  {
+			  processResult(results);
+		  }
+		  catch (InterruptedException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  } 
+		  catch (ExecutionException e) 
+		  {
+			  throw Unchecked.translateCheckedException(e);
+		  }
+		  signalRunEndToAllListeners();
 	  }
-	  catch (InterruptedException e) 
+	  else
 	  {
-		  throw Unchecked.translateCheckedException(e);
-	  } 
-	  catch (ExecutionException e) 
-	  {
-		  throw Unchecked.translateCheckedException(e);
-	  }		  
+		  try
+		  {
+			  for (Future<MutationMetaData> f : results) { processResult(results); }
+		  }
+		  catch (InterruptedException e) { throw Unchecked.translateCheckedException(e); } 
+		  catch (ExecutionException e) { throw Unchecked.translateCheckedException(e); }
+	  }
   }
+  
+  public void ResetListeners(List<MutationResultListener> nl) {this.listeners = nl;}
   //}
 
   private void processResult(List<Future<MutationMetaData>> results)
