@@ -1,0 +1,4676 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>DefaultNavigator.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Header$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Revision$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Date$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * ====================================================================</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright 2000-2002 bob mcwhirter &#38; James Strachan.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * All rights reserved.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Redistribution and use in source and binary forms, with or without</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * modification, are permitted provided that the following conditions are</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * met:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Redistributions of source code must retain the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     notice, this list of conditions and the following disclaimer.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Redistributions in binary form must reproduce the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     notice, this list of conditions and the following disclaimer in the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     documentation and/or other materials provided with the distribution.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Neither the name of the Jaxen Project nor the names of its</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     contributors may be used to endorse or promote products derived </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     from this software without specific prior written permission.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#34;AS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * ====================================================================</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This software consists of voluntary contributions made by many </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * individuals on behalf of the Jaxen Project and was originally </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * created by bob mcwhirter &#60;bob@werken.com&#62; and </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * James Strachan &#60;jstrachan@apache.org&#62;.  For more information on the </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Jaxen Project, please see &#60;http://www.jaxen.org/&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Id$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.jaxen;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Iterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.pattern.Pattern;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.AncestorAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.AncestorOrSelfAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.DescendantAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.DescendantOrSelfAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.FollowingAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.FollowingSiblingAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.PrecedingAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.PrecedingSiblingAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.util.SelfAxisIterator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/** Default implementation of {@link Navigator}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  This implementation is an abstract class, since</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  some required operations cannot be implemented without</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  additional knowledge of the object model.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  When possible, default method implementations build</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  upon each other, to reduce the number of methods required</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  to be implemented for each object model.  All methods,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  of course, may be overridden, to provide more-efficient</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  implementations.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @author bob mcwhirter (bob@werken.com)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @author Erwin Bolwidt (ejb@klomp.org)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_84'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public abstract class DefaultNavigator implements Navigator</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>{</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Throws &#60;code&#62;UnsupportedAxisException&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param contextNode</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return never returns</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws UnsupportedAxisException always</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getChildAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_95'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedAxisException(&#34;child&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_96'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_98'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /* (non-Javadoc)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_99'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see org.jaxen.Navigator#getDescendantAxisIterator(java.lang.Object)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getDescendantAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_102'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_103'/>
+103
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_103'>1</a>
+<span>
+1. getDescendantAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getDescendantAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new DescendantAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                           this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Throws &#60;code&#62;UnsupportedAxisException&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_108'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_109'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param  contextNode</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return never returns</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getParentAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_114'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_115'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedAxisException(&#34;parent&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_117'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getAncestorAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_120'/>
+120
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_120'>1</a>
+<span>
+1. getAncestorAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getAncestorAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new AncestorAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_121'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                         this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_122'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_125'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getFollowingSiblingAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_127'/>
+127
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_127'>1</a>
+<span>
+1. getFollowingSiblingAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getFollowingSiblingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new FollowingSiblingAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_128'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                 this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_129'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_130'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_131'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getPrecedingSiblingAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_133'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_134'/>
+134
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_134'>1</a>
+<span>
+1. getPrecedingSiblingAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getPrecedingSiblingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new PrecedingSiblingAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_135'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                 this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_137'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_138'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getFollowingAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_139'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_140'/>
+140
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_140'>1</a>
+<span>
+1. getFollowingAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getFollowingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new FollowingAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_141'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                          this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_142'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_143'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // throw new UnsupportedAxisException(&#34;following&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_144'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_145'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_146'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_147'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getPrecedingAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_148'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_149'/>
+149
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_149'>1</a>
+<span>
+1. getPrecedingAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getPrecedingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new PrecedingAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_150'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                         this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_152'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // throw new UnsupportedAxisException(&#34;preceding&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_153'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_154'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_155'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Throws &#60;code&#62;UnsupportedAxisException&#60;/code&#62;. Subclasses that </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_156'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * support the attribute axis must override this method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_158'/>
+158
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_158'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param contextNode</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_159'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return never returns</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_160'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_162'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getAttributeAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_163'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_164'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedAxisException(&#34;attribute&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_166'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_167'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Throws &#60;code&#62;UnsupportedAxisException&#60;/code&#62;. Subclasses that </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_168'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * support the namespace axis must override this method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_169'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param contextNode</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_171'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return never returns</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_172'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_173'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_174'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getNamespaceAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_175'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_176'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedAxisException(&#34;namespace&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_177'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_178'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_179'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getSelfAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_180'/>
+180
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_180'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_181'/>
+181
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_181'>1</a>
+<span>
+1. getSelfAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new SelfAxisIterator( contextNode );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_182'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_183'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_184'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getDescendantOrSelfAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_185'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_186'/>
+186
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_186'>1</a>
+<span>
+1. getDescendantOrSelfAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getDescendantOrSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new DescendantOrSelfAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_187'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                 this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_188'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_189'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_190'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Iterator getAncestorOrSelfAxisIterator(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_191'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_192'/>
+192
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_192'>1</a>
+<span>
+1. getAncestorOrSelfAxisIterator : mutated return of Object value for org/jaxen/DefaultNavigator::getAncestorOrSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new AncestorOrSelfAxisIterator( contextNode,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_193'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                               this );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_194'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_195'/>
+195
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_195'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_196'/>
+196
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_196'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getDocumentNode(Object contextNode)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_197'/>
+197
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_197'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_198'/>
+198
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_198'>1</a>
+<span>
+1. getDocumentNode : mutated return of Object value for org/jaxen/DefaultNavigator::getDocumentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_199'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_200'/>
+200
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_200'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_201'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String translateNamespacePrefixToUri(String prefix, Object element)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_202'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_203'/>
+203
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_203'>1</a>
+<span>
+1. translateNamespacePrefixToUri : mutated return of Object value for org/jaxen/DefaultNavigator::translateNamespacePrefixToUri to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_204'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_205'/>
+205
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_205'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_206'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String getProcessingInstructionTarget(Object obj)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_207'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_208'/>
+208
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_208'>1</a>
+<span>
+1. getProcessingInstructionTarget : mutated return of Object value for org/jaxen/DefaultNavigator::getProcessingInstructionTarget to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_209'/>
+209
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_209'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_210'/>
+210
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_210'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_211'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String getProcessingInstructionData(Object obj)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_212'/>
+212
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_212'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_213'/>
+213
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_213'>1</a>
+<span>
+1. getProcessingInstructionData : mutated return of Object value for org/jaxen/DefaultNavigator::getProcessingInstructionData to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_214'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_215'/>
+215
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_215'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_216'/>
+216
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_216'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public short getNodeType(Object node)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_217'/>
+217
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_217'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_218'/>
+218
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_218'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( isElement(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_219'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_220'/>
+220
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_220'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.ELEMENT_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_221'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_222'/>
+222
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_222'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isAttribute(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_223'/>
+223
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_223'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_224'/>
+224
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_224'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.ATTRIBUTE_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_225'/>
+225
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_225'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_226'/>
+226
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_226'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isText(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_227'/>
+227
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_227'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_228'/>
+228
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_228'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.TEXT_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_229'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_230'/>
+230
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_230'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isComment(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_231'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_232'/>
+232
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_232'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.COMMENT_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_233'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_234'/>
+234
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_234'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isDocument(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_235'/>
+235
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_235'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_236'/>
+236
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_236'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.DOCUMENT_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_237'/>
+237
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_237'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_238'/>
+238
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_238'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isProcessingInstruction(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_239'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_240'/>
+240
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_240'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.PROCESSING_INSTRUCTION_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_241'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_242'/>
+242
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_242'>1</a>
+<span>
+1. getNodeType : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        else if ( isNamespace(node) ) </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_243'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_244'/>
+244
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_244'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return Pattern.NAMESPACE_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_245'/>
+245
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_245'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_246'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        else {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_247'/>
+247
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_247'>1</a>
+<span>
+1. getNodeType : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Pattern.UNKNOWN_NODE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_248'/>
+248
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_248'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_249'/>
+249
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_249'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_250'/>
+250
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_250'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_251'/>
+251
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_251'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_252'/>
+252
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_252'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Default inefficient implementation. Subclasses </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_253'/>
+253
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_253'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * should override this method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_254'/>
+254
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_254'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_255'/>
+255
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_255'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param contextNode   the node whose parent to return</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_256'/>
+256
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_256'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the parent node</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_257'/>
+257
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_257'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws UnsupportedAxisException if the parent axis is not supported</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_258'/>
+258
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_258'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_259'/>
+259
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_259'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getParentNode(Object contextNode) throws UnsupportedAxisException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_260'/>
+260
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_260'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_261'/>
+261
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_261'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Iterator iter = getParentAxisIterator( contextNode );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_262'/>
+262
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_262'>2</a>
+<span>
+1. getParentNode : negated conditional &rarr; KILLED<br/>
+2. getParentNode : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( iter != null &#38;&#38; iter.hasNext() )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_263'/>
+263
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_263'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_264'/>
+264
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_264'>1</a>
+<span>
+1. getParentNode : mutated return of Object value for org/jaxen/DefaultNavigator::getParentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return iter.next();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_265'/>
+265
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_265'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_266'/>
+266
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_266'>1</a>
+<span>
+1. getParentNode : mutated return of Object value for org/jaxen/DefaultNavigator::getParentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_267'/>
+267
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_267'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_268'/>
+268
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_268'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_269'/>
+269
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_269'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_270'/>
+270
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_270'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  Default implementation that always returns null. Override in subclass</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_271'/>
+271
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_271'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  if the subclass can load documents. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_272'/>
+272
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_272'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_273'/>
+273
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_273'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param url the URL of the document to load</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_274'/>
+274
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_274'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_275'/>
+275
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_275'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_276'/>
+276
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_276'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws FunctionCallException if an error occurs while loading the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_277'/>
+277
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_277'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *    URL; e.g. an I/O error or the document is malformed</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_278'/>
+278
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_278'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_279'/>
+279
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_279'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getDocument(String url) throws FunctionCallException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_280'/>
+280
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_280'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_281'/>
+281
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_281'>1</a>
+<span>
+1. getDocument : mutated return of Object value for org/jaxen/DefaultNavigator::getDocument to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_282'/>
+282
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_282'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_283'/>
+283
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_283'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_284'/>
+284
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_284'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_285'/>
+285
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_285'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  Default implementation that cannot find elements. Override in subclass</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_286'/>
+286
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_286'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  if subclass does know about attribute types.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_287'/>
+287
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_287'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_288'/>
+288
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_288'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param contextNode   a node from the document in which to look for the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_289'/>
+289
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_289'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *                       id</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_290'/>
+290
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_290'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param elementId   id to look for</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_291'/>
+291
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_291'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_292'/>
+292
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_292'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return   null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_293'/>
+293
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_293'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_294'/>
+294
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_294'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getElementById(Object contextNode, String elementId)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_295'/>
+295
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_295'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_296'/>
+296
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_296'>1</a>
+<span>
+1. getElementById : mutated return of Object value for org/jaxen/DefaultNavigator::getElementById to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_297'/>
+297
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_297'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_298'/>
+298
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_298'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@44f338ec_299'/>
+299
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_299'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_103'>103</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_103'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getDescendantAxisIterator<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testDescendantAxis(org.jaxen.test.BaseXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getDescendantAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_120'>120</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_120'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAncestorAxisIterator<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testAncestorAxis(org.jaxen.test.BaseXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getAncestorAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_127'>127</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_127'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFollowingSiblingAxisIterator<br/><b>Killed by : </b>org.jaxen.test.DOM4JXPathTest.testSelection(org.jaxen.test.DOM4JXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getFollowingSiblingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_134'>134</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_134'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPrecedingSiblingAxisIterator<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testid54168(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getPrecedingSiblingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_140'>140</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_140'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFollowingAxisIterator<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testid54278(org.jaxen.test.JDOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getFollowingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_149'>149</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_149'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPrecedingAxisIterator<br/><b>Killed by : </b>org.jaxen.test.DOMXPathTest.testPrecedingAxisInDocumentOrder(org.jaxen.test.DOMXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getPrecedingAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_181'>181</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_181'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSelfAxisIterator<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testAllNodesQuery(org.jaxen.test.BaseXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_186'>186</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_186'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getDescendantOrSelfAxisIterator<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testConcurrentModification(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getDescendantOrSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_192'>192</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_192'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getAncestorOrSelfAxisIterator<br/><b>Killed by : </b>org.jaxen.test.PrecedingAxisIteratorTest.testNoInfiniteLoops(org.jaxen.test.PrecedingAxisIteratorTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getAncestorOrSelfAxisIterator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_198'>198</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_198'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getDocumentNode<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getDocumentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_203'>203</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_203'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>translateNamespacePrefixToUri<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::translateNamespacePrefixToUri to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_208'>208</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_208'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getProcessingInstructionTarget<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getProcessingInstructionTarget to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_213'>213</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_213'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getProcessingInstructionData<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getProcessingInstructionData to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_218'>218</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_218'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_220'>220</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_220'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_222'>222</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_222'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_224'>224</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_224'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_226'>226</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_226'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_228'>228</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_228'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_230'>230</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_230'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_232'>232</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_232'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_234'>234</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_234'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_236'>236</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_236'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_238'>238</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_238'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_240'>240</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_240'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_242'>242</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_242'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_244'>244</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_244'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_247'>247</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_247'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeType<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_262'>262</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_262'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getParentNode<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getParentNode<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_264'>264</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_264'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getParentNode<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getParentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_266'>266</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_266'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getParentNode<br/><b>Killed by : </b>org.jaxen.test.JDOMXPathTest.testSelection(org.jaxen.test.JDOMXPathTest)</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getParentNode to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_281'>281</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_281'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getDocument<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getDocument to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@44f338ec_296'>296</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@44f338ec_296'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getElementById<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/jaxen/DefaultNavigator::getElementById to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.jaxen.test.DOMNavigatorTest.testPositioning(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54156(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54145(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid53992(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54266(org.jaxen.test.XOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54614(org.jaxen.test.XOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodeTypes(org.jaxen.test.DOM4JNavigatorTest) (8 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsNumberNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodeTypes(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testSelection(org.jaxen.test.DOM4JXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54168(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.PrecedingAxisIteratorTest.testRemove(org.jaxen.test.PrecedingAxisIteratorTest) (1 ms)</li><li>org.jaxen.test.IdTest.testFindMultipleElementsByMultipleIDs(org.jaxen.test.IdTest) (2 ms)</li><li>org.jaxen.test.XOMXPathTest.testSelection(org.jaxen.test.XOMXPathTest) (1 ms)</li><li>org.jaxen.test.NumberTest.testNumberFunctionOperatesOnFirstNodeInDocumentOrder(org.jaxen.test.NumberTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BooleanTest.testNonEmptyNodeSetsAreTrue(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54932(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testGetNodeType(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54932(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen24(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunction(org.jaxen.test.XOMNavigatorTest) (60 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testConcurrentModification(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributesAndChildren(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodeTypes(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfAttrBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen24(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid53992(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.LangTest.testHyphenRequiredAtEnd(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54298(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPositioning(org.jaxen.test.DOM4JNavigatorTest) (13 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameWithTwoArguments(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54570(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsStringNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorFollowedByChildren(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.DOMXPathTest.testUpdateDOMNodesReturnedBySelectNodes(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testUnionofNodesAndNonNodes(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelfAxisWithNodeTestCanReturnNonPrincipalNodeType(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54467(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testLangFunction(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54168(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen24(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54467(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testMultipleAttributesOnElement(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54156(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen3dupe(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest) (6 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54032(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54266(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsBooleanNodeset2(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54032(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.XOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54278(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.DOM4JXPathTest) (0 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54932(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNothing(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodeTypes(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.PrecedingAxisIteratorTest.testNoInfiniteLoops(org.jaxen.test.PrecedingAxisIteratorTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunction(org.jaxen.test.JDOMNavigatorTest) (36 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.XOMNavigatorTest) (45 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54145(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54197(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.JDOMNavigatorTest) (68 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.ExtensionFunctionTest.testRegisterExtensionFunction(org.jaxen.test.ExtensionFunctionTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.XOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.UnresolvableExceptionTest.testUnresolvableVariable(org.jaxen.test.UnresolvableExceptionTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testXMLNamespaceAttributeOrderOnAncestorAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunctionMore(org.jaxen.test.DOM4JNavigatorTest) (40 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen24(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfNodesWithNonNodes(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testAbbreviatedDoubleSlashAxis(org.jaxen.test.BaseXPathTest) (16 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen58(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.NamespaceTest.testNumberOfNamespaceNodes(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54197(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54082(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testVariableWithNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromCommentInARelationalExpression(org.jaxen.test.DOMXPathTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54467(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsStringNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54467(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testLangFunction(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsTwoNodesets(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionAppliedToNonElement(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testTextNodes(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunctionMore(org.jaxen.test.XOMNavigatorTest) (31 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54032(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54266(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.DOM4JNavigatorTest) (53 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfEmptyNodeSetWithNonNodes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testTextNodes(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryIntrinsicNamespaceOfAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54298(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantOrSelfAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54298(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.NameTest.testNameWithTwoArguments(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testLangFunction(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen3dupe(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.JDOMNavigatorTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes2(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54032(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid53992(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen58(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsBooleanNodeset2(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54197(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54145(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54278(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen53Text(org.jaxen.test.JDOMXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMXPathTest.testNamespaceNodesAreInherited(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrincipalNodeTypeOfSelfAxisIsElement(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithAttributes(org.jaxen.test.BaseXPathTest) (11 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54614(org.jaxen.test.DOM4JNavigatorTest) (20 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testTextNodes(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorOrSelfAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54298(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54082(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionUsesDocumentOrder(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAttributeNodesOnParentComeBeforeNamespaceNodesInChildInDocumentOrder(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54180(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testGetNodeType(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid53992(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54570(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.LastTest.testLastFunction(org.jaxen.test.LastTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPositioning(org.jaxen.test.XOMNavigatorTest) (11 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testElementWithoutNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromProcessingInstructionInARelationalExpression(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNonEmptyNodeSet(org.jaxen.test.LangTest) (2 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsBooleanNodeset1(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunction(org.jaxen.test.DOMNavigatorTest) (152 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.XOMNavigatorTest) (12 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testGetNodeType(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsEmptyNodeSet(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54156(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsBooleanNodeset1(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54278(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen3dupe(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54082(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testSelection(org.jaxen.test.JDOMXPathTest) (2 ms)</li><li>org.jaxen.test.LastTest.testLastFunctionAllowsNoArguments(org.jaxen.test.LastTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromTextInARelationalExpression(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54614(org.jaxen.test.JDOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPositioning(org.jaxen.test.JDOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54180(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunctionMore(org.jaxen.test.DOMNavigatorTest) (56 ms)</li><li>org.jaxen.test.DOMXPathTest.testTimSort(org.jaxen.test.DOMXPathTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen3dupe(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testInconsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54082(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen58(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsSubcode(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54266(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsNumberNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54932(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOM4JNavigatorTest) (107 ms)</li><li>org.jaxen.test.DOMXPathTest.testFunctionWithNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testEvaluateWithMultiNodeAnswer(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54156(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsString(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.JDOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen58(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54614(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.LangTest.testLangFunction(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54853(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMXPathTest.testJaxen22(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNumber(org.jaxen.test.LangTest) (2 ms)</li><li>org.jaxen.test.EqualsTest.testOlander(org.jaxen.test.EqualsTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisInDocumentOrder(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.StringTest.testStringFunctionOperatesOnFirstNodeInDocumentOrder(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54180(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54570(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54853(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithNamespaceNodes(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsTwoNodesets(org.jaxen.test.NodesetEqualityTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54853(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testAllNodesQuery(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunctionMore(org.jaxen.test.JDOMNavigatorTest) (29 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunction(org.jaxen.test.DOM4JNavigatorTest) (62 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54853(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testDuplicateNodes(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.BooleanTest.testEmptyNodeSetsAreFalse(org.jaxen.test.BooleanTest) (2 ms)</li><li>org.jaxen.test.JavaBeanNavigatorTest.testSomething(org.jaxen.test.JavaBeanNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOMXPathTest.testAttributeNodesDontHaveChildren(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOM4JNavigatorTest) (11 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testGetNodeType(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMXPathTest.testConsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.0
+
+</body>
+</html>

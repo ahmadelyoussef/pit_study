@@ -1,0 +1,191 @@
+Running ./tests/javapoet ...
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JavaPoet 1.9.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ javapoet ---
+[INFO] Deleting /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.611 s
+[INFO] Finished at: 2016-12-04T18:24:35-06:00
+[INFO] Final Memory: 7M/155M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JavaPoet 1.9.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ javapoet ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ahmad/git/pit_study/pit-example/tests/javapoet/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ahmad/git/pit_study/pit-example/tests/javapoet/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ javapoet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ javapoet ---
+[INFO] Building jar: /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target/javapoet-1.9.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:checkstyle (default) @ javapoet ---
+[INFO] Starting audit...
+Audit done.
+[WARNING] Unable to locate Source XRef to link to - DISABLED
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ javapoet ---
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target/javapoet-1.9.0-SNAPSHOT.jar to /var/root/.m2/repository/com/squareup/javapoet/1.9.0-SNAPSHOT/javapoet-1.9.0-SNAPSHOT.jar
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/javapoet/pom.xml to /var/root/.m2/repository/com/squareup/javapoet/1.9.0-SNAPSHOT/javapoet-1.9.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.646 s
+[INFO] Finished at: 2016-12-04T18:24:49-06:00
+[INFO] Final Memory: 28M/201M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JavaPoet 1.9.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- pitest-maven:1.1.0:mutationCoverage (default-cli) @ javapoet ---
+[INFO] Found plugin : Default csv report plugin
+[INFO] Found plugin : Default xml report plugin
+[INFO] Found plugin : Default html report plugin
+[INFO] Found plugin : Default limit mutations plugin
+[INFO] Found shared classpath plugin : Default mutation engine
+6:24:52 PM PIT >> INFO : Mutating from /Users/ahmad/git/pit_study/pit-example/tests/javapoet/target/classes
+6:24:52 PM PIT >> INFO : Verbose logging is disabled. If you encounter an problem please enable it before reporting an issue.
+6:24:53 PM PIT >> INFO : SLAVE : objc[8227]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10edaf4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ee774e
+6:24:53 PM PIT >> INFO : SLAVE : 0). One of the two will be used. Which one is undefined.
+
+6:24:53 PM PIT >> INFO : Sending 27 test classes to slave
+6:24:53 PM PIT >> INFO : Sent tests to slave
+6:24:53 PM PIT >> INFO : SLAVE : 6:24:53 PM PIT >> INFO : Found  294 tests
+
+6:24:53 PM PIT >> INFO : SLAVE : 6:24:53 PM PIT >> INFO : Dependency analysis reduced number of potential tests by 0
+
+6:24:53 PM PIT >> INFO : SLAVE : 6:24:53 PM PIT >> INFO : 294 tests received
+
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-6:25:01 PM PIT >> INFO : Calculated coverage in 8 seconds.
+6:25:01 PM PIT >> INFO : Created  29 mutation test units
+stderr  : objc[8229]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1070a74c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1080f84estderr  : 0). One of the two will be used. Which one is undefined.
+6:25:27 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8235]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x104bbd4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x104c854estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8238]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10b8384c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b9004estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8241]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c7674c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d7b84estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8245]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1049f44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x104abc4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8247]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x105ca14c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105d694estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8248]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10755a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1085ab4estderr  : 0). One of the two will be used. Which one is undefined.
+6:26:57 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8249]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10eeba4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ef824estderr  : 0). One of the two will be used. Which one is undefined.
+6:27:01 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8251]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107a894c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x108ada4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8253]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1083564c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1083e94estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8255]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10d30f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e3604estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8257]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10299f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102a674estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8258]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e0144c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f0654estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8259]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102ac34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102b8b4estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8261]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101cfe4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101dc64estderr  : 0). One of the two will be used. Which one is undefined.
+6:27:54 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8262]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103ef04c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103fb84estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8263]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1031cb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1032934estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8265]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10ecd44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ed9c4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8267]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10987f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a8d04estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8268]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1003074c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1003cf4estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8269]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x108f6d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10afd74estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8270]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1019404c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1039a24estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8271]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10fb754c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x111bd74estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8272]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10bc4c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10bd144estderr  : 0). One of the two will be used. Which one is undefined.
+6:28:21 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8274]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1098964c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10995e4estderr  : 0). One of the two will be used. Which one is undefined.
+6:28:25 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+|stderr  : objc[8275]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10682a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1068f24estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8276]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101d824c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103dd74estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8278]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10229d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1023654estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8279]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106e6a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107ebb4estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8280]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e8ad4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e9754estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8281]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10380c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10585d4estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8282]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10008e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1001564estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8283]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10adfe4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10aec64estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8284]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10bafc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10bbc44estderr  : 0). One of the two will be used. Which one is undefined.
+/6:28:40 PM PIT >> INFO : Completed in 227 seconds
+================================================================================
+- Timings
+================================================================================
+> scan classpath : < 1 second
+> coverage and dependency analysis : 8 seconds
+> build mutation tests : < 1 second
+> run mutation analysis : 3 minutes and 38 seconds
+--------------------------------------------------------------------------------
+> Total  : 3 minutes and 47 seconds
+--------------------------------------------------------------------------------
+================================================================================
+- Statistics
+================================================================================
+>> Generated 1143 mutations Killed 938 (82%)
+>> Ran 7864 tests (6.88 tests per mutation)
+================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 41 Killed 38 (93%)
+> KILLED 38 SURVIVED 3 TIMED_OUT 0 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 0 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator
+>> Generated 29 Killed 29 (100%)
+> KILLED 27 SURVIVED 0 TIMED_OUT 2 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 0 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator
+>> Generated 141 Killed 96 (68%)
+> KILLED 95 SURVIVED 45 TIMED_OUT 1 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 0 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator
+>> Generated 408 Killed 281 (69%)
+> KILLED 281 SURVIVED 80 TIMED_OUT 0 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 47 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 46 Killed 41 (89%)
+> KILLED 41 SURVIVED 5 TIMED_OUT 0 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 0 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator
+>> Generated 478 Killed 453 (95%)
+> KILLED 450 SURVIVED 12 TIMED_OUT 3 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 13 
+--------------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 03:50 min
+[INFO] Finished at: 2016-12-04T18:28:40-06:00
+[INFO] Final Memory: 9M/136M
+[INFO] ------------------------------------------------------------------------
+Done!

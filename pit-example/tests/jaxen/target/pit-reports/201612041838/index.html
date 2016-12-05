@@ -1,0 +1,218 @@
+<html>
+<head>
+  
+    <style type='text/css'>
+   
+   .tests{ 
+     width : 50%;
+     float : left;
+   }
+   
+   .mutees{
+     float : right;
+     width : 50%;
+   }
+   
+   .unit {
+     padding-top : 20px;
+     clear : both;
+   }
+   
+   .coverage_bar {
+    display : inline-block;
+    height : 1.1em;
+    width: 130px;
+    background: #FAA;
+    margin: 0 5px;
+    vertical-align: middle;
+    border: 1px solid #AAA;
+    position : relative;
+   }
+   
+   .coverage_complete {
+    display : inline-block;
+    height : 100%;
+    background: #DFD;
+    float: left;
+   }
+   
+   .coverage_ledgend {
+        position : absolute;
+        height : 100%;
+        width : 100%;
+        left : 0;
+        top : 0;
+        text-align : center;
+   }
+   
+   .line, .mut {
+        vertical-align : middle;
+   }
+   
+   .coveragePercentage {
+    display: inline-block;
+    width: 3em;
+    text-align: right;
+   }
+  </style>
+  
+</head>
+<body>
+
+<h1>Pit Test Coverage Report</h1>
+
+<h3>Project Summary</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Number of Classes</th>
+            <th>Line Coverage</th>
+            <th>Mutation Coverage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>145</td>
+            <td>80% <div class="coverage_bar"><div class="coverage_complete" style="width:80%"></div><div class="coverage_ledgend">3890/4869</div></div></td>
+            <td>50% <div class="coverage_bar"><div class="coverage_complete" style="width:50%"></div><div class="coverage_ledgend">2168/4338</div></div></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>Breakdown by Package</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number of Classes</th>
+            <th>Line Coverage</th>
+            <th>Mutation Coverage</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td><a href="./org.jaxen/index.html">org.jaxen</a></td>
+            <td>13</td>
+            <td><div class="coveragePercentage">92% </div><div class="coverage_bar"><div class="coverage_complete" style="width:92%"></div><div class="coverage_ledgend">478/518</div></div></td>
+            <td><div class="coveragePercentage">73% </div><div class="coverage_bar"><div class="coverage_complete" style="width:73%"></div><div class="coverage_ledgend">202/276</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.dom/index.html">org.jaxen.dom</a></td>
+            <td>2</td>
+            <td><div class="coveragePercentage">66% </div><div class="coverage_bar"><div class="coverage_complete" style="width:66%"></div><div class="coverage_ledgend">235/354</div></div></td>
+            <td><div class="coveragePercentage">66% </div><div class="coverage_bar"><div class="coverage_complete" style="width:66%"></div><div class="coverage_ledgend">169/257</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.dom4j/index.html">org.jaxen.dom4j</a></td>
+            <td>1</td>
+            <td><div class="coveragePercentage">81% </div><div class="coverage_bar"><div class="coverage_complete" style="width:81%"></div><div class="coverage_ledgend">113/140</div></div></td>
+            <td><div class="coveragePercentage">76% </div><div class="coverage_bar"><div class="coverage_complete" style="width:76%"></div><div class="coverage_ledgend">68/89</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.expr/index.html">org.jaxen.expr</a></td>
+            <td>44</td>
+            <td><div class="coveragePercentage">88% </div><div class="coverage_bar"><div class="coverage_complete" style="width:88%"></div><div class="coverage_ledgend">832/944</div></div></td>
+            <td><div class="coveragePercentage">81% </div><div class="coverage_bar"><div class="coverage_complete" style="width:81%"></div><div class="coverage_ledgend">459/569</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.expr.iter/index.html">org.jaxen.expr.iter</a></td>
+            <td>14</td>
+            <td><div class="coveragePercentage">100% </div><div class="coverage_bar"><div class="coverage_complete" style="width:100%"></div><div class="coverage_ledgend">51/51</div></div></td>
+            <td><div class="coveragePercentage">100% </div><div class="coverage_bar"><div class="coverage_complete" style="width:100%"></div><div class="coverage_ledgend">19/19</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.function/index.html">org.jaxen.function</a></td>
+            <td>27</td>
+            <td><div class="coveragePercentage">98% </div><div class="coverage_bar"><div class="coverage_complete" style="width:98%"></div><div class="coverage_ledgend">507/519</div></div></td>
+            <td><div class="coveragePercentage">95% </div><div class="coverage_bar"><div class="coverage_complete" style="width:95%"></div><div class="coverage_ledgend">345/364</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.function.ext/index.html">org.jaxen.function.ext</a></td>
+            <td>5</td>
+            <td><div class="coveragePercentage">82% </div><div class="coverage_bar"><div class="coverage_complete" style="width:82%"></div><div class="coverage_ledgend">71/87</div></div></td>
+            <td><div class="coveragePercentage">48% </div><div class="coverage_bar"><div class="coverage_complete" style="width:48%"></div><div class="coverage_ledgend">26/54</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.function.xslt/index.html">org.jaxen.function.xslt</a></td>
+            <td>1</td>
+            <td><div class="coveragePercentage">86% </div><div class="coverage_bar"><div class="coverage_complete" style="width:86%"></div><div class="coverage_ledgend">6/7</div></div></td>
+            <td><div class="coveragePercentage">100% </div><div class="coverage_bar"><div class="coverage_complete" style="width:100%"></div><div class="coverage_ledgend">3/3</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.javabean/index.html">org.jaxen.javabean</a></td>
+            <td>4</td>
+            <td><div class="coveragePercentage">50% </div><div class="coverage_bar"><div class="coverage_complete" style="width:50%"></div><div class="coverage_ledgend">60/121</div></div></td>
+            <td><div class="coveragePercentage">30% </div><div class="coverage_bar"><div class="coverage_complete" style="width:30%"></div><div class="coverage_ledgend">23/76</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.jdom/index.html">org.jaxen.jdom</a></td>
+            <td>2</td>
+            <td><div class="coveragePercentage">73% </div><div class="coverage_bar"><div class="coverage_complete" style="width:73%"></div><div class="coverage_ledgend">142/195</div></div></td>
+            <td><div class="coveragePercentage">67% </div><div class="coverage_bar"><div class="coverage_complete" style="width:67%"></div><div class="coverage_ledgend">80/120</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.pattern/index.html">org.jaxen.pattern</a></td>
+            <td>12</td>
+            <td><div class="coveragePercentage">40% </div><div class="coverage_bar"><div class="coverage_complete" style="width:40%"></div><div class="coverage_ledgend">162/410</div></div></td>
+            <td><div class="coveragePercentage">24% </div><div class="coverage_bar"><div class="coverage_complete" style="width:24%"></div><div class="coverage_ledgend">61/258</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.saxpath/index.html">org.jaxen.saxpath</a></td>
+            <td>3</td>
+            <td><div class="coveragePercentage">76% </div><div class="coverage_bar"><div class="coverage_complete" style="width:76%"></div><div class="coverage_ledgend">73/96</div></div></td>
+            <td><div class="coveragePercentage">71% </div><div class="coverage_bar"><div class="coverage_complete" style="width:71%"></div><div class="coverage_ledgend">46/65</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.saxpath.base/index.html">org.jaxen.saxpath.base</a></td>
+            <td>5</td>
+            <td><div class="coveragePercentage">85% </div><div class="coverage_bar"><div class="coverage_complete" style="width:85%"></div><div class="coverage_ledgend">896/1060</div></div></td>
+            <td><div class="coveragePercentage">27% </div><div class="coverage_bar"><div class="coverage_complete" style="width:27%"></div><div class="coverage_ledgend">529/1993</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.saxpath.helpers/index.html">org.jaxen.saxpath.helpers</a></td>
+            <td>1</td>
+            <td><div class="coveragePercentage">76% </div><div class="coverage_bar"><div class="coverage_complete" style="width:76%"></div><div class="coverage_ledgend">19/25</div></div></td>
+            <td><div class="coveragePercentage">71% </div><div class="coverage_bar"><div class="coverage_complete" style="width:71%"></div><div class="coverage_ledgend">5/7</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.util/index.html">org.jaxen.util</a></td>
+            <td>10</td>
+            <td><div class="coveragePercentage">71% </div><div class="coverage_bar"><div class="coverage_complete" style="width:71%"></div><div class="coverage_ledgend">159/225</div></div></td>
+            <td><div class="coveragePercentage">70% </div><div class="coverage_bar"><div class="coverage_complete" style="width:70%"></div><div class="coverage_ledgend">64/92</div></div></td>
+        </tr>
+
+        <tr>
+            <td><a href="./org.jaxen.xom/index.html">org.jaxen.xom</a></td>
+            <td>1</td>
+            <td><div class="coveragePercentage">74% </div><div class="coverage_bar"><div class="coverage_complete" style="width:74%"></div><div class="coverage_ledgend">86/117</div></div></td>
+            <td><div class="coveragePercentage">72% </div><div class="coverage_bar"><div class="coverage_complete" style="width:72%"></div><div class="coverage_ledgend">69/96</div></div></td>
+        </tr>
+
+     </tbody>
+</table>
+<br/>
+
+
+
+<hr/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.0
+
+</body>
+</html>

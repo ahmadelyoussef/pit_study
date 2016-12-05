@@ -1,0 +1,4031 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Axis.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Header$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Revision$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Date$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * ====================================================================</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright 2000-2002 bob mcwhirter &#38; James Strachan.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * All rights reserved.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Redistribution and use in source and binary forms, with or without</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * modification, are permitted provided that the following conditions are</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * met:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Redistributions of source code must retain the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     notice, this list of conditions and the following disclaimer.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Redistributions in binary form must reproduce the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     notice, this list of conditions and the following disclaimer in the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     documentation and/or other materials provided with the distribution.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *   * Neither the name of the Jaxen Project nor the names of its</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     contributors may be used to endorse or promote products derived </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *     from this software without specific prior written permission.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#34;AS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * ====================================================================</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This software consists of voluntary contributions made by many</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * individuals on behalf of the Jaxen Project and was originally</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * created by bob mcwhirter &#60;bob@werken.com&#62; and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * James Strachan &#60;jstrachan@apache.org&#62;.  For more information on the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Jaxen Project, please see &#60;http://www.jaxen.org/&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * $Id$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.jaxen.saxpath;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.jaxen.JaxenRuntimeException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Internal SAXPath class that contains constants representing </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * XPath operators to avoid a lot of string comparisons. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Axis</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>{</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_65'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    private Axis() {}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // XXX Ultimately these should use the type-safe enum pattern instead</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Marker for an invalid axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int INVALID_AXIS       =  0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;child&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int CHILD              =  1;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;descendant&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int DESCENDANT         =  2;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;parent&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int PARENT             =  3;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;ancestor&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int ANCESTOR           =  4;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;following-sibling&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int FOLLOWING_SIBLING  =  5;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;preceding-sibling&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int PRECEDING_SIBLING  =  6;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;following&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int FOLLOWING          =  7;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;preceding&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int PRECEDING          =  8;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_95'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;attribute&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_96'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int ATTRIBUTE          =  9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_98'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;namespace&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_99'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int NAMESPACE          = 10;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;self&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_102'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int SELF               = 11;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_103'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;descendant-or-self&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int DESCENDANT_OR_SELF = 12;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The &#60;code&#62;ancestor-or-self&#60;/code&#62; axis */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_108'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final static int ANCESTOR_OR_SELF   = 13;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_109'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns the name of the axis.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_114'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_115'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param axisNum the axis code</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the name of the axis such as might be used in an XPath expression</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_117'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @throws JaxenRuntimeException if the number does not represent one of the 13</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *     XPath axes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_120'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static String lookup(int axisNum)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_121'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_122'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        switch ( axisNum )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case CHILD:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_125'/>
+125
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_125'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;child&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_127'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case DESCENDANT:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_128'/>
+128
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_128'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;descendant&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_129'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_130'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case PARENT:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_131'/>
+131
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_131'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;parent&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_133'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case ANCESTOR:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_134'/>
+134
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_134'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;ancestor&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_135'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case FOLLOWING_SIBLING:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_137'/>
+137
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_137'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;following-sibling&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_138'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_139'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case PRECEDING_SIBLING:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_140'/>
+140
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_140'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;preceding-sibling&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_141'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_142'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case FOLLOWING:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_143'/>
+143
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_143'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;following&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_144'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_145'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case PRECEDING:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_146'/>
+146
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_146'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;preceding&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_147'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_148'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case ATTRIBUTE:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_149'/>
+149
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_149'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;attribute&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_150'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case NAMESPACE:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_152'/>
+152
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_152'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;namespace&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_153'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_154'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case SELF:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_155'/>
+155
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_155'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;self&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_156'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case DESCENDANT_OR_SELF:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_158'/>
+158
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_158'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;descendant-or-self&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_159'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_160'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            case ANCESTOR_OR_SELF:</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_161'/>
+161
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_161'>1</a>
+<span>
+1. lookup : mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return &#34;ancestor-or-self&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_162'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_163'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_164'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        throw new JaxenRuntimeException(&#34;Illegal Axis Number&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_166'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_167'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_168'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_169'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns the code for an axis given its name.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_171'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_172'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param axisName the name of the axis: child, parent, descendant, descendant-or-self, etc.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_173'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the axis code</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_174'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_175'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static int lookup(String axisName)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_176'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_177'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_178'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // XXX All these equals calls are a small HotSpot;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_179'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // Need to replace this with a static HashMap</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_180'/>
+180
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_180'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;child&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_181'/>
+181
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_181'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_182'/>
+182
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_182'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return CHILD;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_183'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_184'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_185'/>
+185
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_185'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;descendant&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_186'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_187'/>
+187
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_187'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return DESCENDANT;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_188'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_189'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_190'/>
+190
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_190'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;parent&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_191'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_192'/>
+192
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_192'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return PARENT;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_193'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_194'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_195'/>
+195
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_195'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;ancestor&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_196'/>
+196
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_196'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_197'/>
+197
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_197'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return ANCESTOR;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_198'/>
+198
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_198'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_199'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_200'/>
+200
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_200'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;following-sibling&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_201'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_202'/>
+202
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_202'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return FOLLOWING_SIBLING;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_203'/>
+203
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_203'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_204'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_205'/>
+205
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_205'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;preceding-sibling&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_206'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_207'/>
+207
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_207'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return PRECEDING_SIBLING;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_208'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_209'/>
+209
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_209'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_210'/>
+210
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_210'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;following&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_211'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_212'/>
+212
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_212'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return FOLLOWING;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_213'/>
+213
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_213'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_214'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_215'/>
+215
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_215'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;preceding&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_216'/>
+216
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_216'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_217'/>
+217
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_217'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return PRECEDING;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_218'/>
+218
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_218'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_219'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_220'/>
+220
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_220'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;attribute&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_221'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_222'/>
+222
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_222'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return ATTRIBUTE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_223'/>
+223
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_223'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_224'/>
+224
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_224'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_225'/>
+225
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_225'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;namespace&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_226'/>
+226
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_226'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_227'/>
+227
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_227'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return NAMESPACE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_228'/>
+228
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_228'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_229'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_230'/>
+230
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_230'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;self&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_231'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_232'/>
+232
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_232'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return SELF;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_233'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_234'/>
+234
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_234'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_235'/>
+235
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_235'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;descendant-or-self&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_236'/>
+236
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_236'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_237'/>
+237
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_237'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return DESCENDANT_OR_SELF;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_238'/>
+238
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_238'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_239'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_240'/>
+240
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_240'>1</a>
+<span>
+1. lookup : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( &#34;ancestor-or-self&#34;.equals( axisName ) )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_241'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_242'/>
+242
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_242'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return ANCESTOR_OR_SELF;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_243'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_244'/>
+244
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_244'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_245'/>
+245
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_245'>1</a>
+<span>
+1. lookup : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return INVALID_AXIS;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_246'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2d94279f_247'/>
+247
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_247'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_125'>125</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_125'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.ProcessingInstructionNodeTest.testGetText(org.jaxen.test.ProcessingInstructionNodeTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_128'>128</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_128'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOMNavigatorTest.testid54932(org.jaxen.test.DOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_131'>131</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_131'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testAttributeParent(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_134'>134</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_134'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testCountFunctionMore(org.jaxen.test.JDOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_137'>137</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_137'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOMNavigatorTest.testid54197(org.jaxen.test.DOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_140'>140</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_140'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testid54145(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_143'>143</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_143'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOMNavigatorTest.testid54278(org.jaxen.test.DOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_146'>146</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_146'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testid54156(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_149'>149</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_149'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.LiteralExprTest.testJaxen177(org.jaxen.test.LiteralExprTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_152'>152</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_152'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_155'>155</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_155'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOM4JNavigatorTest.testid54467(org.jaxen.test.DOM4JNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_158'>158</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_158'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.LiteralExprTest.testJaxen177(org.jaxen.test.LiteralExprTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_161'>161</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_161'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.JDOMNavigatorTest.testCountFunctionMore(org.jaxen.test.JDOMNavigatorTest)</span></span> mutated return of Object value for org/jaxen/saxpath/Axis::lookup to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_180'>180</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_180'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_182'>182</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_182'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testValidAxis(org.jaxen.test.XPathReaderTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_185'>185</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_185'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_187'>187</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_187'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testDescendantAxis(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_190'>190</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_190'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_192'>192</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_192'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testMismatchedDepthsInContext(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_195'>195</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_195'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_197'>197</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_197'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testAncestorAxis(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_200'>200</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_200'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_202'>202</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_202'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.EqualsTest.testOlander(org.jaxen.test.EqualsTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_205'>205</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_205'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_207'>207</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_207'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testPrecedingSiblingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_210'>210</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_210'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_212'>212</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_212'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOMNavigatorTest.testid54278(org.jaxen.test.DOMNavigatorTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_215'>215</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_215'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_217'>217</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_217'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.DOMXPathTest.testPrecedingAxisInDocumentOrder(org.jaxen.test.DOMXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_220'>220</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_220'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_222'>222</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_222'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testPaths(org.jaxen.test.XPathReaderTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_225'>225</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_225'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_227'>227</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_227'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.NamespaceTest.testNamespaceAxis(org.jaxen.test.NamespaceTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_230'>230</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_230'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_232'>232</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_232'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testPrincipalNodeTypeOfSelfAxisIsElement(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_235'>235</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_235'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_237'>237</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_237'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testDescendantOrSelfAxis(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_240'>240</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_240'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_242'>242</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_242'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testAncestorOrSelfAxis(org.jaxen.test.BaseXPathTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2d94279f_245'>245</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2d94279f_245'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lookup<br/><b>Killed by : </b>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.jaxen.test.DOMNavigatorTest.testPositioning(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54156(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testLangFunction(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54145(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid53992(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54614(org.jaxen.test.XOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54266(org.jaxen.test.XOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodeTypes(org.jaxen.test.DOM4JNavigatorTest) (8 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodeTypes(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54249(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunction1(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54168(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testStringExtensionFunctions(org.jaxen.test.DOM4JNavigatorTest) (21 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testJaxen107FromFile(org.jaxen.test.BaseXPathTest) (24 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunction1(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testForParserErrors(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNoNamespace(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunctionActual(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54932(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54932(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testGetFeature(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen24(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunction(org.jaxen.test.XOMNavigatorTest) (60 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodeTypes(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributesAndChildren(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfAttrBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid53992(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen24(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54249(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testVariableLookup(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.NamespaceTest.testUnprefixedNamespaceAxis(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54298(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPositioning(org.jaxen.test.DOM4JNavigatorTest) (13 ms)</li><li>org.jaxen.test.DefaultNamestepTest.testIdentitySetUsageInDefaultNameStep(org.jaxen.test.DefaultNamestepTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54570(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorFollowedByChildren(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.XPathReaderTest.testUnionofNodesAndNonNodes(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelfAxisWithNodeTestCanReturnNonPrincipalNodeType(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54467(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testLangFunction(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaces(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XPathReaderTest.testPaths(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54168(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54219(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54467(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen24(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testMultipleAttributesOnElement(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen3dupe(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54156(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.ProcessingInstructionNodeTest.testGetTextWithPredicate(org.jaxen.test.ProcessingInstructionNodeTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54032(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNoNamespace(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54266(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.XOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54032(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54278(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.DOM4JXPathTest) (0 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodeTypes(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54932(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaces(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JaxenHandlerTest.testBogusPaths(org.jaxen.test.JaxenHandlerTest) (1 ms)</li><li>org.jaxen.test.JaxenHandlerTest.testValidPaths(org.jaxen.test.JaxenHandlerTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunction(org.jaxen.test.JDOMNavigatorTest) (36 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54219(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.XOMNavigatorTest) (45 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54145(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceResolution(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XPathReaderTest.testInvalidAxis(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.StringTest.testStringValueOfNamespaceNode(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespacesAgain(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54197(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testForParserErrors(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.JDOMNavigatorTest) (68 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.LiteralExprTest.testJaxen177(org.jaxen.test.LiteralExprTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.XOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.BaseXPathTest.testJaxen107(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testMismatchedDepthsInContext(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testXMLNamespaceAttributeOrderOnAncestorAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunctionMore(org.jaxen.test.DOM4JNavigatorTest) (40 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen24(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfNodesWithNonNodes(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen58(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.NamespaceTest.testNumberOfNamespaceNodes(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54249(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54197(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54522(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespacesAgain(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54082(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54522(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54219(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54467(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testVariableLookup(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54467(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testLangFunction(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.DOMNavigatorTest) (14 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.ProcessingInstructionNodeTest.testGetText(org.jaxen.test.ProcessingInstructionNodeTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testTextNodes(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceResolution(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunctionMore(org.jaxen.test.XOMNavigatorTest) (31 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54032(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54266(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunction1(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.DOM4JNavigatorTest) (53 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfEmptyNodeSetWithNonNodes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testTextNodes(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testGetTextContent(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryIntrinsicNamespaceOfAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testValidAxis(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54298(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespacesAgain(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantOrSelfAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54298(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testSetTextContent(org.jaxen.test.DOM3NamespaceTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testLangFunction(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen3dupe(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54032(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes2(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid53992(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen58(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54522(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54197(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAttributeParent(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54197(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54145(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNoNamespace(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54534(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testForParserErrors(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54278(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testNamespaceNodesAreInherited(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrincipalNodeTypeOfSelfAxisIsElement(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithAttributes(org.jaxen.test.BaseXPathTest) (11 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testTextNodes(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54614(org.jaxen.test.DOM4JNavigatorTest) (20 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54522(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAttributeAsContext(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54298(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorOrSelfAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.ProcessingInstructionNodeTest.testGetTextWithName(org.jaxen.test.ProcessingInstructionNodeTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54082(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaces(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionUsesDocumentOrder(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAttributeNodesOnParentComeBeforeNamespaceNodesInChildInDocumentOrder(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54249(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54180(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAttributeAsContext(org.jaxen.test.DOM4JNavigatorTest) (13 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid53992(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaces(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54570(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54570(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPositioning(org.jaxen.test.XOMNavigatorTest) (11 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testForParserErrors(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfNamespaceIsPrefix(org.jaxen.test.LocalNameTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testVariableLookup(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54168(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAttributeParent(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceResolution(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testIsEqualNode(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.NameTest.testNameOfNamespaceIsPrefix(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testVariableLookup(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunction(org.jaxen.test.DOMNavigatorTest) (152 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.XOMNavigatorTest) (12 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAttributeParent(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54156(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunction1(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54278(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen3dupe(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.NamespaceTest.testNamespaceNodesReadFromAttributes(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAttributeParent(org.jaxen.test.XOMNavigatorTest) (9 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54082(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54180(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54614(org.jaxen.test.JDOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPositioning(org.jaxen.test.JDOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunctionMore(org.jaxen.test.DOMNavigatorTest) (56 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen3dupe(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54082(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMXPathTest.testInconsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testUnderscoresInNames(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAttributeAsContext(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54145(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen58(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54266(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testNamespaceNodesComeBeforeAttributeNodesInDocumentOrder(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54278(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOM4JNavigatorTest) (107 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54932(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testFunctionWithNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testEvaluateWithMultiNodeAnswer(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testTextNodes(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54156(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsString(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54219(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.JDOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.NamespaceTest.testNamespaceAxis(org.jaxen.test.NamespaceTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54614(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen58(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfNamespaceIsNull(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.DefaultXPathExprTest.testJAXEN160GetText(org.jaxen.test.DefaultXPathExprTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54534(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54853(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMXPathTest.testJaxen22(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54534(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.EqualsTest.testOlander(org.jaxen.test.EqualsTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisInDocumentOrder(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54180(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54570(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testIsSameNode(org.jaxen.test.DOM3NamespaceTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54853(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54180(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XPathReaderTest.testBogusPaths(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAttributeAsContext(org.jaxen.test.XOMNavigatorTest) (11 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespacesAgain(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithNamespaceNodes(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54853(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunctionMore(org.jaxen.test.JDOMNavigatorTest) (29 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingSiblingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunction(org.jaxen.test.DOM4JNavigatorTest) (62 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceResolution(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54853(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNoNamespace(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54534(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testNamespaceNodesAreInherited(org.jaxen.test.DOM4JXPathTest) (0 ms)</li><li>org.jaxen.test.NamespaceTest.testMultipleNamespaceAxis(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOM4JNavigatorTest) (11 ms)</li><li>org.jaxen.test.DOMXPathTest.testConsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.0
+
+</body>
+</html>

@@ -1,0 +1,575 @@
+Running ./tests/jaxen ...
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jaxen 1.1.6
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ jaxen ---
+[INFO] Deleting /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.138 s
+[INFO] Finished at: 2016-12-04T18:37:36-06:00
+[INFO] Final Memory: 7M/155M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jaxen 1.1.6
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ jaxen ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ jaxen ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ jaxen ---
+[INFO] Compiling 197 source files to /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/classes
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+/Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[57,21] [deprecation] DefaultAllNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[58,21] [deprecation] DefaultCommentNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[59,21] [deprecation] DefaultFilterExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[60,21] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[61,21] [deprecation] DefaultProcessingInstructionNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[62,21] [deprecation] DefaultStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[63,21] [deprecation] DefaultTextNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultBinaryExpr.java:[52,41] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultUnaryExpr.java:[56,31] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultNumberExpr.java:[55,32] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultLiteralExpr.java:[54,33] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultVariableReferenceExpr.java:[53,43] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultLocationPath.java:[60,43] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[78,19] [deprecation] DefaultXPathExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[90,19] [deprecation] DefaultRelativeLocationPath in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[95,19] [deprecation] DefaultAbsoluteLocationPath in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[223,19] [deprecation] DefaultUnionExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[229,19] [deprecation] DefaultFilterExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[235,19] [deprecation] DefaultFunctionCallExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[266,19] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[275,19] [deprecation] DefaultTextNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[281,19] [deprecation] DefaultCommentNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[287,19] [deprecation] DefaultAllNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultXPathFactory.java:[294,19] [deprecation] DefaultProcessingInstructionNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[140,34] [deprecation] DefaultFilterExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[192,29] [deprecation] DefaultAllNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[204,34] [deprecation] DefaultCommentNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[208,34] [deprecation] DefaultProcessingInstructionNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[212,34] [deprecation] DefaultTextNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[216,34] [deprecation] DefaultCommentNodeStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[220,34] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[222,12] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[222,40] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[256,34] [deprecation] DefaultStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[258,45] [deprecation] DefaultStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[267,86] [deprecation] DefaultStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[272,36] [deprecation] DefaultFilterExpr in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[284,29] [deprecation] DefaultNameStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/pattern/PatternParser.java:[289,37] [deprecation] DefaultStep in org.jaxen.expr has been deprecated
+[WARNING] /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/java/main/org/jaxen/expr/DefaultPathExpr.java:[56,30] [deprecation] DefaultExpr in org.jaxen.expr has been deprecated
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ jaxen ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ahmad/git/pit_study/pit-example/tests/jaxen/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ jaxen ---
+[INFO] Compiling 100 source files to /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12:test (default-test) @ jaxen ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.3.7:bundle (default-bundle) @ jaxen ---
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.4:single (default) @ jaxen ---
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.tar.gz
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.tar.bz2
+[INFO] Building zip: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.zip
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.tar.gz
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.tar.bz2
+[INFO] Building zip: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.zip
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.tar.gz
+[INFO] Building tar: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.tar.bz2
+[INFO] Building zip: /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ jaxen ---
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6.jar to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6.jar
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/pom.xml to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6.pom
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.tar.gz to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-project.tar.gz
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.tar.bz2 to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-project.tar.bz2
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-project.zip to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-project.zip
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.tar.gz to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-src.tar.gz
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.tar.bz2 to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-src.tar.bz2
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-src.zip to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-src.zip
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.tar.gz to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-bin.tar.gz
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.tar.bz2 to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-bin.tar.bz2
+[INFO] Installing /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/jaxen-1.1.6-bin.zip to /var/root/.m2/repository/jaxen/jaxen/1.1.6/jaxen-1.1.6-bin.zip
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.3.7:install (default-install) @ jaxen ---
+[INFO] Installing jaxen/jaxen/1.1.6/jaxen-1.1.6.jar
+[INFO] Writing OBR metadata
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 16.563 s
+[INFO] Finished at: 2016-12-04T18:37:54-06:00
+[INFO] Final Memory: 57M/718M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jaxen 1.1.6
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- pitest-maven:1.1.0:mutationCoverage (default-cli) @ jaxen ---
+[INFO] Found plugin : Default csv report plugin
+[INFO] Found plugin : Default xml report plugin
+[INFO] Found plugin : Default html report plugin
+[INFO] Found plugin : Default limit mutations plugin
+[INFO] Found shared classpath plugin : Default mutation engine
+6:38:02 PM PIT >> INFO : Mutating from /Users/ahmad/git/pit_study/pit-example/tests/jaxen/target/classes
+6:38:02 PM PIT >> INFO : Verbose logging is disabled. If you encounter an problem please enable it before reporting an issue.
+6:38:03 PM PIT >> INFO : SLAVE : objc[8437]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e3ca4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e4924e
+6:38:03 PM PIT >> INFO : SLAVE : 0). One of the two will be used. Which one is undefined.
+
+6:38:03 PM PIT >> INFO : Sending 80 test classes to slave
+6:38:03 PM PIT >> INFO : Sent tests to slave
+6:38:04 PM PIT >> INFO : SLAVE : 6:38:04 PM PIT >> INFO : Found  842 tests
+
+6:38:04 PM PIT >> INFO : SLAVE : 6:38:04 PM PIT >> INFO : Dependency analysis reduced number of potential tests by 0
+
+6:38:04 PM PIT >> INFO : SLAVE : 6:38:04 PM PIT >> INFO : 842 tests received
+
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-6:38:07 PM PIT >> INFO : Calculated coverage in 4 seconds.
+6:38:08 PM PIT >> INFO : Created  159 mutation test units
+stderr  : objc[8438]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10d5ab4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d6734estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8452]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1053ba4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1054824estderr  : 0). One of the two will be used. Which one is undefined.
+/6:48:37 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8453]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c1ad4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c2754estderr  : 0). One of the two will be used. Which one is undefined.
+6:48:42 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8454]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1024054c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10445c4estderr  : 0). One of the two will be used. Which one is undefined.
+6:48:51 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8455]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10fe0a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x111e5c4estderr  : 0). One of the two will be used. Which one is undefined.
+6:48:55 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8456]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109df34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109ebb4estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:04 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8457]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109c494c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ac9a4estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:09 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8458]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x108b134c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x108bdb4estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:14 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8459]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1010f64c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1011be4estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:20 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8460]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1021304c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1041a24estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:26 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8461]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1063594c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1063ec4estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:31 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8462]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1002784c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1012c94estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:36 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8463]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c49c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c5644estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : class org.jaxen.saxpath.XPathSyntaxException: .[1]: 1: Unexpected '['
+stderr  : 	at org.jaxen.saxpath.base.XPathReader.createSyntaxException(XPathReader.java:1085)stderr  : 
+stderr  : 	at org.jaxen.saxpath.base.XPathReader.parse(XPathReader.java:106)
+stderr  : 	at org.jaxen.test.JaxenHandlerTest.testValidPaths(JaxenHandlerTest.java:136)
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)stderr  : 
+stderr  : 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)stderr  : 
+stderr  : 	at java.lang.reflect.Method.invoke(Method.java:497)
+stderr  : 	at junit.framework.TestCase.runTest(TestCase.java:176)stderr  : 
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)stderr  : 
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)stderr  : 
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+stderr  : 	at junit.framework.TestCase.run(TestCase.java:129)
+stderr  : 	at junit.framework.TestSuite.runTest(TestSuite.java:252)
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+stderr  : 	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+stderr  : 	at java.lang.Thread.run(Thread.java:745)stderr  : 
+6:49:44 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8464]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106cc14c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x106d894estderr  : 0). One of the two will be used. Which one is undefined.
+6:49:51 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8465]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1091974c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10925f4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8466]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c2954c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c35d4estderr  : 0). One of the two will be used. Which one is undefined.
+-6:50:00 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8467]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10ffe64c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1100ae4estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:06 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8468]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10678b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1087e54estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:11 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8469]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10fa1a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10fae24estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:17 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8470]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10163c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1017044estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:28 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8474]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10cf9f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d0674estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:34 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8475]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f6424c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f70a4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8477]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1087814c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a7d74estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8478]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e9924c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1109e54estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8479]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10dcdd4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10dda54estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8480]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10460b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10665c4estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8482]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10bb134c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10bbdb4estderr  : 0). One of the two will be used. Which one is undefined.
+6:50:57 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8483]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106a2e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x106af64estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8484]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10190a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1019d24estderr  : 0). One of the two will be used. Which one is undefined.
+6:51:05 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8485]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10af554c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10afe84estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8487]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f8cc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f9944estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8488]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10ac024c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10acca4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8489]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107af04c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107bb84estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8490]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1008394c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1009014estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8491]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10750b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1075d34estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8492]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f39d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f4654estderr  : 0). One of the two will be used. Which one is undefined.
+6:51:22 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8493]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10eb1b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ebe34estderr  : 0). One of the two will be used. Which one is undefined.
+6:51:27 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8494]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107d5a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107ded4estderr  : 0). One of the two will be used. Which one is undefined.
+6:51:33 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8495]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e0114c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e0d94estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8496]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a3f84c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a4c04estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8497]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1009214c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1019724estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8498]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1045ce4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1046964estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8499]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a4d14c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b5224estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8500]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1037444c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1057a24estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8501]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1071e44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1072ac4estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8502]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c74c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e7a24estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8503]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10067c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1007444estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8504]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1027e44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1028ac4estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8505]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10abb74c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ac7f4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8506]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107b414c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109ba24estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8507]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1071054c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1081564estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8508]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1041ea4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1042b24estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8509]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103aac4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103b744estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8510]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1012b24c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10137a4estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8511]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c0e44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d1354estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8512]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102bab4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102c734estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8513]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10b30e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b3d64estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : java.lang.ClassCastException: [#document: null] is not a processing instruction
+stderr  : 	at org.jaxen.dom.DocumentNavigator.getProcessingInstructionTarget(DocumentNavigator.java:854)
+stderr  : 	at org.jaxen.function.LocalNameFunction.evaluate(LocalNameFunction.java:143)
+stderr  : 	at org.jaxen.function.LocalNameFunction.call(LocalNameFunction.java:98)
+stderr  : 	at org.jaxen.expr.DefaultFunctionCallExpr.evaluate(DefaultFunctionCallExpr.java:181)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultXPathExpr.asList(DefaultXPathExpr.java:102)
+stderr  : 	at org.jaxen.BaseXPath.selectNodesForContext(BaseXPath.java:677)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodes(BaseXPath.java:216)stderr  : 
+stderr  : 	at org.jaxen.test.LocalNameTest.testLocalNameNoArguments(LocalNameTest.java:181)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)stderr  : 
+stderr  : 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+stderr  : 	at java.lang.reflect.Method.invoke(Method.java:497)stderr  : 
+stderr  : 	at junit.framework.TestCase.runTest(TestCase.java:176)
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)stderr  : 
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+	at junit.framework.TestCase.run(TestCase.java:129)stderr  : 
+stderr  : 	at junit.framework.TestSuite.runTest(TestSuite.java:252)
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+stderr  : 	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)stderr  : 
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)stderr  : 
+stderr  : 	at java.lang.Thread.run(Thread.java:745)
+stderr  : org.jaxen.FunctionCallException: The argument to the local-name function must be a node-set
+stderr  : 	at org.jaxen.function.LocalNameFunction.evaluate(LocalNameFunction.java:162)
+stderr  : 	at org.jaxen.function.LocalNameFunction.call(LocalNameFunction.java:98)
+stderr  : 	at org.jaxen.expr.DefaultFunctionCallExpr.evaluate(DefaultFunctionCallExpr.java:181)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultXPathExpr.asList(DefaultXPathExpr.java:102)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodesForContext(BaseXPath.java:677)stderr  : 
+	at org.jaxen.BaseXPath.selectNodes(BaseXPath.java:216)stderr  : 
+stderr  : 	at org.jaxen.test.LocalNameTest.testLocalNameNoArguments(LocalNameTest.java:181)
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+stderr  : 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)stderr  : 
+stderr  : 	at java.lang.reflect.Method.invoke(Method.java:497)
+stderr  : 	at junit.framework.TestCase.runTest(TestCase.java:176)stderr  : 
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)stderr  : 
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)stderr  : 
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+stderr  : 	at junit.framework.TestCase.run(TestCase.java:129)stderr  : 
+stderr  : 	at junit.framework.TestSuite.runTest(TestSuite.java:252)stderr  : 
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+stderr  : 	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)stderr  : 
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)stderr  : 
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)stderr  : 
+stderr  : 	at java.lang.Thread.run(Thread.java:745)stderr  : 
+-stderr  : objc[8514]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107e384c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107f004estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : org.jaxen.FunctionCallException: The argument to the name function must be a node-set
+stderr  : 	at org.jaxen.function.NameFunction.evaluate(NameFunction.java:167)
+stderr  : 	at org.jaxen.function.NameFunction.call(NameFunction.java:103)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultFunctionCallExpr.evaluate(DefaultFunctionCallExpr.java:181)
+	at org.jaxen.expr.DefaultXPathExpr.asList(DefaultXPathExpr.java:102)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodesForContext(BaseXPath.java:677)
+	at org.jaxen.BaseXPath.selectNodes(BaseXPath.java:216)stderr  : 
+	at org.jaxen.test.NameTest.testNameNoArguments(NameTest.java:174)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflecstderr  : t.Method.invoke(Method.java:497)
+	at junit.framework.TestCase.runTest(TestCase.java:176)stderr  : 
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)stderr  : 
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+stderr  : 	at junit.framework.TestCase.run(TestCase.java:129)
+	at junit.framework.TestSuite.runTest(TestSuite.java:252)stderr  : 
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+stderr  : 	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)stderr  : 
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)stderr  : 
+stderr  : 	at java.lang.Thread.run(Thread.java:745)stderr  : 
+stderr  : java.lang.ClassCastException: [#document: null] is not a processing instruction
+stderr  : 	at org.jaxen.dom.DocumentNavigator.getProcessingInstructionTarget(DocumentNavigator.java:854)
+	at org.jaxen.function.NameFunction.evaluate(NameFunction.java:148)stderr  : 
+stderr  : 	at org.jaxen.function.NameFunction.call(NameFunction.java:103)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultFunctionCallExpr.evaluate(DefaultFunctionCallExpr.java:181)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultXPathExpr.asList(DefaultXPathExpr.java:102)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodesForContext(BaseXPath.java:677)
+stderr  : 	at org.jaxen.BaseXPath.selectNodes(BaseXPath.java:216)stderr  : 
+stderr  : 	at org.jaxen.test.NameTest.testNameNoArguments(NameTest.java:174)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)stderr  : 
+stderr  : 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)stderr  : 
+stderr  : 	at java.lang.reflect.Method.invoke(Method.java:497)stderr  : 
+stderr  : 	at junit.framework.TestCase.runTest(TestCase.java:176)stderr  : 
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)stderr  : 
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)stderr  : 
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)stderr  : 
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+stderr  : 	at junit.framework.TestCase.run(TestCase.java:129)stderr  : 
+stderr  : 	at junit.framework.TestSuite.runTest(TestSuite.java:252)stderr  : 
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+stderr  : 	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)stderr  : 
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)stderr  : 
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)stderr  : 
+stderr  : 	at java.lang.Thread.run(Thread.java:745)stderr  : 
+stderr  : objc[8515]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c32e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c3f64estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8516]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1035c04c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1036884estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8517]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1053024c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1053ca4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8518]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1058514c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1059194estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8519]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x108b1c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x108be44estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8520]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a3524c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c3a34estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8521]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1050f84c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1051c04estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:24 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8522]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109cf34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109dbb4estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:28 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8523]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e6dc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e7a44estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8524]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10863c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1087044estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8525]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10dc304c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10dcf84estderr  : 0). One of the two will be used. Which one is undefined.
+\|/stderr  : objc[8526]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1012f44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1013bc4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8527]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c91e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c9e64estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:36 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8528]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101a164c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101ade4estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:39 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8529]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1085004c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1085c84estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:43 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8530]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10d7da4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e7f64estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:47 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8531]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10428a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1043524estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8532]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e59b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f5ec4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8533]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1021814c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1041d74estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8534]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1064344c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1064fc4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8535]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10fc8c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10fd544estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8536]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10dabc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10db844estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8537]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10daf54c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10dbbd4estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8538]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10ae3a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10af024estderr  : 0). One of the two will be used. Which one is undefined.
+6:52:58 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8539]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10242b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1024f34estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8540]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e5f94c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e6c14estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8541]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10d5de4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d6a64estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8542]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106adb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x106ba34estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8543]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109a554c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109b1d4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8544]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10dd1b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10dde34estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8545]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1086ff4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1087c74estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8546]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109b914c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10bbe54estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8547]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10207a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1030cb4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8548]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10267d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1027454estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8549]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102b634c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102bf64estderr  : 0). One of the two will be used. Which one is undefined.
+|/-stderr  : objc[8550]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1040364c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1040fe4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8551]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10cd044c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10cdcc4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8552]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101a4b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101b134estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8553]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1003fe4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1004c64estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8554]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10231b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10336c4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8555]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102ec94c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102f914estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8556]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109b9c4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10abed4estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8557]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10b0a34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b16b4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8558]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a0e34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b1344estderr  : 0). One of the two will be used. Which one is undefined.
+6:53:27 PM PIT >> WARNING : Slave exited abnormally due to TIMED_OUT
+stderr  : objc[8559]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x104e834c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x104f4b4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8560]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106acf4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107b204estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8561]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10fcea4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10fdb24estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8562]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103f3f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105fa24estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8563]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x100b984c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x100c604estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8564]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1096fe4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1097c64estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8565]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1039524c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1049a34estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8566]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1005764c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1025d74estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8567]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1002264c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1012774estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8568]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10347a4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1035424estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8569]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10381d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1038e54estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8570]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c8ef4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d9404estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8571]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a1bb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a2834estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8572]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103f134c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103fdb4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8573]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101f494c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103fa24estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8574]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101ca14c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101d694estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8575]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a8624c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a92a4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8576]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106ee54c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x106fad4estderr  : 0). One of the two will be used. Which one is undefined.
+\|stderr  : objc[8577]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1026394c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1027014estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8578]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10902d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1090f54estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8579]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10b5384c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c5894estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8580]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107a0b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107ad34estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8581]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1014364c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1014fe4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8582]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1031dc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10524e4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8583]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10cf004c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10cfc84estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8584]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10af544c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10afe74estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8585]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x105c044c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105ccc4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8586]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101cf14c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101db94estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8587]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10301f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1030e74estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : java.lang.ClassCastException: java.lang.Double cannot be cast to java.util.List
+stderr  : 	at org.jaxen.function.CountFunction.evaluate(CountFunction.java:110)
+	at org.jaxen.function.CountFunction.call(CountFunction.java:90)stderr  : 
+	at org.jaxen.expr.DefaultFunctionCallExpr.evaluate(DefaultFunctionCallExpr.java:181)stderr  : 
+stderr  : 	at org.jaxen.expr.DefaultXPathExpr.asList(DefaultXPathExpr.java:102)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodesForContext(BaseXPath.java:677)stderr  : 
+stderr  : 	at org.jaxen.BaseXPath.selectNodes(BaseXPath.java:216)stderr  : 
+	at org.jaxen.test.CountTest.testCount3(CountTest.java:92)stderr  : 
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+stderr  : 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+stderr  : 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+stderr  : 	at java.lang.reflect.Method.invoke(Method.java:497)stderr  : 
+stderr  : 	at junit.framework.TestCase.runTest(TestCase.java:176)
+stderr  : 	at junit.framework.TestCase.runBare(TestCase.java:141)stderr  : 
+stderr  : 	at junit.framework.TestResult$1.protect(TestResult.java:122)stderr  : 
+stderr  : 	at junit.framework.TestResult.runProtected(TestResult.java:142)stderr  : 
+stderr  : 	at junit.framework.TestResult.run(TestResult.java:125)stderr  : 
+stderr  : 	at junit.framework.TestCase.run(TestCase.java:129)stderr  : 
+stderr  : 	at junit.framework.TestSuite.runTest(TestSuite.java:252)stderr  : 
+stderr  : 	at junit.framework.TestSuite.run(TestSuite.java:247)stderr  : 
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)
+stderr  : 	at org.pitest.junit.adapter.CustomRunnerExecutor.run(CustomRunnerExecutor.java:42)stderr  : 
+stderr  : 	at org.pitest.junit.adapter.AdaptedJUnitTestUnit.execute(AdaptedJUnitTestUnit.java:85)stderr  : 
+stderr  : 	at org.pitest.mutationtest.execute.MutationTimeoutDecorator$1.call(MutationTimeoutDecorator.java:88)stderr  : 
+stderr  : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)stderr  : 
+stderr  : 	at java.lang.Thread.run(Thread.java:745)stderr  : 
+|stderr  : objc[8588]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10aefc4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10afc44estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8589]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103faa4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1060194estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8590]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1075ee4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1076b64estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8591]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x100f884c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1010504estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8592]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x105f974c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10605f4estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8593]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102b834c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x104bd74estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8594]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103eef4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103fb74estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8595]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c6054c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c6cd4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8596]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10d1824c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f1d74estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8597]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x109aa54c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10aaf64estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8598]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c46e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d4bf4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8599]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1018144c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1018dc4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8600]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f85d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1108ae4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8601]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10bf354c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10dfa24estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8602]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106f904c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x108fe54estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8603]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x106b184c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x107b694estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8604]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x107d764c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109dd74estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8605]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x101a6d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x101b354estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8606]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10faad4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10fb754estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8607]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c1204c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d1714estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8608]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c3a54c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c46d4estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8609]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10114b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1031a24estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8610]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103f6e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105fd74estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8611]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10c69f4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c7674estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8612]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1099bf4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109a874estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8613]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1014444c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10150c4estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8614]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x102f574c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x102fea4estderr  : 0). One of the two will be used. Which one is undefined.
+-\stderr  : objc[8615]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f8444c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f90c4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8616]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e64d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e7154estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8617]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1058a64c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10596e4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8618]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10ef5e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10eff14estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8619]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a0b34c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10b1044estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8620]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f2ec4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x11033d4estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8621]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1028244c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1038754estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8622]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1011db4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1012a34estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8623]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1074464c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1084974estderr  : 0). One of the two will be used. Which one is undefined.
+stderr  : objc[8624]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x108dff4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ae5c4estderr  : 0). One of the two will be used. Which one is undefined.
+/-stderr  : objc[8625]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10cfbf4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d0874estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8626]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10a9a04c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10aa684estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8627]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1095d94c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a5f54estderr  : 0). One of the two will be used. Which one is undefined.
+/-\stderr  : objc[8628]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10aace4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10ab964estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8629]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10e4684c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10e5304estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8630]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10949b4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1095634estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8631]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1003434c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10040b4estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8632]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x105df44c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x105ebc4estderr  : 0). One of the two will be used. Which one is undefined.
+|stderr  : objc[8633]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x10f5d54c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10f69d4estderr  : 0). One of the two will be used. Which one is undefined.
+/stderr  : objc[8634]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1076e24c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1077aa4estderr  : 0). One of the two will be used. Which one is undefined.
+-stderr  : objc[8635]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x103cfe4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x103dc64estderr  : 0). One of the two will be used. Which one is undefined.
+\stderr  : objc[8636]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1081664c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10a1d74estderr  : 0). One of the two will be used. Which one is undefined.
+|/stderr  : objc[8637]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/bin/java (0x1093cb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1094934estderr  : 0). One of the two will be used. Which one is undefined.
+-\6:54:31 PM PIT >> INFO : Completed in 988 seconds
+================================================================================
+- Timings
+================================================================================
+> scan classpath : < 1 second
+> coverage and dependency analysis : 4 seconds
+> build mutation tests : < 1 second
+> run mutation analysis : 16 minutes and 22 seconds
+--------------------------------------------------------------------------------
+> Total  : 16 minutes and 28 seconds
+--------------------------------------------------------------------------------
+================================================================================
+- Statistics
+================================================================================
+>> Generated 4338 mutations Killed 2168 (50%)
+>> Ran 546340 tests (125.94 tests per mutation)
+================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 557 Killed 49 (9%)
+> KILLED 49 SURVIVED 334 TIMED_OUT 0 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 174 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator
+>> Generated 34 Killed 32 (94%)
+> KILLED 27 SURVIVED 0 TIMED_OUT 5 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 2 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator
+>> Generated 408 Killed 272 (67%)
+> KILLED 266 SURVIVED 69 TIMED_OUT 6 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 67 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator
+>> Generated 1726 Killed 785 (45%)
+> KILLED 783 SURVIVED 415 TIMED_OUT 2 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 526 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 60 Killed 26 (43%)
+> KILLED 26 SURVIVED 30 TIMED_OUT 0 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 4 
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator
+>> Generated 1553 Killed 1004 (65%)
+> KILLED 985 SURVIVED 206 TIMED_OUT 19 NON_VIABLE 0 
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0 
+> NO_COVERAGE 343 
+--------------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 16:35 min
+[INFO] Finished at: 2016-12-04T18:54:31-06:00
+[INFO] Final Memory: 12M/408M
+[INFO] ------------------------------------------------------------------------
+Done!

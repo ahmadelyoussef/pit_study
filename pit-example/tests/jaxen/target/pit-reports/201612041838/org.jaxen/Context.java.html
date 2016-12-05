@@ -1,0 +1,4240 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Context.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.jaxen;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> $Id$</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> Copyright 2003 The Werken Company. All Rights Reserved.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>Redistribution and use in source and binary forms, with or without</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>modification, are permitted provided that the following conditions are</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>met:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  * Redistributions of source code must retain the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    notice, this list of conditions and the following disclaimer.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  * Redistributions in binary form must reproduce the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    notice, this list of conditions and the following disclaimer in the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    documentation and/or other materials provided with the distribution.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  * Neither the name of the Jaxen Project nor the names of its</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    contributors may be used to endorse or promote products derived </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    from this software without specific prior written permission.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#34;AS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.Serializable;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Collections;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/** Wrapper around implementation-specific objects used</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  as the context of an expression evaluation.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;strong&#62;NOTE:&#60;/strong&#62; This class is not typically used directly,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  but is exposed for writers of implementation-specific</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  XPath packages.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  The &#60;code&#62;Context&#60;/code&#62; bundles utilities together</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  for evaluation of the expression.  It wraps the provided</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  objects for ease-of-passage through the expression </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;acronym title=&#34;Abstract Syntax Tree&#34;&#62;AST&#60;/acronym&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @see ContextSupport</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @see BaseXPath</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @see org.jaxen.dom4j.Dom4jXPath XPath for dom4j</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @see org.jaxen.jdom.JDOMXPath  XPath for JDOM</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @see org.jaxen.dom.DOMXPath   XPath for W3C DOM</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  @author &#60;a href=&#34;mailto:bob@werken.com&#34;&#62;bob mcwhirter&#60;/a&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Context implements Serializable {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static final long serialVersionUID = 2315979994685591055L;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //     Instance members</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Context-support */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private ContextSupport contextSupport;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Context node-set */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private List nodeSet;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Current context size */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private int size;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Current context position */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private int position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_89'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //     Constructors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Create a new context.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_95'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param contextSupport the context-support</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_96'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Context(ContextSupport contextSupport)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_98'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_99'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.contextSupport = contextSupport;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_100'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.nodeSet        = Collections.EMPTY_LIST;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_101'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.size           = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_102'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.position       = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_103'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //     Instance methods</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // ----------------------------------------------------------------------</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_108'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_109'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_111'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Set the context node-set, and sets the current context size to the size </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * of this node-set. &#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_114'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;The actual list is stored in this object. A copy</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_115'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * is not made. This list should not be modified in other code after</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * calling this method.&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_117'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * After invoking this method, the client should immediately call </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_120'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@link #setSize(int) setSize} and {@link #setPosition(int) setPosition}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_121'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *&#60;/p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_122'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_123'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param nodeSet the context node-set</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_124'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_125'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setNodeSet(List nodeSet)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_126'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_127'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.nodeSet = nodeSet;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_128'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.size    = nodeSet.size();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_129'/>
+129
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_129'>2</a>
+<span>
+1. setNodeSet : changed conditional boundary &rarr; KILLED<br/>
+2. setNodeSet : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (position &#62;= size) this.position = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_130'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_131'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_132'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve the context node-set.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_133'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  This is a live list. It is not a copy.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_134'/>
+134
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_134'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  Do not modify it.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_135'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_136'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the context node-set</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_137'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_138'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public List getNodeSet()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_139'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_140'/>
+140
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_140'>1</a>
+<span>
+1. getNodeSet : mutated return of Object value for org/jaxen/Context::getNodeSet to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.nodeSet;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_141'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_142'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_143'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Set the &#60;code&#62;ContextSupport&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_144'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_145'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param contextSupport the context-support</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_146'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_147'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setContextSupport(ContextSupport contextSupport)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_148'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_149'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        this.contextSupport = contextSupport;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_150'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_151'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_152'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve the &#60;code&#62;ContextSupport&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_153'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_154'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the context-support</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_155'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_156'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ContextSupport getContextSupport()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_157'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_158'/>
+158
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_158'>1</a>
+<span>
+1. getContextSupport : mutated return of Object value for org/jaxen/Context::getContextSupport to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.contextSupport;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_159'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_160'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve the current &#60;code&#62;Navigator&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_162'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_163'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the navigator</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_164'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_165'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Navigator getNavigator()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_166'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_167'/>
+167
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_167'>1</a>
+<span>
+1. getNavigator : mutated return of Object value for org/jaxen/Context::getNavigator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getContextSupport().getNavigator();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_168'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_169'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Translate a namespace prefix to its URI.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_171'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_172'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param prefix the prefix</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_173'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_174'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the namespace URI mapped to the prefix</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_175'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_176'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String translateNamespacePrefixToUri(String prefix)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_177'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_178'/>
+178
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_178'>1</a>
+<span>
+1. translateNamespacePrefixToUri : mutated return of Object value for org/jaxen/Context::translateNamespacePrefixToUri to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getContextSupport().translateNamespacePrefixToUri( prefix );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_179'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_180'/>
+180
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_180'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_181'/>
+181
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_181'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve a variable value.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_182'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_183'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param namespaceURI the function namespace URI</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_184'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param prefix the function prefix</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_185'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param localName the function name</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_186'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_187'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the variable value</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_188'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_189'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @throws UnresolvableException if unable to locate a bound variable</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_190'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_191'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Object getVariableValue(String namespaceURI,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_192'/>
+192
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_192'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                   String prefix,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_193'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                   String localName)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_194'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        throws UnresolvableException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_195'/>
+195
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_195'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_196'/>
+196
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_196'>1</a>
+<span>
+1. getVariableValue : mutated return of Object value for org/jaxen/Context::getVariableValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getContextSupport().getVariableValue( namespaceURI,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_197'/>
+197
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_197'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                     prefix,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_198'/>
+198
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_198'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                     localName );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_199'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_200'/>
+200
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_200'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_201'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve a &#60;code&#62;Function&#60;/code&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_202'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_203'/>
+203
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_203'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param namespaceURI the function namespace URI</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_204'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param prefix the function prefix</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_205'/>
+205
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_205'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param localName the function name</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_206'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_207'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the function object</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_208'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_209'/>
+209
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_209'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @throws UnresolvableException if unable to locate a bound function</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_210'/>
+210
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_210'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_211'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Function getFunction(String namespaceURI,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_212'/>
+212
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_212'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                String prefix,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_213'/>
+213
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_213'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                String localName)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_214'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        throws UnresolvableException</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_215'/>
+215
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_215'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_216'/>
+216
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_216'>1</a>
+<span>
+1. getFunction : mutated return of Object value for org/jaxen/Context::getFunction to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getContextSupport().getFunction( namespaceURI,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_217'/>
+217
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_217'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                prefix,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_218'/>
+218
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_218'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                                                localName );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_219'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_220'/>
+220
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_220'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_221'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_222'/>
+222
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_222'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //     Properties</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_223'/>
+223
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_223'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_224'/>
+224
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_224'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_225'/>
+225
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_225'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Set the current size in the context node-set.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_226'/>
+226
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_226'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_227'/>
+227
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_227'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param size the size</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_228'/>
+228
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_228'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_229'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setSize(int size)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_230'/>
+230
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_230'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_231'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.size = size;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_232'/>
+232
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_232'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_233'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_234'/>
+234
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_234'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve the size of the current context node-set.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_235'/>
+235
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_235'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_236'/>
+236
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_236'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the size</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_237'/>
+237
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_237'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_238'/>
+238
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_238'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getSize()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_239'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_240'/>
+240
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_240'>1</a>
+<span>
+1. getSize : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.size;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_241'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_242'/>
+242
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_242'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_243'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Set the current position in the context node-set.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_244'/>
+244
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_244'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_245'/>
+245
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_245'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @param position the position</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_246'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_247'/>
+247
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_247'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setPosition(int position)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_248'/>
+248
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_248'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_249'/>
+249
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_249'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.position = position;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_250'/>
+250
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_250'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_251'/>
+251
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_251'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_252'/>
+252
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_252'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Retrieve current position in the context node-set.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_253'/>
+253
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_253'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_254'/>
+254
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_254'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the current position</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_255'/>
+255
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_255'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_256'/>
+256
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_256'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getPosition()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_257'/>
+257
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_257'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_258'/>
+258
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_258'>1</a>
+<span>
+1. getPosition : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_259'/>
+259
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_259'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_260'/>
+260
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_260'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_261'/>
+261
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_261'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_262'/>
+262
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_262'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    //     Helpers</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_263'/>
+263
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_263'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_264'/>
+264
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_264'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_265'/>
+265
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_265'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** Create a type-safe shallow copy.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_266'/>
+266
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_266'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_267'/>
+267
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_267'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *  @return the duplicate</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_268'/>
+268
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_268'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_269'/>
+269
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_269'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Context duplicate()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_270'/>
+270
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_270'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_271'/>
+271
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_271'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Context dupe = new Context( getContextSupport() );</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_272'/>
+272
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_272'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_273'/>
+273
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_273'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        List thisNodeSet = getNodeSet();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_274'/>
+274
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_274'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_275'/>
+275
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_275'>1</a>
+<span>
+1. duplicate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if ( thisNodeSet != null )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_276'/>
+276
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_276'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_277'/>
+277
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_277'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            List dupeNodeSet = new ArrayList( thisNodeSet.size() );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_278'/>
+278
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_278'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            dupeNodeSet.addAll( thisNodeSet );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_279'/>
+279
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_279'>1</a>
+<span>
+1. duplicate : removed call to org/jaxen/Context::setNodeSet &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            dupe.setNodeSet( dupeNodeSet );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_280'/>
+280
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_280'>1</a>
+<span>
+1. duplicate : removed call to org/jaxen/Context::setPosition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            dupe.setPosition(this.position);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_281'/>
+281
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_281'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_282'/>
+282
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_282'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_283'/>
+283
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_283'>1</a>
+<span>
+1. duplicate : mutated return of Object value for org/jaxen/Context::duplicate to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return dupe;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_284'/>
+284
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_284'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2f2a5064_285'/>
+285
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_285'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_129'>129</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_129'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setNodeSet<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testShrinkNodeSet(org.jaxen.test.ContextTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setNodeSet<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testShrinkNodeSet(org.jaxen.test.ContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_140'>140</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_140'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNodeSet<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testSetNodeSet(org.jaxen.test.ContextTest)</span></span> mutated return of Object value for org/jaxen/Context::getNodeSet to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_158'>158</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_158'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getContextSupport<br/><b>Killed by : </b>org.jaxen.test.JDOMXPathTest.testGetDocumentNode(org.jaxen.test.JDOMXPathTest)</span></span> mutated return of Object value for org/jaxen/Context::getContextSupport to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_167'>167</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_167'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNavigator<br/><b>Killed by : </b>org.jaxen.test.BaseXPathTest.testRelationalLEAssociativity5(org.jaxen.test.BaseXPathTest)</span></span> mutated return of Object value for org/jaxen/Context::getNavigator to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_178'>178</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_178'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>translateNamespacePrefixToUri<br/><b>Killed by : </b>org.jaxen.test.ExtensionFunctionTest.testRegisterExtensionFunction(org.jaxen.test.ExtensionFunctionTest)</span></span> mutated return of Object value for org/jaxen/Context::translateNamespacePrefixToUri to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_196'>196</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_196'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getVariableValue<br/><b>Killed by : </b>org.jaxen.test.DOMXPathTest.testVariableWithNamespace(org.jaxen.test.DOMXPathTest)</span></span> mutated return of Object value for org/jaxen/Context::getVariableValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_216'>216</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_216'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getFunction<br/><b>Killed by : </b>org.jaxen.test.BooleanTest.testBooleanFunctionRequiresOneArgument(org.jaxen.test.BooleanTest)</span></span> mutated return of Object value for org/jaxen/Context::getFunction to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_240'>240</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_240'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSize<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_258'>258</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_258'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPosition<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testShrinkNodeSet(org.jaxen.test.ContextTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_275'>275</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_275'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>duplicate<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_279'>279</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_279'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>duplicate<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest)</span></span> removed call to org/jaxen/Context::setNodeSet &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_280'>280</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_280'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>duplicate<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest)</span></span> removed call to org/jaxen/Context::setPosition &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2f2a5064_283'>283</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2f2a5064_283'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>duplicate<br/><b>Killed by : </b>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest)</span></span> mutated return of Object value for org/jaxen/Context::duplicate to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.jaxen.test.CeilingTest.testNaNCeilingIsNaN(org.jaxen.test.CeilingTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testInequalityAssociativity5P(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testNonNodeContext(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testNonElementContextNode(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testLangFunction(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.ArithmeticTest.testZeroNotGreaterThanNegativeZero(org.jaxen.test.ArithmeticTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring5(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54614(org.jaxen.test.XOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.XPathReaderTest.testNumberOrNumber(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsNumberNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54249(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateFunctionRequiresAtLeastThreeArguments(org.jaxen.test.TranslateFunctionTest) (0 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalGEAssociativity2(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testSelection(org.jaxen.test.DOM4JXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testAsBoolean(org.jaxen.test.DOM4JXPathTest) (3 ms)</li><li>org.jaxen.test.ContextTest.testShrinkNodeSet(org.jaxen.test.ContextTest) (0 ms)</li><li>org.jaxen.test.SumTest.testSumOfNumber(org.jaxen.test.SumTest) (1 ms)</li><li>org.jaxen.test.IdTest.testFindMultipleElementsByMultipleIDs(org.jaxen.test.IdTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testStringExtensionFunctions(org.jaxen.test.DOM4JNavigatorTest) (21 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterFunctionRequiresAtMostTwoArguments(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateWithMalformedSurrogatePair(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfAttribute(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeFunctionRequiresAtLeastTwoArguments(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testForParserErrors(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunction1(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.FloorTest.testNaNFloorIsNaN(org.jaxen.test.FloorTest) (1 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeString(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.ArithmeticTest.testNaNNotEqualsString(org.jaxen.test.ArithmeticTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunctionActual(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54932(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NameTest.testNameNoArguments(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testGetFeature(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54932(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testJaxen16(org.jaxen.test.DOM4JXPathTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testEqualityAssociativity5BP(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen24(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testSubstringFunction(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodeTypes(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfAttrBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testStringFunction2(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterNumber(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.LangTest.testHyphenRequiredAtEnd(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.ContainsTest.testContainsString3(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54298(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPositioning(org.jaxen.test.DOM4JNavigatorTest) (13 ms)</li><li>org.jaxen.test.UnresolvableExceptionTest.testUnresolvableFunction(org.jaxen.test.UnresolvableExceptionTest) (1 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithNumber(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfProcessingInstructionIsEmptyString(org.jaxen.test.NamespaceURITest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testIntegerArithmetic(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalGTAssociativity5(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelfAxisWithNodeTestCanReturnNonPrincipalNodeType(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54467(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringWithNegativeLength2(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.FloorTest.testFloor(org.jaxen.test.FloorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54168(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54219(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.NamespaceTest.testUnboundNamespaceUsedInXPathExpression(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testSelection(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen24(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameAllowsNoArguments(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testMultipleAttributesOnElement(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.ContextTest.testDuplicate(org.jaxen.test.ContextTest) (1 ms)</li><li>org.jaxen.test.SubstringAfterTest.testEmptyStringBeforeEmptyString(org.jaxen.test.SubstringAfterTest) (0 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen3dupe(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54266(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54032(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.XOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54278(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.DOM4JXPathTest) (0 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54932(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionAppliedToDocument(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testStringFunction1(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionRequiresAtMostOneArgument(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54145(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.CountTest.testCountFunctionRequiresAtLeastOneArgument(org.jaxen.test.CountTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalAssociativity4(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.StringTest.testStringValueOfNamespaceNode(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testForParserErrors(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54197(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.JDOMNavigatorTest) (68 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterEmptyString(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.StartsWithTest.testEmptyStringStartsWithNonEmptyString(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateStringThatContainsPrivateUseChars(org.jaxen.test.TranslateFunctionTest) (0 ms)</li><li>org.jaxen.test.ExtensionFunctionTest.testRegisterExtensionFunction(org.jaxen.test.ExtensionFunctionTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.XOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.BinaryExprTest.testBooleanPrecedence(org.jaxen.test.BinaryExprTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testJaxen107(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.FloorTest.testNegativeFloor(org.jaxen.test.FloorTest) (1 ms)</li><li>org.jaxen.test.CountTest.testCountRootElement(org.jaxen.test.CountTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNullNamespace(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.UnresolvableExceptionTest.testUnresolvableVariable(org.jaxen.test.UnresolvableExceptionTest) (1 ms)</li><li>org.jaxen.test.StringTest.testSmallNumbersDontUseExponentialNotation(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testMismatchedDepthsInContext(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.StringTest.testStringValueOfComment(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfNodesWithNonNodes(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.NamespaceTest.testNumberOfNamespaceNodes(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testInequalityAssociativity5(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfProcessingInstructionIsTarget(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.StartsWithTest.testEmptyStringStartsWithEmptyString(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespacesAgain(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54522(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testContainsString3(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromCommentInARelationalExpression(org.jaxen.test.DOMXPathTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testStringFunction2(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen3(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalAssociativity5P(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testVariableLookup(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testTranslateFunction(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.NameTest.testNameOfTextIsEmptyString(org.jaxen.test.NameTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NormalizeSpaceTest.testNormalizeSpaceRequiresAtMostOneArguments(org.jaxen.test.NormalizeSpaceTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringWithExcessiveLength(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testParentOfSelection(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfTextIsEmptyString(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.DOMNavigatorTest) (14 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testTranslateFunction(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.NotTest.testOneIsTrue(org.jaxen.test.NotTest) (2 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfComment(org.jaxen.test.NamespaceURITest) (3 ms)</li><li>org.jaxen.test.XPathReaderTest.testStringOrString(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunctionMore(org.jaxen.test.XOMNavigatorTest) (31 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.NameTest.testNameOfAttribute(org.jaxen.test.NameTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringWithNegativeLength(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.CountTest.testCountFunctionRequiresAtMostOneArgument(org.jaxen.test.CountTest) (3 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testEmptyStringBeforeEmptyString(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.FloorTest.testInfFloorIsInf(org.jaxen.test.FloorTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testTranslateFunction(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateWithNonBMPChars2(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionOfEmptyNodeSetWithNonNodes(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring4(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testStringFunction1(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testTextNodes(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testGetTextContent(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.NamespaceTest.testQueryDefaultNamespaceWithContext(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testFloatingPointArithmetic(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54298(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testMoreComplexArithmeticAssociativity(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.CeilingTest.testCeilingFunctionRequiresAtLeastOneArgument(org.jaxen.test.CeilingTest) (2 ms)</li><li>org.jaxen.test.CeilingTest.testCeilingFunctionRequiresAtMostOneArgument(org.jaxen.test.CeilingTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantOrSelfAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthFunctionOperatesOnContextNode(org.jaxen.test.StringLengthTest) (0 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterString2(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.NameTest.testNameWithTwoArguments(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testLangFunction(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.FloorTest.testNegativeInfFloorIsNegativeInf(org.jaxen.test.FloorTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testStringOrNumber(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.SubstringAfterTest.testEmptyStringSubstringAfterNonEmptyString(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.JDOMNavigatorTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes2(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54522(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.IdTest.testIDFunctionSelectsNothingInDocumentWithNoIds(org.jaxen.test.IdTest) (1 ms)</li><li>org.jaxen.test.DefaultXPathExprTest.testJAXEN40(org.jaxen.test.DefaultXPathExprTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54197(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54197(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BooleanTest.testBooleanFunctionRequiresExactlyOneArgument(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNoNamespace(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testForParserErrors(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalLTAssociativity5(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testInequalityAssociativity5BP(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testMostComplexArithmeticAssociativity(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMXPathTest.testNamespaceNodesAreInherited(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrincipalNodeTypeOfSelfAxisIsElement(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XPathReaderTest.testNoSpaceAfterMod(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithAttributes(org.jaxen.test.BaseXPathTest) (11 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testTextNodes(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54614(org.jaxen.test.DOM4JNavigatorTest) (20 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54522(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.ContainsTest.testContainsEmptyString(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorOrSelfAxis(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54298(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.BaseXPathTest.testUnionUsesDocumentOrder(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAttributeNodesOnParentComeBeforeNamespaceNodesInChildInDocumentOrder(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.ArithmeticTest.testNumbersThatBeginWithADecimalPoint(org.jaxen.test.ArithmeticTest) (3 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfEmptyNodeSetIsEmptyString(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.BooleanTest.testZeroIsFalse(org.jaxen.test.BooleanTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54249(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NameTest.testNameAllowsNoArguments(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeString2(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNullPointerException(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIRequiresAtMostOneArgument(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54570(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.FunctionContextTest.testUnresolvableFunction(org.jaxen.test.FunctionContextTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testStringFunction3(org.jaxen.test.XOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfAttributeInNamespace(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.ArithmeticTest.testLeftAssociativityOfLessThanOrEqual(org.jaxen.test.ArithmeticTest) (5 ms)</li><li>org.jaxen.test.BooleanTest.testEmptyStringIsFalse(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfNamespaceIsPrefix(org.jaxen.test.LocalNameTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testIntegerArithmetic(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54168(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.RoundTest.testRoundFunctionRequiresAtMostOneArgument(org.jaxen.test.RoundTest) (0 ms)</li><li>org.jaxen.test.ArithmeticTest.testEqualityPrecedence(org.jaxen.test.ArithmeticTest) (7 ms)</li><li>org.jaxen.test.NormalizeSpaceTest.testNormalizeSpaceInContextNode(org.jaxen.test.NormalizeSpaceTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testNoSpaceAfterOr(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAttributeParent(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNonEmptyNodeSet(org.jaxen.test.LangTest) (2 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsBooleanNodeset1(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceResolution(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeString3(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunction(org.jaxen.test.DOMNavigatorTest) (152 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithEmptyString(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring1(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.FalseTest.testFalse(org.jaxen.test.FalseTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAttributeParent(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testStringFunction3(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunction1(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen3(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.CeilingTest.testCeiling(org.jaxen.test.CeilingTest) (2 ms)</li><li>org.jaxen.test.ArithmeticTest.testNegativeZeroNotLessThanZero(org.jaxen.test.ArithmeticTest) (2 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen148(org.jaxen.test.JDOMXPathTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testBooleanValueOfEmptyNodeSetIsFalse(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAttributeParent(org.jaxen.test.XOMNavigatorTest) (9 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodesetEqualsString(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54082(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateRequiresAtMostThreeArguments(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfEmptyNodeSetIsEmptyString(org.jaxen.test.LocalNameTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testIntegerArithmetic(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54614(org.jaxen.test.JDOMNavigatorTest) (13 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testStringFunction2(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testTimSort(org.jaxen.test.DOMXPathTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54082(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNormalizeSpaceFunction(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testEqualityAssociativity5B(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateStringThatContainsNonBMPChars(org.jaxen.test.TranslateFunctionTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54145(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testStringFunction2(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen58(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsNumberNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54266(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.NotTest.testNonEmptyStringIsTrue(org.jaxen.test.NotTest) (1 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthFunctionRequiresExactlyOneArgument(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthOfEmptyString(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54278(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfAttribute(org.jaxen.test.LocalNameTest) (2 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithFunctionRequiresAtMostTwoArguments(org.jaxen.test.StartsWithTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOM4JNavigatorTest) (107 ms)</li><li>org.jaxen.test.BaseXPathTest.testEqualityAssociativity5P(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOMXPathTest.testFunctionWithNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testStringFunction3(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.ContextTest.testXMLPrefixIsAlwaysBound(org.jaxen.test.ContextTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testEvaluateWithMultiNodeAnswer(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54156(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54219(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.FloorTest.testFloorFunctionRequiresAtLeastArgument(org.jaxen.test.FloorTest) (1 ms)</li><li>org.jaxen.test.RoundTest.testRound(org.jaxen.test.RoundTest) (0 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithString(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.IdTest.testFindElementById(org.jaxen.test.IdTest) (2 ms)</li><li>org.jaxen.test.NamespaceTest.testQueryDefaultNamespace(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.LangTest.testLangFunction(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54534(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54853(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNumber(org.jaxen.test.LangTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalLEAssociativity5(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.NotTest.testEmptyStringIsFalse(org.jaxen.test.NotTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54534(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.EqualsTest.testOlander(org.jaxen.test.EqualsTest) (2 ms)</li><li>org.jaxen.test.DOMXPathTest.testPrecedingAxisInDocumentOrder(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testArithmeticAssociativity(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthFunctionCountsUnicodeCharactersNotJavaChars(org.jaxen.test.StringLengthTest) (0 ms)</li><li>org.jaxen.test.NumberTest.testNumberFunctionOperatesOnContextNode(org.jaxen.test.NumberTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.ArithmeticTest.testNegativeZeroNotEqualsZero(org.jaxen.test.ArithmeticTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54853(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionRequiresOneArgument(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceDeclarationsAreNotAttributes(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54180(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAttributeAsContext(org.jaxen.test.XOMNavigatorTest) (11 ms)</li><li>org.jaxen.test.BaseXPathTest.testValueOfEmptyListIsEmptyString(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNormalizeSpaceFunction(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespacesAgain(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithNamespaceNodes(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testFloatingPointArithmetic(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.StringTest.testStringFunctionRequiresAtMostOneArgument(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsTwoNodesets(org.jaxen.test.NodesetEqualityTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testAllNodesQuery(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunctionMore(org.jaxen.test.JDOMNavigatorTest) (29 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingSiblingAxisIsInDocumentOrder(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalAssociativity3(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testDuplicateNodes(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.DOM4JXPathTest.testNamespaceNodesAreInherited(org.jaxen.test.DOM4JXPathTest) (0 ms)</li><li>org.jaxen.test.DOMXPathTest.testAttributeNodesDontHaveChildren(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.NumberTest.testNumberFunctionRequiresAtMostOneArgument(org.jaxen.test.NumberTest) (2 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURINoArguments(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.FalseTest.testFalseOfNumber(org.jaxen.test.FalseTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.ContainsTest.testContainsFunctionRequiresAtLeastTwoArguments(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOM4JNavigatorTest) (11 ms)</li><li>org.jaxen.test.DOMXPathTest.testConsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPositioning(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54156(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testIntegerArithmetic(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.RoundTest.testNegativeRound(org.jaxen.test.RoundTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54145(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.ContainsTest.testContainsString(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid53992(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.NormalizeSpaceTest.testNormalizeSpaceUsesXMLSpaceRulesNotJavaRules(org.jaxen.test.NormalizeSpaceTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalGEAssociativity5(org.jaxen.test.BaseXPathTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelectSingleNodeSelectsNothing(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54266(org.jaxen.test.XOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodeTypes(org.jaxen.test.DOM4JNavigatorTest) (8 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodeTypes(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunction1(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringFunctionRequiresAtMostThreeArguments(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeNumber(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54168(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.FunctionContextTest.testUnresolvableFunctionExceptionMessage(org.jaxen.test.FunctionContextTest) (1 ms)</li><li>org.jaxen.test.JDOMXPathTest.testGetDocumentNode(org.jaxen.test.JDOMXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testFloatingPointArithmetic(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMXPathTest.testSelection(org.jaxen.test.XOMXPathTest) (1 ms)</li><li>org.jaxen.test.NumberTest.testNumberFunctionOperatesOnFirstNodeInDocumentOrder(org.jaxen.test.NumberTest) (1 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateNonBMPChars(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testJaxen107FromFile(org.jaxen.test.BaseXPathTest) (24 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameNoArguments(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.StringTest.testStringOfNegativeZero(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceNodesHaveParent(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testEmptyStringSubstringBeforeNonEmptyString(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring2(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterString(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelectNodesReturnsANonNodeSet(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNoNamespace(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.BooleanTest.testNonEmptyNodeSetsAreTrue(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithNumber2(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNormalizeSpaceFunction(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateWithMissingLowSurrogate(org.jaxen.test.TranslateFunctionTest) (2 ms)</li><li>org.jaxen.test.NotTest.testNotFunctionRequiresOneArgument(org.jaxen.test.NotTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCountFunction(org.jaxen.test.XOMNavigatorTest) (60 ms)</li><li>org.jaxen.test.BaseXPathTest.testEvaluateString(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.PositionTest.testPositionOfNumber(org.jaxen.test.PositionTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxisWithAttributesAndChildren(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid53992(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen24(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54249(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateNonBMPChars2(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.ContainsTest.testContainsNumber(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.IdTest.testIDFunctionRequiresAtLeastOneArgument(org.jaxen.test.IdTest) (1 ms)</li><li>org.jaxen.test.NamespaceTest.testUnprefixedNamespaceAxis(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testVariableLookup(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DefaultNamestepTest.testIdentitySetUsageInDefaultNameStep(org.jaxen.test.DefaultNamestepTest) (2 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameWithTwoArguments(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54570(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsStringNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testAncestorFollowedByChildren(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.DOMXPathTest.testUpdateDOMNodesReturnedBySelectNodes(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testUnionofNodesAndNonNodes(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthOfString(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testLangFunction(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaces(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.JDOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54467(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BooleanTest.testNaNIsFalse(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testNoSpaceAfterDiv(org.jaxen.test.XPathReaderTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54156(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testSimplerArithmeticAssociativity(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54032(org.jaxen.test.DOM4JNavigatorTest) (6 ms)</li><li>org.jaxen.test.CeilingTest.testNegativeCeiling(org.jaxen.test.CeilingTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNoNamespace(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.ArithmeticTest.testZeroGreaterThanOrEqualsToNegativeZero(org.jaxen.test.ArithmeticTest) (3 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testNotEqualsBooleanNodeset2(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfCommentIsEmptyString(org.jaxen.test.LocalNameTest) (2 ms)</li><li>org.jaxen.test.ArithmeticTest.testNegativeZeroEqualsZero(org.jaxen.test.ArithmeticTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testPathWithParentheses(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfTextIsEmptyString(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsNothing(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNodeTypes(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaces(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfNumber(org.jaxen.test.NamespaceURITest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCountFunction(org.jaxen.test.JDOMNavigatorTest) (36 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54219(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.XOMNavigatorTest) (45 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespaceResolution(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testStringFunction3(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespacesAgain(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthWithPrivateUseChars(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPrecedingSiblingAxis(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.NotTest.testNotFunctionRequiresExactlyOneArgument(org.jaxen.test.NotTest) (3 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeEmptyString(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.ContainsTest.testEmptyStringContainsEmptyString(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringOfNumber(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testXMLNamespaceAttributeOrderOnAncestorAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunctionMore(org.jaxen.test.DOM4JNavigatorTest) (40 ms)</li><li>org.jaxen.test.EqualsTest.testEqualityAgainstNonExistentNodes(org.jaxen.test.EqualsTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen24(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testAbbreviatedDoubleSlashAxis(org.jaxen.test.BaseXPathTest) (16 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts1(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen58(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54249(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testNegativeStartWithLength(org.jaxen.test.SubstringTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalGEAssociativity4(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54197(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54522(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54082(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testVariableWithNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54219(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54467(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsStringNodeset(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54467(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testLangFunction(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.CountTest.testCount3(org.jaxen.test.CountTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeCounts(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NumberTest.testNumberFunctionAppliedToNonNumericString(org.jaxen.test.NumberTest) (1 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsTwoNodesets(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionAppliedToNonElement(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testTextNodes(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaceResolution(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.VariableContextTest.testUnresolvableVariable(org.jaxen.test.VariableContextTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testStringLengthIndexesUnicodeCharactersNotJavaChars(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.IdTest.testIdReturnsFirstElementWithMatchingId(org.jaxen.test.IdTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testSubstringFunction(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateWithExtraCharsInReplacementString(org.jaxen.test.TranslateFunctionTest) (0 ms)</li><li>org.jaxen.test.SubstringTest.testNegativeStartNoLength(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringOfNaN(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54032(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54266(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunction1(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.DOM4JNavigatorTest) (53 ms)</li><li>org.jaxen.test.ContainsTest.testContainsFunctionRequiresAtMostTwoArguments(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.RoundTest.testNaNRoundIsNaN(org.jaxen.test.RoundTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryIntrinsicNamespaceOfAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.ArithmeticTest.testNaNEqualsString(org.jaxen.test.ArithmeticTest) (5 ms)</li><li>org.jaxen.test.ArithmeticTest.testNumbersThatBeginWithADecimalPoint2(org.jaxen.test.ArithmeticTest) (2 ms)</li><li>org.jaxen.test.ContainsTest.testEmptyStringContainsNonEmptyString(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNamespacesAgain(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testSetTextContent(org.jaxen.test.DOM3NamespaceTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54298(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.ContextTest.testSetNodeSet(org.jaxen.test.ContextTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testJaxen3dupe(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testNamespaceNodeAsContext(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.XPathReaderTest.testNoSpaceAfterAnd(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54032(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid53992(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsBooleanNodeset2(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen58(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BooleanTest.testNonEmptyStringIsTrue(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthFunctionWithMalformedString(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testPrecedingAxisWithPositionalPredicate(org.jaxen.test.BaseXPathTest) (1 ms)</li><li>org.jaxen.test.NotTest.testZeroIsFalse(org.jaxen.test.NotTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAttributeParent(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testStringExtensionFunctions(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54145(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.BaseXPathTest.testNumberValueOfEmptyNodeSetIsNaN(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.XPathReaderTest.testNoSpaceAfterPlus(org.jaxen.test.XPathReaderTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54534(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54278(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen53Text(org.jaxen.test.JDOMXPathTest) (1 ms)</li><li>org.jaxen.test.ConcatTest.testConcatFunctionRequiresAtLeastTwoArguments(org.jaxen.test.ConcatTest) (1 ms)</li><li>org.jaxen.test.ContainsTest.testContainsString2(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testAttributeAsContext(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.StringTest.testIntegersAreFormattedAsInts(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.XPathReaderTest.testAndImmediatelyFollowedByRelativeLocationPath(org.jaxen.test.XPathReaderTest) (5 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54082(org.jaxen.test.DOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNamespaces(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.BaseXPathTest.testSelectSingleNodeForContext(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.BaseXPathTest.testDescendantAxis(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testStringFunction1(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testInequalityAssociativity5B(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testSubstringFunction(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNormalizeSpaceFunction(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54180(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.NotTest.testNaNIsFalse(org.jaxen.test.NotTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testAttributeAsContext(org.jaxen.test.DOM4JNavigatorTest) (13 ms)</li><li>org.jaxen.test.SumTest.testSumNoArguments(org.jaxen.test.SumTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testNodesetEqualsNumber(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMXPathTest.testJaxen20AttributeNamespaceNodes(org.jaxen.test.JDOMXPathTest) (0 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid53992(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaces(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54570(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.LastTest.testLastFunction(org.jaxen.test.LastTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPositioning(org.jaxen.test.XOMNavigatorTest) (11 ms)</li><li>org.jaxen.test.DOMXPathTest.testIntrinsicNamespaceDeclarationOfElementBeatsContradictoryXmlnsPreAttr(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testElementWithoutNamespace(org.jaxen.test.DOMXPathTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testForParserErrors(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeFunctionRequiresAtMostTwoArguments(org.jaxen.test.SubstringBeforeTest) (2 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateWithNonBMPChars(org.jaxen.test.TranslateFunctionTest) (0 ms)</li><li>org.jaxen.test.StringTest.testStringOfInfinity(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.StringTest.testStringOfNegativeInfinity(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.NameTest.testNameOfNumber(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testVariableLookup(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromProcessingInstructionInARelationalExpression(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring6(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testFloatingPointArithmetic(org.jaxen.test.DOM4JNavigatorTest) (7 ms)</li><li>org.jaxen.test.BaseXPathTest.testEqualityAssociativity5(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.StringLengthTest.testStringLengthOfNumber(org.jaxen.test.StringLengthTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAbsoluteLocationPaths(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testIsEqualNode(org.jaxen.test.DOM3NamespaceTest) (1 ms)</li><li>org.jaxen.test.NameTest.testNameOfNamespaceIsPrefix(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testVariableLookup(org.jaxen.test.DOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.XOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterNumber2(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslate(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testDocumentFunctionContextExample(org.jaxen.test.DOM4JNavigatorTest) (5 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.XOMNavigatorTest) (12 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsEmptyNodeSet(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testUnderscoresInNames(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54156(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NodesetEqualityTest.testEqualsBooleanNodeset1(org.jaxen.test.NodesetEqualityTest) (1 ms)</li><li>org.jaxen.test.RoundTest.testRoundFunctionRequiresAtLeastOneArgument(org.jaxen.test.RoundTest) (0 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testid54278(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testSubstringFunction(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen3dupe(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testDocumentFunctionActual(org.jaxen.test.XOMNavigatorTest) (5 ms)</li><li>org.jaxen.test.NamespaceTest.testNamespaceNodesReadFromAttributes(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.JDOMXPathTest.testSelection(org.jaxen.test.JDOMXPathTest) (2 ms)</li><li>org.jaxen.test.LastTest.testLastFunctionAllowsNoArguments(org.jaxen.test.LastTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testImplictCastFromTextInARelationalExpression(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithString3(org.jaxen.test.StartsWithTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54180(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testPositioning(org.jaxen.test.JDOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCountFunctionMore(org.jaxen.test.DOMNavigatorTest) (56 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringOfEmptyString(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen3dupe(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOMXPathTest.testInconsistentNamespaceDeclarations(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testUnderscoresInNames(org.jaxen.test.DOM4JNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54168(org.jaxen.test.JDOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAttributeAsContext(org.jaxen.test.DOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.LangTest.testLangFunctionSelectsSubcode(org.jaxen.test.LangTest) (1 ms)</li><li>org.jaxen.test.FloorTest.testBooleanFunctionRequiresExactlyOneArgument(org.jaxen.test.FloorTest) (3 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithFunctionRequiresAtLeastTwoArguments(org.jaxen.test.StartsWithTest) (2 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterString3(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testNamespaceNodesPrecedeAttributeNodes(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.BaseXPathTest.testNamespaceNodesComeBeforeAttributeNodesInDocumentOrder(org.jaxen.test.BaseXPathTest) (3 ms)</li><li>org.jaxen.test.LocalNameTest.testLocalNameOfNumber(org.jaxen.test.LocalNameTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54932(org.jaxen.test.DOMNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testTextNodes(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNodesetEqualsString(org.jaxen.test.DOM4JNavigatorTest) (3 ms)</li><li>org.jaxen.test.ModTest.testModofNonIntegers(org.jaxen.test.ModTest) (1 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringFunctionRequiresAtLeastTwoArguments(org.jaxen.test.SubstringTest) (2 ms)</li><li>org.jaxen.test.NamespaceTest.testNamespaceAxis(org.jaxen.test.NamespaceTest) (0 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testCorrectPredicateApplication(org.jaxen.test.JDOMNavigatorTest) (32 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testJaxen58(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testid54614(org.jaxen.test.DOMNavigatorTest) (15 ms)</li><li>org.jaxen.test.NamespaceURITest.testNamespaceURIOfNamespaceIsNull(org.jaxen.test.NamespaceURITest) (1 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterString4(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.DOMXPathTest.testJaxen22(org.jaxen.test.DOMXPathTest) (2 ms)</li><li>org.jaxen.test.BooleanTest.testBooleanFunctionRequiresOneArgument(org.jaxen.test.BooleanTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testCDATASectionsAreIncludedInTextNodes(org.jaxen.test.DOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.TranslateFunctionTest.testTranslateIgnoresExtraArguments(org.jaxen.test.TranslateFunctionTest) (1 ms)</li><li>org.jaxen.test.FunctionContextTest.testJAXEN50(org.jaxen.test.FunctionContextTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testLogicalAssociativity(org.jaxen.test.BaseXPathTest) (5 ms)</li><li>org.jaxen.test.StringTest.testStringFunctionOperatesOnFirstNodeInDocumentOrder(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54180(org.jaxen.test.XOMNavigatorTest) (8 ms)</li><li>org.jaxen.test.NormalizeSpaceTest.testNormalizeSpaceUsesXMLSpaceRulesNotJavaRules2(org.jaxen.test.NormalizeSpaceTest) (1 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testStringFunction1(org.jaxen.test.XOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54570(org.jaxen.test.JDOMNavigatorTest) (3 ms)</li><li>org.jaxen.test.DOM3NamespaceTest.testIsSameNode(org.jaxen.test.DOM3NamespaceTest) (2 ms)</li><li>org.jaxen.test.ContainsTest.testContainsNumber2(org.jaxen.test.ContainsTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testUnusualSubstring3(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.BaseXPathTest.testRelationalGEAssociativity3(org.jaxen.test.BaseXPathTest) (2 ms)</li><li>org.jaxen.test.SubstringBeforeTest.testSubstringBeforeNumber2(org.jaxen.test.SubstringBeforeTest) (1 ms)</li><li>org.jaxen.test.StringTest.testBigNumbersDontUseExponentialNotation(org.jaxen.test.StringTest) (1 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54853(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testTranslateFunction(org.jaxen.test.XOMNavigatorTest) (6 ms)</li><li>org.jaxen.test.IdTest.testIDFunctionRequiresAtMostOneArgument(org.jaxen.test.IdTest) (1 ms)</li><li>org.jaxen.test.DOMNavigatorTest.testAxisNodeOrdering(org.jaxen.test.DOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testPrefixDoesntMatter(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testJaxen3(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testCountFunction(org.jaxen.test.DOM4JNavigatorTest) (62 ms)</li><li>org.jaxen.test.TrueTest.testTrueOfNumber(org.jaxen.test.TrueTest) (1 ms)</li><li>org.jaxen.test.DOM4JNavigatorTest.testNamespaceResolution(org.jaxen.test.DOM4JNavigatorTest) (2 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testJaxen3(org.jaxen.test.XOMNavigatorTest) (7 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testid54853(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.XOMNavigatorTest.testNoNamespace(org.jaxen.test.XOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.JDOMNavigatorTest.testid54534(org.jaxen.test.JDOMNavigatorTest) (4 ms)</li><li>org.jaxen.test.NameTest.testNameOfProcessingInstructionIsTarget(org.jaxen.test.NameTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testStringLengthCountsUnicodeCharactersNotJavaChars(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.BooleanTest.testEmptyNodeSetsAreFalse(org.jaxen.test.BooleanTest) (2 ms)</li><li>org.jaxen.test.JavaBeanNavigatorTest.testSomething(org.jaxen.test.JavaBeanNavigatorTest) (7 ms)</li><li>org.jaxen.test.SubstringTest.testStringLengthIndexesAndCountsUnicodeCharactersNotJavaChars(org.jaxen.test.SubstringTest) (2 ms)</li><li>org.jaxen.test.NameTest.testNameOfCommentIsEmptyString(org.jaxen.test.NameTest) (1 ms)</li><li>org.jaxen.test.NamespaceTest.testMultipleNamespaceAxis(org.jaxen.test.NamespaceTest) (1 ms)</li><li>org.jaxen.test.SubstringAfterTest.testSubstringAfterFunctionRequiresAtLeastTwoArguments(org.jaxen.test.SubstringAfterTest) (1 ms)</li><li>org.jaxen.test.ArithmeticTest.testZeroLessThanOrEqualToNegativeZero(org.jaxen.test.ArithmeticTest) (2 ms)</li><li>org.jaxen.test.SubstringTest.testSubstringOfNumber2(org.jaxen.test.SubstringTest) (1 ms)</li><li>org.jaxen.test.StartsWithTest.testStartsWithString2(org.jaxen.test.StartsWithTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.0
+
+</body>
+</html>
